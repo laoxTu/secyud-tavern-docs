@@ -2,7 +2,7 @@
 
 选择一个预设后进入分页编辑器，顶部分页栏包含 **属性** 和五种引擎标签。
 
-![预设编辑器](../images/preset-editor-overview.jpeg)
+![预设编辑器](../images/presets-list.jpeg)
 
 ## 属性
 
