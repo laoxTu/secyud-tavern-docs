@@ -4,6 +4,8 @@
 
 模型提供LLM的配置，你可以在此配置你的API类型，选项以及Key，以供访问LLM。
 
+![模型](../images/model.png)
+
 ## [预设](preset/readme.md)
 
 预设是Secyud Tavern的核心功能，提供了交互的所有配置，你可以在此搭建自己的交互舞台。
