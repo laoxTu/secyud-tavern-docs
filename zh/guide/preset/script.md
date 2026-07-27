@@ -14,14 +14,16 @@
 
 ## 获取变量
 
-初始化
+脚本可以使用外部变量以及监听llm引发的变动。
+
+* 初始化
 
 ```js
 const contentInitData = window.__messageData?.["content"];
 // ...
 ```
 
-监听
+* 监听
 
 ```js
 function handleMessage(e) {
@@ -42,3 +44,27 @@ window.addEventListener('message', handleMessage);
 * variables
     * 用于监控变量的改变，变量改变时需要响应并更新UI。
     * 结构不定，可以是任意结构。
+
+## 控制输入
+
+脚本可以控制`userInput`的内容，从而控制用户传递给`LLM`的信息。
+
+* 直接添加到用户输入框
+
+```js
+window.userInput.text.set(u => u + '需要附加的内容');
+// 设置为总结模式
+window.userInput.summary.set(true);
+```
+
+* 使用`inputBuilder`（不会反映在用户输入框，而是在构造输入时生成）
+
+```js
+window.userInput.inputBuilders.push({
+    id: "my-builder-name", // 需要判重，防止重复添加
+    sequence: 0,
+    build: (text) => text + '需要附加的内容',
+});
+```
+
+这个功能非常适合于页面内有控制选项的脚本。通过控制选项，然后在生成输入时直接构造本轮的选项提示词。
