@@ -69,3 +69,26 @@
     * 目前的start脚本集成拉取代码，安装依赖，编译准备，编译，启动为一体，可以做到一键更新重启。
 * 更自由意味着能做的事情更多--这意味着恶意代码的成本也随之变低了。
     * 在安装插件时，我建议只安装您信任的开发者创作的插件。
+
+### 注册api
+
+服务端插件可以注册api
+```ts
+const route = {
+    "path": {
+        async GET(request: NextRequest, _records: Record<string, any>) {
+            const res = {}; // 你的业务逻辑
+            return NextResponse.json(res);
+        }
+    }
+}
+pluginRouteManager.registerRouteTree(route);
+```
+
+客户端通过fetch调用：
+```ts
+await fetch(`/plugins/api/path`, {
+   method: 'GET',
+   body: formData,
+})
+```
