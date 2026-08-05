@@ -73,14 +73,15 @@
 ### 注册api
 
 服务端插件可以注册api
+
 ```ts
 const route = {
-    "path": {
-        async GET(request: NextRequest, _records: Record<string, any>) {
-            const res = {}; // 你的业务逻辑
-            return NextResponse.json(res);
-        }
-    }
+   "path": {
+      async GET(request: NextRequest, records: NextRecord) {
+         const res = {}; // 你的业务逻辑
+         return NextResponse.json(res);
+      }
+   }
 }
 pluginRouteManager.registerRouteTree(route);
 ```
