@@ -52,6 +52,11 @@
 宏可以在生成输出和输入的过程中进行动态的替换。
 ![宏](../../images/preset_macro.png)
 
+## [工具](../preset/tool.md)
+
+工具可以为llm提供各种调用功能。
+![工具](../../images/llmapi_tool.png)
+
 ## Q&A
 
 1. Q: 宏和正则有什么区别？
