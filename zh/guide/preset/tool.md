@@ -32,6 +32,26 @@ LLM根据变量路径获取变量，不需要手动在世界书或其它地方�
 
 每个预设都可以结合自定义脚本进行工作，设置，使用全局变量，播放媒体，数学计算等等。
 
+会输入两个变量 input 和 context，分别是ai给的参数和上下文。
+
+input由schema定义，你需要对其进行校验。
+
+context是确定的，你可以选择
+
+* 访问iframe
+    ```ts
+    interface context {
+        document: HTMLDocument,
+        window: Window,
+    }
+    ```
+* 访问变量
+    ```ts
+    interface context {
+        variables: any,
+    }
+    ```
+
 ### 子Agent
 
 你可以设定自己的子Agent，提供自定义的分析或操作。
