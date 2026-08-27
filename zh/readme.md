@@ -11,6 +11,11 @@ Secyud Tavern是一个高度自定义的AI角色交互平台，它允许你搭�
 * [Windows](install/windows.md)
 * [Linux](install/linux.md)
 
+## 快速开始
+
+预设已经放在文档中，可以通过文档中的templates/presets获取。
+在预设界面将预设导入，选中导入预设，点击从预设开始进入游玩。
+
 ## 项目指南
 
 ### [使用指南](guide/readme.md)
