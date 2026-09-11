@@ -13,6 +13,8 @@
 7. Go to [Macros](#macros) and configure macros.
 8. At this point, the preset is fully configured. You can select dependent presets in your story to start playing.
 
+> If you have no experience, you can import the presets built into the project; they provide a complete example.
+
 ## Properties
 
 Configure basic preset properties such as cover image, tags, version, dependencies, etc.
@@ -23,6 +25,7 @@ Configure basic preset properties such as cover image, tags, version, dependenci
 * Version: The preset version, useful for tracking version progress when sharing.
 * Tags: Preset categories, multiple tags are allowed for easier browsing.
 * Dependencies: Other presets that this preset depends on, which will be loaded along with this preset.
+* Variables: The initial variables of this preset. The variables of all presets will be merged into a single JSON, used as the story's initial variables.
 
 ## [World Book](lorebook.md)
 
@@ -48,6 +51,11 @@ Scripts define JavaScript that is injected into the interaction page, providing 
 
 Macros enable dynamic replacement during the output and input generation process.
 ![Macros](../../images/preset_macro.png)
+
+## [Tools](tool.md)
+
+Tools provide the LLM with various callable functions.
+![Tools](../../images/llmapi_tool.png)
 
 ## Q&A
 

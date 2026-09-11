@@ -19,3 +19,9 @@ Images related to this story. You can upload, download, and manage story images.
 Click the enter icon on the right side of a story item in the list to enter the [play interface](slot.md).
 
 ![Play](../../images/slot.png)
+
+## Memory
+
+* If the RAG option is enabled, the memory tool can be used.
+* You can disable `get_memory` in the tool selector, so that only recording happens in the initial rounds, without recall.
+* After a summary, you can enable `get_memory` to let the AI retrieve memories automatically.

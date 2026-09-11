@@ -4,6 +4,8 @@
 
 Models provide LLM configuration. Here you can configure your API type, options, and keys for accessing LLMs.
 
+![Models](../images/model.png)
+
 ## [Presets](preset/readme.md)
 
 Presets are the core feature of Secyud Tavern, providing all interaction configuration. Here you can build your own interaction stage.

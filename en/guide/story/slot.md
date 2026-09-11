@@ -10,6 +10,10 @@ Without any presets, the interface is blank and you cannot interact directly. Yo
 * Output Paging: Jump and switch output. Switching output will change the context.
 * Generate Image: Use the [ComfyUI](../comfyui/readme.md) image generation feature.
 * Images: The [story](readme.md)'s image gallery, which can be opened as a popup window.
+
+* Macro Selector: Select the macros to enable.
+* Tool Selector: Select the tools to enable.
+
 * Delete Reply: Delete the AI's current output.
 * Delete History: Delete the input and output of the current history entry.
 * Regenerate: Regenerate the AI reply.

@@ -9,6 +9,7 @@ Model management allows you to import models from model websites or create them 
 ### Feature Descriptions
 
 * Download Model to Server: If the model does not exist at the corresponding server path, you can download the model here.
+  * A notification will be pushed when the model download completes or fails.
 * Link: A link to the model. Clicking it will open the model's homepage.
 
 ### Field Descriptions
@@ -25,6 +26,18 @@ Model management allows you to import models from model websites or create them 
 * Model Subpath: The model path accepted by ComfyUI. If you placed the model in a subfolder or changed the filename, set it here.
 * Description: A detailed description of the model.
 * Link: A link to the model, which can point to a model website.
+
+### Importer
+
+#### Civitai Import
+
+Civitai import requires a model ID or a model version ID.
+
+* Model ID: imports all versions of that model.
+* Model Version ID: imports the model under that model version.
+
+> Environment variable: you can configure `CIVITAI_TOKEN` in the environment variables so that the token is attached during download.
+> Some models require this item to download; otherwise only a returned JSON stating unauthorized is downloaded instead of the model file. This configuration only takes effect for models imported using Civitai.
 
 ## Workflow Management
 

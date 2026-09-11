@@ -12,4 +12,19 @@
 
 ## Properties
 
-Select and configure the LLM provider and prompt builder.
+* Maximum turns per round: The maximum number of output rounds the AI can produce per round, showing how many times the AI calls tools in a single round.
+
+* Provider: OpenAI
+    * Default builder
+        * Focuses on cache hit rate. The injected world books are cached in the corresponding history, thereby improving the hit rate.
+    * Layered builder
+        * Focuses on ordering. World books of different importance levels are injected by layer, thereby increasing the influence of important world books.
+
+## Environment Variables
+
+When the program initializes, if there is no `.env` file, one will be generated automatically, and the following values will be generated randomly. You can change them.
+
+* `SECRET_SALT` Salt value, a complex string
+* `SECRET_KEYS` Key, a complex string
+
+These variables are involved in the encryption and decryption of the API keys in the database. Please handle them carefully to prevent leakage.
