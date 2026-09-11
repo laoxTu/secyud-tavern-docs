@@ -19,15 +19,15 @@
    - id: 插件唯一标识符
    - sequence: 插件加载顺序，也可以使用`requires` 声明依赖控制顺序。`requires: ["依赖的插件id"]`
    - version: 版本号
-   - clientScript: 客户端脚本，写相对路径，以'/'为分隔符。
-   - serverScript: 服务端脚本，写相对路径，以'/'为分隔符。
+   - client: 客户端脚本，写相对路径，以'/'为分隔符。
+   - server: 服务端脚本，写相对路径，以'/'为分隔符。
    - disabled: 是否禁用。
    ```json
    {
-     "clientScript": "client",
+     "client": "client",
      "id": "project-info",
      "sequence": 1000,
-     "serverScript": "server",
+     "server": "server",
      "version": "1.0.0"
    }
    ```
@@ -51,7 +51,7 @@
    ```
 7. 可选翻译，可以参考`project-info`在插件目录下创建`localization`文件夹并进行多语言翻译。并调用`useTranslations`使用多语言。
 
-8. 执行一次`pnpm pre-build`进行插件准备。至此，您的插件已经注册，可以使用`pnpm dev`进行开发调试。
+8. 执行一次`pnpm prepare`进行插件准备。至此，您的插件已经注册，可以使用`pnpm dev`进行开发调试。
 
 ## 使用事项
 
