@@ -85,7 +85,6 @@ export default {
     },
   },
 };
-pluginRouteManager.registerRouteTree(route);
 ```
 
 客户端通过fetch调用：

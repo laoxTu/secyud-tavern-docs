@@ -85,7 +85,6 @@ export default {
     },
   },
 };
-pluginRouteManager.registerRouteTree(route);
 ```
 
 The client calls it via fetch:
