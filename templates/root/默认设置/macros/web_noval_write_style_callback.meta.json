@@ -1,6 +1,6 @@
 {
   "code": "web_noval_const",
-  "disabled": true,
+  "disabled": false,
   "hidden": false,
   "json": false,
   "key": "write_style_callback",

@@ -1,7 +1,7 @@
 {
   "code": "set_memory",
   "disabled": false,
-  "hidden": false,
+  "hidden": true,
   "json": false,
   "key": "rules",
   "multiple": true,

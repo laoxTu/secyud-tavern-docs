@@ -1,7 +1,7 @@
 {
   "code": "web_noval_const",
-  "disabled": true,
-  "hidden": false,
+  "disabled": false,
+  "hidden": true,
   "json": false,
   "key": "write_style_rules",
   "multiple": true,
