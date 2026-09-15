@@ -1,8 +1,0 @@
-{
-  "code": "variable",
-  "config": { "disableSet": false, "disableGet": false },
-  "disabled": false,
-  "entryId": 1,
-  "name": "变量工具",
-  "type": "variable"
-}

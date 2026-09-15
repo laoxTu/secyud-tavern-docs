@@ -1,13 +1,11 @@
-# 记忆系统
+<memory_rules>
 
-设置记忆
-
+memory should be set when:
 1. 记录场景相关的资料
 2. 记录人物概要信息
 3. 记录事件，关系，情报
 
-读取记忆
-
+memory should be get when:
 1. 新场景开始时——检索与该场景相关的历史事件和知识
 2. 新人物登场时——检索该人物的关系和过往
 3. 提到历史事件、地点、物品时——检索相关内容
@@ -15,3 +13,5 @@
 
 > 此工具读取记忆时会得到记忆的标题。
 > 记忆的内容会通过get_knowledge工具type为memory注入。
+
+</variable_rules>

@@ -1,9 +1,9 @@
 {
-  "code": "mind",
+  "code": "set_memory",
   "disabled": false,
   "hidden": false,
   "json": false,
-  "key": "callback_mind",
+  "key": "rules",
   "multiple": true,
-  "name": "召回思维"
+  "name": "记忆设置规则"
 }

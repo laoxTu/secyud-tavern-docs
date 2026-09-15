@@ -1,9 +1,9 @@
 {
-  "code": "write_style1",
+  "code": "web_noval_const",
   "disabled": true,
   "hidden": false,
   "json": false,
-  "key": "write_style",
-  "multiple": false,
+  "key": "write_style_rules",
+  "multiple": true,
   "name": "文风：网文"
 }

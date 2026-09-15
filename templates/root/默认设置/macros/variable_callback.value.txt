@@ -1,0 +1,3 @@
+<variable>
+根据<variable_rules/>使用工具增删查改变量。
+</variable>

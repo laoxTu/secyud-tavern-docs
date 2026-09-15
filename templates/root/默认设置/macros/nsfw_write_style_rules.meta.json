@@ -1,0 +1,9 @@
+{
+  "code": "nsfw_const",
+  "disabled": true,
+  "hidden": false,
+  "json": false,
+  "key": "write_style_rules",
+  "multiple": true,
+  "name": "文风：NSFW"
+}

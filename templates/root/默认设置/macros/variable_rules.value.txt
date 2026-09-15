@@ -1,0 +1,20 @@
+<variable_rules>
+<relatedDates>
+1. format
+```ts
+export interface Variable {
+    relatedDates: {
+        year: number,
+        month: number,
+        day: number,
+    }[]
+}
+```
+2. rules
+* In each reply, the times mentioned in the current conversation need to be collected and set in the field 'relatedDates'.
+* The collected times include all the mentioned times. Such as the current time, the recalled time, and the times in books or media.
+* If there are no mentioned times, the current time should be estimated and filled in.
+* When setting 'relatedDates', the entire array should be set as a whole.
+  * etc. `[{year:1,month:1,day:1},{year:1,month:2,day:3}]`
+</relatedDates>
+</variable_rules>

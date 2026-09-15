@@ -1,0 +1,6 @@
+<callback desc="召回内容,后台静默调用,不可写到正文">
+<%~ it.callback %>
+</callback>
+<write_style_callback desc="文风召回,下面的内容以以下文风书写,参考<write_style_rules/>下的相应规则.">
+<%~ it.write_style_callback %>
+</callback>

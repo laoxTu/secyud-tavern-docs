@@ -1,0 +1,9 @@
+{
+  "code": "set_variable",
+  "disabled": false,
+  "hidden": false,
+  "json": false,
+  "key": "callback",
+  "multiple": true,
+  "name": "记忆设置召回"
+}

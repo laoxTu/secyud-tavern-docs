@@ -1,0 +1,3 @@
+<memory>
+根据<memory_rules/>使用记忆工具设置或查询记忆。
+</memory>

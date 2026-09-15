@@ -1,1 +1,8 @@
-{"code":"panel","priority":100,"type":"module","entryId":1,"disabled":false,"name":"panel"}
+{
+  "code": "panel",
+  "disabled": false,
+  "entryId": 1,
+  "name": "panel",
+  "priority": 100,
+  "type": "module"
+}

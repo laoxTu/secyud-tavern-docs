@@ -1,0 +1,12 @@
+{
+  "code": "callback",
+  "desc": "召回内容，将宏中配置的召回内容放在这里，做当前场景的提示。",
+  "disabled": false,
+  "expression": { "last": true },
+  "layer": 99,
+  "match": "always",
+  "name": "召回内容",
+  "priority": 99,
+  "role": "user",
+  "type": "plaintext"
+}

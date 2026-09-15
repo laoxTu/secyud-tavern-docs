@@ -1,1 +1,0 @@
-{"match":"always","type":"markdown","expression":{"last":false},"role":"system","code":"tool_knowledge","priority":99,"layer":5,"disabled":false,"name":"知识工具说明"}
