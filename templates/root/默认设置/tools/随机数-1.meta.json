@@ -1,0 +1,11 @@
+{
+  "config": {
+    "hidden": false,
+    "enableDoc": false,
+    "enableVariable": false,
+    "code": "random"
+  },
+  "disabled": false,
+  "name": "随机数",
+  "type": "script"
+}

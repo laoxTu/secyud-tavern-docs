@@ -1,0 +1,8 @@
+{
+  "code": "preact",
+  "disabled": false,
+  "entryId": 3,
+  "name": "preact导入",
+  "priority": 0,
+  "type": "importmap"
+}

@@ -1,0 +1,8 @@
+{
+  "code": "script",
+  "disabled": false,
+  "entryId": 2,
+  "name": "script",
+  "priority": 100,
+  "type": "module"
+}

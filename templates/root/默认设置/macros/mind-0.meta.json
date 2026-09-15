@@ -1,0 +1,9 @@
+{
+  "code": "mind",
+  "disabled": false,
+  "hidden": false,
+  "json": false,
+  "key": "callback_mind",
+  "multiple": true,
+  "name": "召回思维"
+}

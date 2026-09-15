@@ -1,0 +1,1 @@
+{"id":"preset_tiandao","name":"默认天道预设","version":"1.2.1","cover":null,"description":"","tags":["preset"],"requires":[{"name":"基础设置-1.1.2","value":"settings"},{"name":"默认UI界面-1.1.0","value":"ui_default"}],"properties":{}}

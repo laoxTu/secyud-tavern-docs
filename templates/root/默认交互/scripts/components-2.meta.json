@@ -1,0 +1,7 @@
+{
+  "code": "components",
+  "disabled": false,
+  "name": "组件",
+  "priority": 0,
+  "type": "module"
+}

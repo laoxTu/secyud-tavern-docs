@@ -1,0 +1,10 @@
+{
+  "cover": null,
+  "description": "",
+  "id": "app_simulation",
+  "name": "模拟经营",
+  "properties": {},
+  "requires": [{ "name": "默认天道预设-1.2.1", "value": "preset_tiandao" }],
+  "tags": ["preset"],
+  "version": "1.2.0"
+}

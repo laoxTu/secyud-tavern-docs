@@ -1,0 +1,9 @@
+{
+  "code": "mind",
+  "disabled": false,
+  "hidden": false,
+  "json": false,
+  "key": "rule_mind",
+  "multiple": true,
+  "name": "思维规则"
+}
