@@ -11,30 +11,30 @@ ComfyUI 模块负责「把工作流参数化，然后调用外部 ComfyUI 服务
 
 ### `comfyui_model` —— 模型文件登记
 
-| 列 | 说明 |
-| --- | --- |
-| `id` | PK |
-| `code` | 编码（Civitai 导入时用 `fileName` 作为逻辑主键） |
-| `name` | 显示名 |
-| `type` | `vae` / `diffusion_model` / `lora` / `text_encoder` / `checkpoint` |
-| `cover` | 封面图 |
-| `path` | 相对路径 |
-| `url` / `html` | 来源信息 |
-| `model` | 基础模型（如 `SDXL 1.0`） |
-| `download` | 下载地址 |
-| `importer` | 导入器 id（如 `civitai`） |
-| `properties` | json |
+| 列             | 说明                                                               |
+| -------------- | ------------------------------------------------------------------ |
+| `id`           | PK                                                                 |
+| `code`         | 编码（Civitai 导入时用 `fileName` 作为逻辑主键）                   |
+| `name`         | 显示名                                                             |
+| `type`         | `vae` / `diffusion_model` / `lora` / `text_encoder` / `checkpoint` |
+| `cover`        | 封面图                                                             |
+| `path`         | 相对路径                                                           |
+| `url` / `html` | 来源信息                                                           |
+| `model`        | 基础模型（如 `SDXL 1.0`）                                          |
+| `download`     | 下载地址                                                           |
+| `importer`     | 导入器 id（如 `civitai`）                                          |
+| `properties`   | json                                                               |
 
 索引：`code` / `name` / `type` 三个。
 
 ### `comfyui_workflow` —— 工作流
 
-| 列 | 说明 |
-| --- | --- |
-| `id` | PK |
-| `name` / `description` | 名称与描述 |
-| `content` | **ComfyUI API 格式 JSON 文本** |
-| `properties` | json |
+| 列                     | 说明                           |
+| ---------------------- | ------------------------------ |
+| `id`                   | PK                             |
+| `name` / `description` | 名称与描述                     |
+| `content`              | **ComfyUI API 格式 JSON 文本** |
+| `properties`           | json                           |
 
 工作流的输入类型：
 
@@ -50,13 +50,13 @@ export interface ComfyUIWorkflowInput {
 
 ### `comfyui_param` —— 参数（复合主键）
 
-| 列 | 说明 |
-| --- | --- |
+| 列         | 说明                               |
+| ---------- | ---------------------------------- |
 | `masterId` | → `comfyui_workflow.id`（cascade） |
-| `sequence` | 序号 |
-| `type` | 配置器 id |
-| `name` | 参数名 |
-| `config` | json |
+| `sequence` | 序号                               |
+| `type`     | 配置器 id                          |
+| `name`     | 参数名                             |
+| `config`   | json                               |
 
 主键为 `(masterId, sequence)`。
 
@@ -70,20 +70,33 @@ export interface ComfyUIWorkflowInput {
 // src/comfyui/client/configurator.ts
 export interface ComfyUIParamConfigurator<T = any> extends Registerable {
   configureObject?: (data: FormData, param: ComfyUIParam<T>) => Promise<void>;
-  configureInput?:  (data: FormData, param: ComfyUIParam<T>, input: ComfyUIWorkflowInput) => Promise<void>;
-  configureSchema?: (param: ComfyUIParam<T>, paint: AutoPaintConfig, schema: JsonSchema) => Promise<void>;
-  generateCalling?: (param: ComfyUIParam<T>, paint: AutoPaintConfig, input: ComfyUIWorkflowInput, args: any) => Promise<void>;
+  configureInput?: (
+    data: FormData,
+    param: ComfyUIParam<T>,
+    input: ComfyUIWorkflowInput,
+  ) => Promise<void>;
+  configureSchema?: (
+    param: ComfyUIParam<T>,
+    paint: AutoPaintConfig,
+    schema: JsonSchema,
+  ) => Promise<void>;
+  generateCalling?: (
+    param: ComfyUIParam<T>,
+    paint: AutoPaintConfig,
+    input: ComfyUIWorkflowInput,
+    args: any,
+  ) => Promise<void>;
 }
 ```
 
 四个钩子对应四个场景：
 
-| 钩子 | 从哪 → 到哪 |
-| --- | --- |
-| `configureObject` | 参数编辑表单 → `param.config` |
-| `configureInput` | **生图对话框表单** → workflow input（直接改写） |
-| `configureSchema` | 参数 → **工具 JSON Schema**（暴露给 LLM） |
-| `generateCalling` | **LLM 工具实参** → workflow input |
+| 钩子              | 从哪 → 到哪                                     |
+| ----------------- | ----------------------------------------------- |
+| `configureObject` | 参数编辑表单 → `param.config`                   |
+| `configureInput`  | **生图对话框表单** → workflow input（直接改写） |
+| `configureSchema` | 参数 → **工具 JSON Schema**（暴露给 LLM）       |
+| `generateCalling` | **LLM 工具实参** → workflow input               |
 
 注册表名 `comfyui-param-configurator`，注册了 7 个配置器：
 
@@ -96,12 +109,12 @@ export interface ComfyUIParamConfigurator<T = any> extends Registerable {
 `POST /api/comfyuis/workflows/{id}/params/generate` 扫描工作流 JSON，
 按节点特征自动生成参数：
 
-| 识别特征 | 生成的参数 |
-| --- | --- |
-| `inputs['unet_name']` | `model_select`（`type: 'diffusion_model'`，key `unet_name`） |
-| `_meta.title` 以 `positive` 开头且有 `text` | `llm_text_editor`（提示词编辑） |
-| `class_type === 'Power Lora Loader (rgthree)'` | `power_lora_select`（扫描 `lora_1..lora_10`） |
-| `class_type === 'Form Post Request Node'` | `image_callback`（图片回传） |
+| 识别特征                                       | 生成的参数                                                   |
+| ---------------------------------------------- | ------------------------------------------------------------ |
+| `inputs['unet_name']`                          | `model_select`（`type: 'diffusion_model'`，key `unet_name`） |
+| `_meta.title` 以 `positive` 开头且有 `text`    | `llm_text_editor`（提示词编辑）                              |
+| `class_type === 'Power Lora Loader (rgthree)'` | `power_lora_select`（扫描 `lora_1..lora_10`）                |
+| `class_type === 'Form Post Request Node'`      | `image_callback`（图片回传）                                 |
 
 `push()` 按 `(name, type)` 幂等，避免重复生成。
 
@@ -125,7 +138,7 @@ export interface ComfyUIParamConfigurator<T = any> extends Registerable {
 // src/comfyui/client/proxy.ts
 globals.proxy.fetch({
   method: 'POST',
-  url: `${setting.url}/prompt`,            // ← 直连 ComfyUI
+  url: `${setting.url}/prompt`, // ← 直连 ComfyUI
   body: JSON.stringify({ client_id: setting.client, prompt }),
 });
 ```
@@ -201,14 +214,14 @@ inputs['target_url'] = `${getBaseUrl()}/api/stories/${realm.id}/image`;
 1. 校验 `model.download`、`setting.directory`、`model.path`；
 2. 按类型映射到 ComfyUI 目录名：
 
-| type | 目录 |
-| --- | --- |
-| `vae` | `vae` |
+| type              | 目录               |
+| ----------------- | ------------------ |
+| `vae`             | `vae`              |
 | `diffusion_model` | `diffusion_models` |
-| `lora` | `loras` |
-| `text_encoder` | `text_encoders` |
-| `checkpoint` | `checkpoints` |
-| 未知 | `loras`（回退） |
+| `lora`            | `loras`            |
+| `text_encoder`    | `text_encoders`    |
+| `checkpoint`      | `checkpoints`      |
+| 未知              | `loras`（回退）    |
 
 3. `fileUtils.exists` **预检查，已存在则抛** `BusinessError('file is exists.', 'comfyui.file_exists')`；
 4. 以 `task.create('comfyui_model_download <path>', ...)` 起后台任务；
@@ -250,32 +263,32 @@ ZIP 包，内含两个文件：
 
 ## 8. API 端点
 
-| 方法 | 路径 |
-| --- | --- |
-| GET / POST | `/api/comfyuis/models` |
-| POST | `/api/comfyuis/models/import` |
-| GET / PUT / DELETE | `/api/comfyuis/models/{id}` |
-| POST | `/api/comfyuis/models/{id}/download` |
-| GET / POST | `/api/comfyuis/workflows` |
-| POST | `/api/comfyuis/workflows/import` |
-| GET / PUT / DELETE | `/api/comfyuis/workflows/{id}` |
-| POST | `/api/comfyuis/workflows/{id}/clone` |
-| GET | `/api/comfyuis/workflows/{id}/export` |
-| POST | `/api/comfyuis/workflows/{id}/params/generate` |
-| GET / POST | `/api/comfyuis/workflows/{id}/params` |
-| GET / PUT / DELETE | `/api/comfyuis/workflows/{id}/params/{sequence}` |
-| POST | `/api/comfyuis/workflows/{id}/params/{sequence}/clone` |
+| 方法               | 路径                                                   |
+| ------------------ | ------------------------------------------------------ |
+| GET / POST         | `/api/comfyuis/models`                                 |
+| POST               | `/api/comfyuis/models/import`                          |
+| GET / PUT / DELETE | `/api/comfyuis/models/{id}`                            |
+| POST               | `/api/comfyuis/models/{id}/download`                   |
+| GET / POST         | `/api/comfyuis/workflows`                              |
+| POST               | `/api/comfyuis/workflows/import`                       |
+| GET / PUT / DELETE | `/api/comfyuis/workflows/{id}`                         |
+| POST               | `/api/comfyuis/workflows/{id}/clone`                   |
+| GET                | `/api/comfyuis/workflows/{id}/export`                  |
+| POST               | `/api/comfyuis/workflows/{id}/params/generate`         |
+| GET / POST         | `/api/comfyuis/workflows/{id}/params`                  |
+| GET / PUT / DELETE | `/api/comfyuis/workflows/{id}/params/{sequence}`       |
+| POST               | `/api/comfyuis/workflows/{id}/params/{sequence}/clone` |
 
 ---
 
 ## 9. 客户端状态
 
 ```ts
-useComfyUIModelSettingState   // persist → dbStorage，key 'comfyuis.model.setting'
-     // 默认 { directory: '/home/user/comfyui/models', client: 'secyud-tavern', url: 'http://localhost:8188' }
-useComfyUIState               // persist → ⚠️ localStorage，仅 page
-useComfyUIModelState / useComfyUIWorkflowState / useComfyUIParamState
-     // 基于 states.createFetch
+useComfyUIModelSettingState; // persist → dbStorage，key 'comfyuis.model.setting'
+// 默认 { directory: '/home/user/comfyui/models', client: 'secyud-tavern', url: 'http://localhost:8188' }
+useComfyUIState; // persist → ⚠️ localStorage，仅 page
+useComfyUIModelState / useComfyUIWorkflowState / useComfyUIParamState;
+// 基于 states.createFetch
 ```
 
 ---
@@ -294,8 +307,11 @@ useComfyUIModelState / useComfyUIWorkflowState / useComfyUIParamState
 5. **`configureInput` 写入的是 `name`（路径）而非 `value`（id）** —— 测试用例
    `tests/comfyui/select.test.ts` 明确记录了这一语义，并验证未使用的 `lora_i`
    必须 `delete`（避免上次残留）。
+   > laotu：这点确实可能令人困惑，主要我这个程序的主键是uuid，但是confyui识别的是本地模型路径
 6. **Civitai 下载的 shell 命令注入面**（见 §6）。
 7. **Civitai 客户端直连**：未经 `/api/proxy`，可能受 CORS 影响。
+
+> laotu：未细察，但是我做过提成测试，流程方面应该没问题
 
 ---
 
