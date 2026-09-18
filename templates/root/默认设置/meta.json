@@ -1,1 +1,10 @@
-{"id":"settings","name":"基础设置","version":"1.1.2","cover":null,"description":null,"tags":["settings","preset"],"requires":[],"properties":{}}
+{
+  "cover": null,
+  "description": null,
+  "id": "settings",
+  "name": "基础设置",
+  "properties": {},
+  "requires": [],
+  "tags": ["settings", "preset"],
+  "version": "1.1.2"
+}

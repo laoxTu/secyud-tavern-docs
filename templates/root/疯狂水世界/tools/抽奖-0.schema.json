@@ -1,1 +1,11 @@
-{"type":"object","properties":{"type":{"type":"string","description":"奖池类型，低级dj，中级zj，高级gj","enum":["dj","zj","gj"]}},"required":["type"]}
+{
+  "properties": {
+    "type": {
+      "description": "奖池类型，低级dj，中级zj，高级gj",
+      "enum": ["dj", "zj", "gj"],
+      "type": "string"
+    }
+  },
+  "required": ["type"],
+  "type": "object"
+}
