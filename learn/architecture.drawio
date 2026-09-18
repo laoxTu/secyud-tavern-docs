@@ -1,0 +1,484 @@
+<mxfile host="app.diagrams.net" agent="secyud-tavern-notes" version="31.4.5" type="device">
+  <diagram id="arch-page-1" name="总架构">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="t1" value="Secyud Tavern 总体架构" style="text;html=1;align=center;verticalAlign=middle;fontSize=28;fontStyle=1;fontColor=#1A1A1A;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="2320" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="t2" value="约定式模块 · 编译期代码生成 · iframe 可编程界面" style="text;html=1;align=center;verticalAlign=middle;fontSize=14;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="40" y="66" width="2320" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="lane1" value="①　启动与装配层（编译期锁定）" style="swimlane;html=1;startSize=34;horizontal=1;fillColor=#F5F5F5;strokeColor=#666666;fontStyle=1;fontSize=15;fontColor=#333333;rounded=1;verticalAlign=top;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="110" width="2320" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="manifest" value="manifest.json&#10;声明模块身份&#10;{ id, client, server,&#10;  requires, sequence }" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="lane1">
+          <mxGeometry x="24" y="50" width="540" height="112" as="geometry" />
+        </mxCell>
+        <mxCell id="prepare" value="pnpm prepare（五步）&#10;① 数据库迁移&#10;② 生成 .env 密钥&#10;③ 下载嵌入模型&#10;④ 扫描 manifest 生成注册表&#10;⑤ 生成 Next.js 路由" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="lane1">
+          <mxGeometry x="588" y="50" width="540" height="112" as="geometry" />
+        </mxCell>
+        <mxCell id="registry" value="Registry 注册表&#10;Kahn 拓扑排序&#10;requires 决定初始化顺序&#10;循环依赖 / 缺失依赖直接抛错" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="lane1">
+          <mxGeometry x="1152" y="50" width="540" height="112" as="geometry" />
+        </mxCell>
+        <mxCell id="gen" value="src/generated/*（自动生成）&#10;client-registerer · server-registerer&#10;resources（i18n）· api-path（路径类型）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;dashed=1;" vertex="1" parent="lane1">
+          <mxGeometry x="1716" y="50" width="580" height="112" as="geometry" />
+        </mxCell>
+
+        <mxCell id="lane2" value="②　应用外壳层（浏览器运行时）" style="swimlane;html=1;startSize=34;horizontal=1;fillColor=#F5F5F5;strokeColor=#666666;fontStyle=1;fontSize=15;fontColor=#333333;rounded=1;verticalAlign=top;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="380" width="2320" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="clientboot" value="src/app/client.tsx&#10;registerClientPlugin()&#10;注册完成前渲染 Loading&#10;防重复注册（模块级 promise）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="lane2">
+          <mxGeometry x="24" y="50" width="540" height="112" as="geometry" />
+        </mxCell>
+        <mxCell id="menu" value="GlobalMenu 侧边栏&#10;menus.sorted() 渲染菜单项&#10;element(menus.record(menu).content)&#10;→ 菜单由各模块注册进来" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="lane2">
+          <mxGeometry x="588" y="50" width="540" height="112" as="geometry" />
+        </mxCell>
+        <mxCell id="realmreg" value="游玩页 /{realmId}&#10;PageControl · Feature 按钮组&#10;UserInput（暴露 window.userInput）&#10;宏选择器 · 工具选择器" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="lane2">
+          <mxGeometry x="1152" y="50" width="540" height="112" as="geometry" />
+        </mxCell>
+        <mxCell id="iframe" value="iframe 渲染沙箱（无 sandbox 属性）&#10;界面完全由预设脚本绘制&#10;postMessage 单向推送 content / variables" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;strokeWidth=2;" vertex="1" parent="lane2">
+          <mxGeometry x="1716" y="50" width="580" height="112" as="geometry" />
+        </mxCell>
+
+        <mxCell id="lane3" value="③　能力模块层（src/ 下每个目录 = 一个模块）" style="swimlane;html=1;startSize=34;horizontal=1;fillColor=#F5F5F5;strokeColor=#666666;fontStyle=1;fontSize=15;fontColor=#333333;rounded=1;verticalAlign=top;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="650" width="2320" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="m_presets" value="presets 预设&#10;宏 · 正则 · 脚本 · 样式" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=12;fontStyle=1;" vertex="1" parent="lane3">
+          <mxGeometry x="24" y="50" width="425" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m_lorebooks" value="lorebooks 世界书&#10;5 种匹配器 · 分层注入" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=12;fontStyle=1;" vertex="1" parent="lane3">
+          <mxGeometry x="473" y="50" width="425" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m_tools" value="tools 工具&#10;变量 · 抓取 · 脚本 · 子Agent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=12;fontStyle=1;" vertex="1" parent="lane3">
+          <mxGeometry x="922" y="50" width="425" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m_memories" value="memories 记忆&#10;Orama 向量 · 客户端 RAG" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=12;fontStyle=1;" vertex="1" parent="lane3">
+          <mxGeometry x="1371" y="50" width="425" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m_stories" value="stories 故事&#10;Story · Realm · History · 图片" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=12;fontStyle=1;" vertex="1" parent="lane3">
+          <mxGeometry x="24" y="146" width="425" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m_models" value="models 模型&#10;OpenAI · DeepSeek · Anthropic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=12;fontStyle=1;" vertex="1" parent="lane3">
+          <mxGeometry x="473" y="146" width="425" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m_comfyui" value="comfyui 生图&#10;工作流 · 参数配置器" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=12;fontStyle=1;" vertex="1" parent="lane3">
+          <mxGeometry x="922" y="146" width="425" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m_infra" value="基础设施模块&#10;database · files · global&#10;signal · interceptors · plugins(框架)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6E6E6;strokeColor=#999999;fontSize=12;" vertex="1" parent="lane3">
+          <mxGeometry x="1371" y="146" width="425" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m_plugin" value="plugins/ 编译期插件（独立 Git 仓库）&#10;secyud-tavern-importer&#10;结构与内置模块完全一致，共享同一套 manifest + Registry" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;dashed=1;" vertex="1" parent="lane3">
+          <mxGeometry x="1820" y="50" width="476" height="176" as="geometry" />
+        </mxCell>
+
+        <mxCell id="lane4" value="④　生成管线层（Processer：决定发给模型什么）" style="swimlane;html=1;startSize=34;horizontal=1;fillColor=#FFF9E6;strokeColor=#D6B656;fontStyle=1;fontSize=15;fontColor=#7F6000;rounded=1;verticalAlign=top;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="930" width="2320" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="c_regex" value="regexes 正则&#10;查找替换（target=input）&#10;requires: —" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;" vertex="1" parent="lane4">
+          <mxGeometry x="24" y="50" width="370" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="c_macro" value="macros 宏&#10;Eta 模板求值&#10;requires: regexes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;" vertex="1" parent="lane4">
+          <mxGeometry x="418" y="50" width="370" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="c_tools" value="tools 工具池&#10;暴露 function calling&#10;requires: —" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;" vertex="1" parent="lane4">
+          <mxGeometry x="812" y="50" width="370" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="c_lore" value="lorebooks 世界书&#10;匹配 + 分层注入&#10;requires: tools" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;" vertex="1" parent="lane4">
+          <mxGeometry x="1206" y="50" width="370" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="c_mem" value="memories 记忆&#10;召回结果注入&#10;requires: —" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;" vertex="1" parent="lane4">
+          <mxGeometry x="1600" y="50" width="370" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="converts" value="converts 转换器链（文本变换）&#10;正则在宏之前 —— 正则可产出宏表达式" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=12;strokeWidth=2;align=center;verticalAlign=middle;" vertex="1" parent="lane4">
+          <mxGeometry x="24" y="150" width="1360" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="injects" value="injects 注入器链（消息插入）&#10;before(i) → user → middle(i) → assistant → behind(i)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=12;strokeWidth=2;align=center;verticalAlign=middle;" vertex="1" parent="lane4">
+          <mxGeometry x="1410" y="150" width="886" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="lane5" value="⑤　渲染管线层（Renderer：决定用户看到什么）" style="swimlane;html=1;startSize=34;horizontal=1;fillColor=#EAF3FF;strokeColor=#6C8EBF;fontStyle=1;fontSize=15;fontColor=#1F4E79;rounded=1;verticalAlign=top;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1230" width="2320" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="r_regex" value="regexes 正则&#10;（target=output）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=12;" vertex="1" parent="lane5">
+          <mxGeometry x="24" y="50" width="540" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="r_macro" value="macros 宏&#10;（output / stream）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=12;" vertex="1" parent="lane5">
+          <mxGeometry x="588" y="50" width="540" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="r_script" value="scripts 脚本&#10;注入 importmap + &lt;script&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=12;" vertex="1" parent="lane5">
+          <mxGeometry x="1152" y="50" width="540" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="r_style" value="styles 样式&#10;注入 &lt;style&gt; / &lt;link&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=12;" vertex="1" parent="lane5">
+          <mxGeometry x="1716" y="50" width="580" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="lane6" value="⑥　持久化层" style="swimlane;html=1;startSize=34;horizontal=1;fillColor=#F0F7F0;strokeColor=#82B366;fontStyle=1;fontSize=15;fontColor=#375623;rounded=1;verticalAlign=top;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1430" width="2320" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="sqlite" value="SQLite（libsql 驱动）&#10;data/secyud-tavern.db&#10;单文件 · 零运维" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=14;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=12;" vertex="1" parent="lane6">
+          <mxGeometry x="24" y="50" width="440" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="tables" value="主表：preset · story · model · file · setting · comfyui_*&#10;条目表（单表多态）：preset_entry · story_entry&#10;　　复合主键 (master_id, entry_type, entry_id) + data JSON 列&#10;历史表：realm_history（复合主键 master_id + sequence）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="lane6">
+          <mxGeometry x="488" y="50" width="880" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="repo" value="数据访问三层&#10;provider（连接）→ factory（通用仓储）→ storage（模块适配）&#10;repositories.entry 一套 CRUD 服务所有条目类型&#10;filter / sorter 冗余列支撑 LIKE 搜索与排序" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="lane6">
+          <mxGeometry x="1392" y="50" width="904" height="160" as="geometry" />
+        </mxCell>
+
+        <mxCell id="n_tools_note" value="★ 核心设计：工具 · 变量 · 世界书的组合&#10;工具写变量（JSON Patch 补丁）&#10;→ variable / event 匹配器读取&#10;→ 世界书触发&#10;机制正交，策略由预设定义，而非内核内置" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=18;fillColor=#FFF9E6;strokeColor=#D6B656;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1700" width="760" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="n_budget_note" value="⚠ 当前缺口&#10;· 无 token 预算控制（条目可无限膨胀上下文）&#10;· layer 仅为粗粒度位置分段，无 prompt 内精确定位" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=18;fillColor=#F8CECC;strokeColor=#B85450;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="824" y="1700" width="760" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" value="图例&#10;实线 = 数据 / 调用流　　虚线 = 代码生成或弱依赖&#10;蓝底 = 应用外壳与前端　　黄底 = 生成管线&#10;绿底 = 模块与持久化　　橙底 = 编译期产物　　紫底 = 服务端引擎" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CCCCCC;fontSize=12;align=left;verticalAlign=middle;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="1608" y="1700" width="752" height="170" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_mf_prep" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;strokeColor=#6C8EBF;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="manifest" target="prepare">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_prep_reg" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;strokeColor=#6C8EBF;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="prepare" target="registry">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_reg_gen" value="生成" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;strokeColor=#9673A6;edgeStyle=orthogonalEdgeStyle;dashed=1;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="registry" target="gen">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gen_client" value="注入注册调用" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;strokeColor=#6C8EBF;edgeStyle=orthogonalEdgeStyle;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="gen" target="clientboot">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_client_menu" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;strokeColor=#6C8EBF;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="clientboot" target="menu">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_client_realm" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;strokeColor=#6C8EBF;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="clientboot" target="realmreg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_realm_iframe" value="postMessage" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;strokeColor=#D6B656;edgeStyle=orthogonalEdgeStyle;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="realmreg" target="iframe">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_m_presets_c1" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;strokeColor=#82B366;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="m_presets" target="c_regex">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_m_presets_c2" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;strokeColor=#82B366;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="m_presets" target="c_macro">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_m_lore_c" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;strokeColor=#82B366;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="m_lorebooks" target="c_lore">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_m_tools_c" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;strokeColor=#82B366;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="m_tools" target="c_tools">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_m_mem_c" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;strokeColor=#82B366;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="m_memories" target="c_mem">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_m_presets_r1" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;strokeColor=#82B366;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="m_presets" target="r_regex">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_m_presets_r2" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;strokeColor=#82B366;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="m_presets" target="r_macro">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_m_presets_r3" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;strokeColor=#82B366;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="m_presets" target="r_script">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_m_presets_r4" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;strokeColor=#82B366;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="m_presets" target="r_style">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_c_regex_conv" value="push" style="endArrow=classic;html=1;rounded=1;strokeWidth=1;strokeColor=#D79B00;edgeStyle=orthogonalEdgeStyle;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="c_regex" target="converts">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c_macro_conv" value="push" style="endArrow=classic;html=1;rounded=1;strokeWidth=1;strokeColor=#D79B00;edgeStyle=orthogonalEdgeStyle;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="c_macro" target="converts">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c_lore_inj" value="push" style="endArrow=classic;html=1;rounded=1;strokeWidth=1;strokeColor=#D79B00;edgeStyle=orthogonalEdgeStyle;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="c_lore" target="injects">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c_mem_inj" value="push" style="endArrow=classic;html=1;rounded=1;strokeWidth=1;strokeColor=#D79B00;edgeStyle=orthogonalEdgeStyle;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="c_mem" target="injects">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inj_conv" value="注入内容同样过转换链" style="endArrow=classic;html=1;rounded=1;strokeWidth=1;strokeColor=#D79B00;edgeStyle=orthogonalEdgeStyle;fontSize=10;dashed=1;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="injects" target="converts">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_conv_model" value="转换后的输入 → 组装为供应商格式" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;strokeColor=#B85450;edgeStyle=orthogonalEdgeStyle;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="converts" target="m_models">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_r_script_iframe" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;strokeColor=#6C8EBF;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="r_script" target="iframe">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_r_style_iframe" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;strokeColor=#6C8EBF;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="r_style" target="iframe">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_model_iframe" value="生成结果流式渲染" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;strokeColor=#B85450;edgeStyle=orthogonalEdgeStyle;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="m_models" target="iframe">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_repo_sqlite" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;strokeColor=#82B366;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="repo" target="sqlite">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_sqlite_tables" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;strokeColor=#82B366;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="sqlite" target="tables">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_clientboot_repo" value="src/client.ts → /api/**" style="endArrow=classic;html=1;rounded=1;strokeWidth=1;strokeColor=#999999;edgeStyle=orthogonalEdgeStyle;fontSize=10;dashed=1;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="clientboot" target="repo">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_plugin_infra" value="同一套 manifest + Registry 机制" style="endArrow=classic;startArrow=classic;html=1;rounded=1;strokeWidth=1;strokeColor=#D79B00;edgeStyle=orthogonalEdgeStyle;fontSize=10;dashed=1;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="m_plugin" target="m_infra">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_note_lore" style="endArrow=none;html=1;dashed=1;strokeColor=#D6B656;" edge="1" parent="1" source="n_tools_note" target="c_lore">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_note_budget" style="endArrow=none;html=1;dashed=1;strokeColor=#B85450;" edge="1" parent="1" source="n_budget_note" target="c_lore">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram id="arch-page-2" name="生成时序">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="2400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="st1" value="一次 AI 回复的完整时序（realms.generate）" style="text;html=1;align=center;verticalAlign=middle;fontSize=24;fontStyle=1;fontColor=#1A1A1A;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="1720" height="46" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s_user" value="① 用户提交输入&#10;realms.generate(true)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="560" y="90" width="680" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="s_builder" value="② iframe 输入改写&#10;window.userInput.inputBuilders 按 sequence 依次 build(text)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=12;align=left;verticalAlign=middle;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="560" y="190" width="680" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="s_history" value="③ 历史合并判定&#10;上一条已有输出 → 新建历史（继承变量）&#10;上一条无输出 → 追加 prompt 合并" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=12;align=left;verticalAlign=middle;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="560" y="290" width="680" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="s_window" value="④ 取上下文窗口&#10;倒序回溯 histories，遇 summary === true 停止&#10;走到头则补 opening（开场白）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=12;align=left;verticalAlign=middle;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="560" y="400" width="680" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s_init" value="⑤ Processer.init 建缓存（进入故事时执行一次）&#10;regexes / macros / tools / lorebooks / memories&#10;结果缓存进 realm.context" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9E6;strokeColor=#D6B656;fontSize=12;align=left;verticalAlign=middle;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="530" width="560" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s_g1" value="⑥-1 regexes&#10;按 target=input 过滤&#10;→ converts.push" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9E6;strokeColor=#D6B656;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="680" width="270" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="s_g2" value="⑥-2 macros&#10;Eta 求值&#10;→ converts.push" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9E6;strokeColor=#D6B656;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="370" y="680" width="270" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="s_g3" value="⑥-3 tools&#10;组装工具池&#10;（排除 disabled）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9E6;strokeColor=#D6B656;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="660" y="680" width="270" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="s_g4" value="⑥-4 lorebooks&#10;匹配 + 分层&#10;→ injects.push" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9E6;strokeColor=#D6B656;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="950" y="680" width="270" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="s_g5" value="⑥-5 memories&#10;注入召回结果&#10;→ injects.push" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9E6;strokeColor=#D6B656;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="680" width="270" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s_assemble" value="⑦ engine.prompt 组装消息&#10;每条历史：before(i) → user → middle(i) → assistant → behind(i)&#10;四个回调：prompt / assist / system / caller" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=12;strokeWidth=2;align=left;verticalAlign=middle;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="560" y="820" width="680" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="s_api" value="⑧ POST /api/models/{id}/engine/generate&#10;流式 → sseUtils.pack 包装为 text/event-stream&#10;非流式 → JSON" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;fontSize=12;align=left;verticalAlign=middle;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="560" y="950" width="680" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="s_engine" value="⑨ 服务端引擎&#10;hasher.decrypt(key, iv) 解密 API Key&#10;→ OpenAI / DeepSeek / Anthropic SDK" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;fontSize=12;align=left;verticalAlign=middle;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="560" y="1070" width="680" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="s_retry" value="⚑ 内层：重试循环&#10;网络错误 或 流式卡死超过 interval 秒&#10;→ controller.abort('retry') → 重试（默认 max=3）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#B85450;fontSize=11;align=left;verticalAlign=middle;spacingLeft=10;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="950" width="480" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="s_stream" value="⑩ 前端逐块解析&#10;sseUtils.read → engine.result(ctx)&#10;写入 output.{content, thought, callings}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=12;align=left;verticalAlign=middle;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="560" y="1190" width="680" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="s_toolcall" value="⑪ 工具调用分支&#10;tools.calling 执行 → 结果写回 callings[i].result&#10;异常写为 &quot;error: ...&quot; 回灌给模型（不中断生成）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=12;strokeWidth=2;align=left;verticalAlign=middle;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="560" y="1310" width="680" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="s_loop" value="⑫ 工具循环判定&#10;stopped 为假？" style="rhombus;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#B85450;fontSize=12;perimeter=rhombusPerimeter;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="700" y="1430" width="400" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="s_render" value="⑬ 流式渲染 renderers.stream&#10;正则在宏之前 → converts 链 → postMessage&#10;仅在「当前页是最新」时才渲染" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=12;align=left;verticalAlign=middle;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="560" y="1590" width="680" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="s_output" value="⑭ Processer.output 收尾&#10;世界书匹配结果落进 message.properties&#10;供历史重放复现，不必重算" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9E6;strokeColor=#D6B656;fontSize=12;align=left;verticalAlign=middle;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="560" y="1710" width="680" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="s_save" value="⑮ 落库&#10;history.outputs.push(输出组)&#10;stories.proxy.history.set" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=14;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="560" y="1830" width="680" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s_note1" value="★ 关键：世界书的 knowledge 角色&#10;不直接进消息列表，而是伪装成一次&#10;get_knowledge 工具调用的返回值&#10;→ 复用工具通道，零新增概念，天然兼容所有供应商" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=18;fillColor=#FFF9E6;strokeColor=#D6B656;fontSize=11;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="2000" width="680" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="s_note2" value="★ 变量是 JSON Patch 补丁序列&#10;每条消息带 variables: Operation[]&#10;工具写值只是 push 一个操作，而非直接改状态&#10;→ 翻页可回放、重新生成不污染状态" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=18;fillColor=#EAF3FF;strokeColor=#6C8EBF;fontSize=11;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="820" y="2000" width="680" height="140" as="geometry" />
+        </mxCell>
+
+        <mxCell id="se1" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="s_user" target="s_builder">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se2" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="s_builder" target="s_history">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se3" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="s_history" target="s_window">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se4" value="Processer 依次执行" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="s_window" target="s_g1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se5" value="requires" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="s_g1" target="s_g2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se6" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="s_g2" target="s_g4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se7" value="requires" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="s_g3" target="s_g4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se8" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="s_g5" target="s_assemble">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se9" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="s_g4" target="s_assemble">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se10" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="s_assemble" target="s_api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se11" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="s_api" target="s_engine">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se12" value="SSE 流" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="s_engine" target="s_stream">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se13" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="s_stream" target="s_toolcall">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se14" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="s_toolcall" target="s_loop">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se15" value="未结束：带工具结果重新请求" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;strokeColor=#B85450;edgeStyle=orthogonalEdgeStyle;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="s_loop" target="s_assemble">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se16" value="已结束" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="s_loop" target="s_render">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se17" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="s_render" target="s_output">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se18" style="endArrow=classic;html=1;rounded=1;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="s_output" target="s_save">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se19" value="重试" style="endArrow=classic;html=1;rounded=1;strokeWidth=1;strokeColor=#B85450;edgeStyle=orthogonalEdgeStyle;dashed=1;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="s_retry" target="s_api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se20" value="先于生成" style="endArrow=classic;html=1;rounded=1;strokeWidth=1;strokeColor=#D6B656;edgeStyle=orthogonalEdgeStyle;dashed=1;fontSize=10;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="s_init" target="s_g1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se21" style="endArrow=none;html=1;dashed=1;strokeColor=#D6B656;" edge="1" parent="1" source="s_note1" target="s_g4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se22" style="endArrow=none;html=1;dashed=1;strokeColor=#6C8EBF;" edge="1" parent="1" source="s_note2" target="s_toolcall">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram id="arch-page-3" name="模块契约">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1500" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="m1" value="模块契约：目录骨架 · 注册表 · 扩展点" style="text;html=1;align=center;verticalAlign=middle;fontSize=24;fontStyle=1;fontColor=#1A1A1A;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="1720" height="46" as="geometry" />
+        </mxCell>
+
+        <mxCell id="tree" value="src/&lt;模块&gt;/&#10;├── index.ts　　　　类型、常量、元信息（导出 name / plural 一对）&#10;├── manifest.json　　模块声明 { id, client, server, requires, sequence }&#10;├── client/　　　　　浏览器侧（此目录下文件自动加 'use client'）&#10;│　　├── index.tsx　　　default 导出 = 注册函数&#10;│　　├── content.tsx　　编辑 UI&#10;│　　├── state.ts　　　 zustand store&#10;│　　├── proxy.ts　　　接口封装&#10;│　　└── realm.ts　　　Processer / Renderer 实现&#10;├── server/　　　　　服务端&#10;│　　├── api.ts　　　　 接口定义 → 自动生成 Next.js 路由&#10;│　　├── schema.ts　　　Drizzle 表定义&#10;│　　├── repository.ts　仓储 CRUD&#10;│　　├── storage.ts　　 条目序列化 / 归档钩子&#10;│　　└── factory.ts　　　通用工厂&#10;└── localization/　　zh.json + en.json（必须成对更新）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;fontSize=13;align=left;verticalAlign=top;spacingLeft=16;spacingTop=12;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="40" y="90" width="1060" height="440" as="geometry" />
+        </mxCell>
+
+        <mxCell id="reg_title" value="主要注册表（Registry，共 12 个）" style="text;html=1;align=left;verticalAlign=middle;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="90" width="620" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="reg1" value="global-menu　侧边栏菜单" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="130" width="620" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="reg2" value="setting-tabs　设置页 Tab" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="174" width="620" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="reg3" value="preset-tabs　预设条目编辑 Tab" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="218" width="620" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="reg4" value="realm-feature　游玩页功能按钮" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="262" width="620" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="reg5" value="model-processer　输入处理器" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="306" width="620" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="reg6" value="realm-processer　渲染处理器" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="350" width="620" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="reg7" value="model-engine　模型引擎（前后端各一，同名不同接口）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="394" width="620" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="reg8" value="tool-provider　工具提供者（前后端各一，同名不同接口）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="438" width="620" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="reg9" value="lorebook-matcher　世界书匹配器" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="482" width="620" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="reg10" value="preset-storage　条目存储适配" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="526" width="620" height="36" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ext_title" value="六类扩展点（写插件 / 加功能时的落点）" style="text;html=1;align=left;verticalAlign=middle;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="570" width="1720" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ext1" value="加模块&#10;建目录 + manifest.json&#10;→ pnpm prepare + 重启" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=12;align=left;verticalAlign=middle;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="610" width="550" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="ext2" value="加条目类型&#10;schemas.entry + storages.create&#10;+ createPresetEntryState" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=12;align=left;verticalAlign=middle;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="620" y="610" width="550" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="ext3" value="加工具&#10;实现客户端 ToolProvider.create&#10;（可选服务端归档 Provider）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=12;align=left;verticalAlign=middle;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="610" width="560" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="ext4" value="加匹配器&#10;实现 Matcher.match&#10;+ 可选 configComponent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=12;align=left;verticalAlign=middle;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="730" width="550" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="ext5" value="加模型供应商&#10;前后端两个 ModelEngine&#10;server/engine + client/engine" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=12;align=left;verticalAlign=middle;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="620" y="730" width="550" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="ext6" value="加 UI 入口&#10;写 GlobalMenuItem / Feature / SettingTab&#10;并注册到对应注册表" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=12;align=left;verticalAlign=middle;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="730" width="560" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="m_note" value="★ 契约的本质&#10;manifest.json 只需三个字段，default 导出即注册入口 —— 靠约定而非配置&#10;代价：改 manifest 必须重新 pnpm prepare 并重启（编译期插件，无法热更新）" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=18;fillColor=#FFF9E6;strokeColor=#D6B656;fontSize=12;align=left;verticalAlign=middle;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="870" width="1060" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="m_note2" value="⚠ 易混淆点&#10;· src/plugins/ 是框架本体（Registry 实现），无 manifest&#10;· plugins/ 是外部插件目录，结构同内置模块&#10;· model-engine 与 tool-provider 在前后端各有一个注册表，同名但接口不同" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=18;fillColor=#F8CECC;strokeColor=#B85450;fontSize=12;align=left;verticalAlign=middle;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="870" width="620" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="me1" style="endArrow=classic;html=1;rounded=1;strokeWidth=1;dashed=1;strokeColor=#999999;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="tree" target="reg1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="me2" style="endArrow=classic;html=1;rounded=1;strokeWidth=1;dashed=1;strokeColor=#999999;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="tree" target="ext1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="me3" style="endArrow=none;html=1;dashed=1;strokeColor=#D6B656;" edge="1" parent="1" source="m_note" target="tree">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
