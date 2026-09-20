@@ -1,1 +1,80 @@
-{"params":{"items":[{"masterId":"94bb6ad1-9104-48e7-b0ca-4e4fb69e5354","sequence":0,"type":"power_lora_select","name":"power_lora_71","config":{"node":"71","value":[{"on":true,"lora":{"name":"breast_size_v2_krea2_loraholic.safetensors","value":"breast_size_v2_krea2_loraholic.safetensors"},"strength":1},{"on":true,"lora":{"name":"breast_fake_real_krea2_loraholic.safetensors","value":"breast_fake_real_krea2_loraholic.safetensors"},"strength":-2},{"on":false,"lora":{"name":"hina_krea2Turbo_lora_tqd_v4.0.safetensors","value":"hina_krea2Turbo_lora_tqd_v4.0.safetensors"},"strength":0.3},{"on":false,"lora":{"name":"Taiji Eight Desolations_000009000.safetensors","value":"Taiji Eight Desolations_000009000.safetensors"},"strength":0.5},{"on":true,"lora":{"name":"neo_tangzhuang-KreaRaw.safetensors","value":"neo_tangzhuang-KreaRaw.safetensors"},"strength":0.7}]}},{"masterId":"94bb6ad1-9104-48e7-b0ca-4e4fb69e5354","sequence":1,"type":"image_callback","name":"callback_82","config":{"node":"82","title":"83","key":"value","value":"image"}},{"masterId":"94bb6ad1-9104-48e7-b0ca-4e4fb69e5354","sequence":2,"type":"text","name":"提示词","config":{"node":"85","key":"string_b","prompt":"1girl"}}],"length":3},"workflow":{"id":"94bb6ad1-9104-48e7-b0ca-4e4fb69e5354","name":"krea2_example","description":"","properties":{}}}
+{
+  "params": [
+    {
+      "config": {
+        "node": "71",
+        "value": [
+          {
+            "lora": {
+              "name": "breast_size_v2_krea2_loraholic.safetensors",
+              "value": "breast_size_v2_krea2_loraholic.safetensors"
+            },
+            "on": true,
+            "strength": 1
+          },
+          {
+            "lora": {
+              "name": "breast_fake_real_krea2_loraholic.safetensors",
+              "value": "breast_fake_real_krea2_loraholic.safetensors"
+            },
+            "on": true,
+            "strength": -2
+          },
+          {
+            "lora": {
+              "name": "hina_krea2Turbo_lora_tqd_v4.0.safetensors",
+              "value": "hina_krea2Turbo_lora_tqd_v4.0.safetensors"
+            },
+            "on": false,
+            "strength": 0.3
+          },
+          {
+            "lora": {
+              "name": "Taiji Eight Desolations_000009000.safetensors",
+              "value": "Taiji Eight Desolations_000009000.safetensors"
+            },
+            "on": false,
+            "strength": 0.5
+          },
+          {
+            "lora": {
+              "name": "neo_tangzhuang-KreaRaw.safetensors",
+              "value": "neo_tangzhuang-KreaRaw.safetensors"
+            },
+            "on": true,
+            "strength": 0.7
+          }
+        ]
+      },
+      "masterId": "94bb6ad1-9104-48e7-b0ca-4e4fb69e5354",
+      "name": "power_lora_71",
+      "sequence": 0,
+      "type": "power_lora_select"
+    },
+    {
+      "config": {
+        "key": "value",
+        "node": "82",
+        "title": "83",
+        "value": "image"
+      },
+      "masterId": "94bb6ad1-9104-48e7-b0ca-4e4fb69e5354",
+      "name": "callback_82",
+      "sequence": 1,
+      "type": "image_callback"
+    },
+    {
+      "config": { "key": "string_b", "node": "85", "prompt": "1girl" },
+      "masterId": "94bb6ad1-9104-48e7-b0ca-4e4fb69e5354",
+      "name": "提示词",
+      "sequence": 2,
+      "type": "text"
+    }
+  ],
+  "workflow": {
+    "description": "",
+    "id": "94bb6ad1-9104-48e7-b0ca-4e4fb69e5354",
+    "name": "krea2_example",
+    "properties": {}
+  }
+}
