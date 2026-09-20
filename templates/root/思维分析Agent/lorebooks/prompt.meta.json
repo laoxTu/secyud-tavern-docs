@@ -1,0 +1,11 @@
+{
+  "code": "",
+  "disabled": false,
+  "expression": { "last": true, "macro": false },
+  "layer": 100,
+  "match": "always",
+  "name": "prompt",
+  "priority": 0,
+  "role": "user",
+  "type": "plaintext"
+}

@@ -1,1 +1,12 @@
-{"code":"variables","match":"always","expression":{"last":false},"priority":100,"layer":15,"role":"system","type":"markdown","entryId":1,"disabled":false,"name":"变量规则"}
+{
+  "code": "set_variable",
+  "disabled": false,
+  "entryId": 1,
+  "expression": { "last": false, "macro": true },
+  "layer": 15,
+  "match": "always",
+  "name": "变量规则",
+  "priority": 100,
+  "role": "system",
+  "type": "markdown"
+}

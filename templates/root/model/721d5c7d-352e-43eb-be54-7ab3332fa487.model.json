@@ -1,0 +1,22 @@
+{
+  "builder": "default",
+  "engine": "deepseek",
+  "id": "721d5c7d-352e-43eb-be54-7ab3332fa487",
+  "iterations": 20,
+  "name": "default",
+  "properties": {
+    "config": {},
+    "option": {
+      "logprobs": false,
+      "max_tokens": 0,
+      "model": "deepseek-flash",
+      "reasoning_effort": "",
+      "temperature": 1,
+      "thinking": { "type": "disabled" },
+      "top_logprobs": 0,
+      "top_p": 1
+    },
+    "retry": { "interval": 3, "max": 3 }
+  },
+  "stream": true
+}

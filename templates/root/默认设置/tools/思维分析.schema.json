@@ -1,0 +1,9 @@
+{
+  "properties": {
+    "character": {
+      "type": "string",
+      "description": "需要分析的人物名称"
+    }
+  },
+  "type": "object"
+}

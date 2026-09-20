@@ -1,0 +1,201 @@
+{
+  "49": {
+    "inputs": {
+      "aspect_ratio": "9:16 (Portrait Widescreen)",
+      "megapixels": 2,
+      "multiple": 80
+    },
+    "class_type": "ResolutionSelector",
+    "_meta": {
+      "title": "分辨率选择器"
+    }
+  },
+  "51": {
+    "inputs": {
+      "text": [
+        "85",
+        0
+      ],
+      "clip": [
+        "56",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码"
+    }
+  },
+  "52": {
+    "inputs": {
+      "width": [
+        "49",
+        0
+      ],
+      "height": [
+        "49",
+        1
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "空Latent图像"
+    }
+  },
+  "53": {
+    "inputs": {
+      "seed": 606457580920829,
+      "steps": 8,
+      "cfg": 1,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "71",
+        0
+      ],
+      "positive": [
+        "51",
+        0
+      ],
+      "negative": [
+        "58",
+        0
+      ],
+      "latent_image": [
+        "52",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "K采样器"
+    }
+  },
+  "54": {
+    "inputs": {
+      "samples": [
+        "53",
+        0
+      ],
+      "vae": [
+        "57",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "55": {
+    "inputs": {
+      "unet_name": "lustifyNSFWCheckpoint_v10Krea2.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "UNet加载器"
+    }
+  },
+  "56": {
+    "inputs": {
+      "clip_name": "qwen3vl_4b_fp8_scaled.safetensors",
+      "type": "krea2",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "加载CLIP"
+    }
+  },
+  "57": {
+    "inputs": {
+      "vae_name": "qwen_image_vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "加载VAE"
+    }
+  },
+  "58": {
+    "inputs": {
+      "conditioning": [
+        "51",
+        0
+      ]
+    },
+    "class_type": "ConditioningZeroOut",
+    "_meta": {
+      "title": "条件零化"
+    }
+  },
+  "71": {
+    "inputs": {
+      "PowerLoraLoaderHeaderWidget": {
+        "type": "PowerLoraLoaderHeaderWidget"
+      },
+      "➕ Add Lora": "",
+      "model": [
+        "55",
+        0
+      ]
+    },
+    "class_type": "Power Lora Loader (rgthree)",
+    "_meta": {
+      "title": "Power Lora Loader (rgthree)"
+    }
+  },
+  "82": {
+    "inputs": {
+      "target_url": "",
+      "image_field_name": "image",
+      "image": [
+        "54",
+        0
+      ],
+      "form_fields": [
+        "83",
+        0
+      ]
+    },
+    "class_type": "Form Post Request Node",
+    "_meta": {
+      "title": "Form Post Request Node"
+    }
+  },
+  "83": {
+    "inputs": {
+      "key": "name",
+      "value": "image"
+    },
+    "class_type": "Key/Value Node",
+    "_meta": {
+      "title": "Key/Value Node"
+    }
+  },
+  "85": {
+    "inputs": {
+      "string_a": "masterpiece, best quality, 8k, hyper-detailed 3D CG render.\nA seamlessly blending Eastern classical aesthetics (Xianxia, Wuxia) with modern ray-tracing technology.\nSoft diffused warm backlighting, golden hour tones, misty atmosphere, bloom with moderate intensity, subtle chromatic aberration and lens flare.\nVolumetric lighting, Ambient Occlusion (AO), and soft particle effects create an emotionally charged and dreamy atmosphere. \nHDR realism, unreal engine 5 render, film grain, bokeh background, gentle vignette.\nSurreal and abstract composition, dreamcore aesthetic, with subtle glitch and distortion textures.\nMoody warm lighting, soft chiaroscuro, low-key fill with gentle shadows and a touch of visible noise for filmic texture.\npanoramic aerial perspective, cinematic composition.\nFateful, tense, mysterious, and grandiose atmosphere, with a touch of horror and fantasy. ",
+      "string_b": "",
+      "delimiter": ""
+    },
+    "class_type": "StringConcatenate",
+    "_meta": {
+      "title": "连接"
+    }
+  },
+  "86": {
+    "inputs": {
+      "text": [
+        "82",
+        0
+      ]
+    },
+    "class_type": "ShowText|pysssss",
+    "_meta": {
+      "title": "Show Text 🐍"
+    }
+  }
+}

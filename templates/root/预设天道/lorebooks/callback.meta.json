@@ -1,0 +1,12 @@
+{
+  "code": "char_count",
+  "disabled": false,
+  "entryId": 11,
+  "expression": { "last": true },
+  "layer": 200,
+  "match": "always",
+  "name": "召回",
+  "priority": 101,
+  "role": "user",
+  "type": "plaintext"
+}
