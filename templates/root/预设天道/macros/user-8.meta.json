@@ -2,6 +2,7 @@
   "code": "user",
   "disabled": false,
   "entryId": 1,
+  "hidden": true,
   "key": "user",
   "name": "user"
 }
