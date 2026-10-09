@@ -1,6 +1,6 @@
 {
   "disabled": false,
-  "macro": true,
+  "macro": "memory",
   "name": "记忆工具",
   "type": "memory"
 }

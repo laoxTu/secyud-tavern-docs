@@ -1,0 +1,6 @@
+{
+  "disabled": false,
+  "macro": "elicit",
+  "name": "提问用户",
+  "type": "elicit"
+}

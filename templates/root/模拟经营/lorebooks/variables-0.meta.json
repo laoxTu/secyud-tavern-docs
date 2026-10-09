@@ -1,8 +1,8 @@
 {
-  "code": "set_variable",
+  "code": "variable",
   "disabled": false,
   "entryId": 1,
-  "expression": { "last": false, "macro": true },
+  "expression": { "last": false, "macro": "variable" },
   "layer": 15,
   "match": "always",
   "name": "变量规则",

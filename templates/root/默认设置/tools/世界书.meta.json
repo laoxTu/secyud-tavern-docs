@@ -1,6 +1,6 @@
 {
   "disabled": false,
-  "macro": true,
+  "macro": "lorebook",
   "name": "世界书",
   "type": "lorebook"
 }

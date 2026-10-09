@@ -1,6 +1,6 @@
 {
   "disabled": false,
-  "macro": true,
+  "macro": "variable",
   "name": "变量工具",
   "type": "variable"
 }
