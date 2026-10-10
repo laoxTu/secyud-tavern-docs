@@ -13,7 +13,7 @@ Secyud Tavern是一个高度自定义的AI角色交互平台，它允许你搭�
 
 ## 快速开始
 
-预设已经放在文档中，可以通过文档中的templates/presets获取。
+预设已经放在文档中，可以通过文档中的`templates/root`获取，`templates/example.zip`是一份完整的存档示例。
 在预设界面将预设导入，选中导入预设，点击从预设开始进入游玩。
 
 ## 项目指南

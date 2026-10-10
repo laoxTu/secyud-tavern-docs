@@ -8,6 +8,7 @@
 
 1. 在`plugins`文件夹下创建插件项目文件夹。
    - 创建`project-info`文件夹。
+   > 只要求是一个含`manifest.json`的目录，不要求是git仓库或子模块。
 2. 创建客户端初始化脚本。
    - 创建`client.tsx`文件。
    > 你可以创建ts或者tsx脚本，脚本的名称是任意的。
@@ -32,22 +33,29 @@
    }
    ```
 5. 为客户端和服务端脚本分别创建初始化函数，导出为默认方法。
-   - 客户端脚本在每次初始化网页时会执行一次
-   - 服务端脚本只在应用启动时会执行一次
+   - 客户端脚本在页面加载时执行一次（有模块级标记防止重复）。
+   - 服务端脚本在**第一个api请求到达时**执行一次，不是应用启动时。
    ```js
    export default async function init() {
      // 初始化逻辑
    }
    ```
+   > 客户端初始化完成前不会渲染页面，所以注册器里拿到的内容一定是齐全的。
 6. 接下来，您可以使用项目中的任意注册器注册任意组件或功能。
-   - 这里注册了一个导航Tab页，用于显示项目介绍。
-   ```js
-   businessNavigationManager.register({
+   - 这里注册了一个左侧菜单项，用于显示项目介绍。
+   ```tsx
+   import { GlobalMenuItem, GlobalMenuLabel, globals } from '@/global/client';
+
+   const menu: GlobalMenuItem = {
      id: 'info',
      sequence: 10000,
-     label: () => <ModelTabHeader modelType={'about'} />,
-     component: Content,
-   });
+     label: () => <GlobalMenuLabel name={'info'} icon={<InfoIcon />} />,
+     content: Content,
+   };
+
+   export default async function init() {
+     globals.menus.register(menu);
+   }
    ```
 7. 可选翻译，可以参考`project-info`在插件目录下创建`localization`文件夹并进行多语言翻译。并调用`useTranslations`使用多语言。
 
@@ -77,11 +85,28 @@
 
 ```ts
 // your-plugin-name/server/api.ts
+import { route } from '@/interceptors/server';
+import { response } from '@/utils/server';
+
 export default {
   path: {
-    async POST(request: NextRequest, records: NextRecord) {
+    POST: route(async (request) => {
       const res = {}; // 你的业务逻辑
-      return NextResponse.json(res);
+      return response.json(res);
+    }),
+  },
+};
+```
+
+键名即路径，叶子是`GET`/`POST`/`PUT`/`DELETE`。嵌套层级会拼成路径，动态段写方括号：
+
+```ts
+export default {
+  path: {
+    '[id]': {
+      GET: route(async (_, records) => {
+        const { id } = await records.params;
+      }),
     },
   },
 };
@@ -90,10 +115,13 @@ export default {
 客户端通过fetch调用：
 
 ```ts
-await post(`path`, {
-  body: formData,
-});
+await post('path', body);
+await get('path/{id}', { params: { id } });
 ```
+
+> 服务端要包一层`route`，它负责首次初始化与拦截器链。
+> 返回用`response`里的方法，它已经处理好 JSON 与下载。
+> 路径类型是生成的，写错路径会有编译报错。
 
 ### 创建Proxy
 
@@ -104,9 +132,32 @@ await post(`path`, {
 
 如果你的前端项目有需要翻译的，如`t('your_namespace.your_key')`，你可以在`your-plugin-name/localization`文件夹中创建`zh.json`，同时提供一份`en.json`满足双语翻译。
 
+### 常用注册器
+
+插件和内置模块用的是同一套注册器，直接import对应模块即可。
+
+| 想加什么 | 注册器 | 从哪import |
+| --- | --- | --- |
+| 左侧菜单 | `globals.menus` | `@/global/client` |
+| 设置页分区 | `settings.tabs` | `@/global/client` |
+| 预设编辑页Tab | `presets.tabs` | `@/presets/client` |
+| 故事编辑页Tab | `stories.tabs` | `@/stories/client` |
+| 游玩页底部按钮 | `stories.features.registry` | `@/stories/client` |
+| 影响发给AI的内容 | `models.processers.registry` | `@/models/client` |
+| 影响玩家看到的内容 | `stories.renderers.registry` | `@/stories/client` |
+| 模型供应商 | `models.engines.registry` | `@/models/client` |
+| 工具类型 | `tools.providers.registry` | `@/tools/client` |
+| 世界书匹配条件 | `lorebooks.matchers.registry` | `@/lorebooks/client` |
+| 向量嵌入器 | `rags.registry` | `@/memories/client` |
+
+服务端另有`tasks.registry`（后台任务），从`@/tasks/server`引入。
+
+> 注册器靠`id`去重，`sequence`粗排，`requires`声明依赖。
+> 引用不存在的依赖或形成环都会直接报错，不会静默跳过。
+
 ### 导出以供他人使用
 
-如果您的项目是一个基础组件，可以在`index.ts` `client/index.ts` `server/client.ts`中导出公开的类型和方法，项目惯例是类型、工厂、hook直接导出，而工具函数和对象通过一个`your_plugin_name`的复数形式作为对象名导出。
+如果您的项目是一个基础组件，可以在`index.ts` `client/index.ts` `server/index.ts`中导出公开的类型和方法，项目惯例是类型、工厂、hook直接导出，而工具函数和对象通过一个`your_plugin_name`的复数形式作为对象名导出。
 
 文件说明
 
