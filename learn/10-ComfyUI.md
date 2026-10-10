@@ -3,6 +3,12 @@
 ComfyUI 模块负责「把工作流参数化，然后调用外部 ComfyUI 服务出图」。
 它同时提供 UI 入口与 LLM 工具入口。
 
+> 📌 本篇已按 `1.3.5.0` 复核。主要变化：
+> **Civitai 下载的命令注入面已修复**（`execSync` 拼字符串 → `execFileSync` 传数组）；
+> 模型下载改为**后台任务**（`task_provider` + `tasks.manager`）；
+> `model_select` 的默认 `type` **已改为 `diffusion_model`**；
+> 确认 ComfyUI **不是** model-processer。
+
 ---
 
 ## 1. 数据模型
@@ -209,10 +215,24 @@ inputs['target_url'] = `${getBaseUrl()}/api/stories/${realm.id}/image`;
 
 ### 下载（服务端）
 
-`POST /api/comfyuis/models/{id}/download`：
+`POST /api/comfyuis/models/[id]/download` **不再直接下载**，而是起一个后台任务：
 
-1. 校验 `model.download`、`setting.directory`、`model.path`；
-2. 按类型映射到 ComfyUI 目录名：
+```ts
+// src/comfyui/server/api-models.ts
+download: {
+  POST: route(async (_, records) => {
+    const { id } = await records.params;
+    const { model } = await getDownloadParams(id);      // ⭐ 先校验参数
+    await tasks.manager.create<ModelDownloadArgs>(
+      `download ${model.code}`,                          // 任务展示名
+      { provider: importers.tasks.id, id },              // args: { provider, id }
+    );
+    return response.null();                              // 立即返回，不阻塞
+  }),
+},
+```
+
+参数校验（`getDownloadParams`）在**入队前**就做完，并按类型映射目录：
 
 | type              | 目录               |
 | ----------------- | ------------------ |
@@ -223,24 +243,97 @@ inputs['target_url'] = `${getBaseUrl()}/api/stories/${realm.id}/image`;
 | `checkpoint`      | `checkpoints`      |
 | 未知              | `loras`（回退）    |
 
-3. `fileUtils.exists` **预检查，已存在则抛** `BusinessError('file is exists.', 'comfyui.file_exists')`；
-4. 以 `task.create('comfyui_model_download <path>', ...)` 起后台任务；
-5. 成功/失败通过 `signals.toast` 推送。
+真正的执行者是注册在 `task_provider` 上的 `importers.tasks`：
 
-导入器注册表名 `comfyui-model-importer`，无 importer 时回退 `fileUtils.download`。
+```ts
+// src/comfyui/server/importers.ts
+const tasks: TaskProvider<ModelDownloadArgs> = {
+  id: 'comfyui-model-download',
+  async execute(args) {
+    try {
+      const { model, filename } = await getDownloadParams(args.id);
+      if (await fileUtils.exists(filename)) {
+        throw new BusinessError('file is exists.', 'comfyui.file_exists');
+      }
+      const importer = registry.record(model.importer);
+      if (importer) await importer.download(model, filename);
+      else await fileUtils.download(model.download!, filename);
 
-### ⚠️ Civitai 下载的命令注入面
+      signals.toast({ type: 'success', message: 'message.comfyui.download.success', data: { path: model.path } });
+    } catch (error) {
+      signals.toast({ type: 'error', message: 'error.comfyui.download_failed', data: { message: ... } });
+      throw error;      // ⭐ 再抛，让任务状态变成 failed 并留下 result
+    }
+  },
+};
+```
+
+三个由此产生的行为：
+
+- **重复下载不再靠单点检查**：文件存在时抛 `comfyui.file_exists`，
+  这次任务标记为 `failed`。也就是说「重复点击下载」会产生一条失败记录，
+  而不是静默跳过。
+- **成功/失败通过 SSE `toast` 推给所有已连接的前端**
+  （`signals.toast` → `sse-manager` → 客户端 `toast` 回调）。
+- **任务状态落库**（见 [17-任务与调度](./17-任务与调度.md)），
+  所以下载历史的失败原因可以在「任务」菜单里回看。
+
+导入器注册表名 `comfyui-model-importer`（客户端与服务端各一个半边：
+客户端负责**配置 UI 与元数据映射**，服务端负责**真正下载文件**），
+无 importer 时回退 `fileUtils.download`。
+
+### ✅ Civitai 下载的命令注入面（已修复）
+
+`1.3.2.8` 时的写法是：
+
+```ts
+// 旧
+const command = `curl -L -o "${filename}" "${model.download}${token ? `?token=${token}` : ''}"`;
+execSync(command);   // ⚠️ 路径与 URL 均未转义，直接进 shell
+```
+
+现在是：
 
 ```ts
 // src/comfyui/civitai/server/index.ts
-await fileUtils.mkdir(path.dirname(filename));
-const token = process.env.CIVITAI_TOKEN;
-const command = `curl -L -o "${filename}" "${model.download}${token ? `?token=${token}` : ''}"`;
-execSync(command);
+export const importer: ModelImporter = {
+  id: main.name,
+  async download(model, filename): Promise<void> {
+    await fileUtils.mkdir(path.dirname(filename));
+    const urlStr = checker.notNullOrWhitespace('download', model.download, 'civitai');
+    const url = new URL(urlStr);            // ⭐ 先解析，非法 URL 直接抛
+    try {
+      const token = process.env.CIVITAI_TOKEN;
+      const isOfficial =
+        url.hostname === 'civitai.com' || url.hostname.endsWith('.civitai.com');
+      if (token && isOfficial) url.searchParams.set('token', token);
+
+      const command = `curl -L -o "${filename}" "${url}"`;   // 仅用于日志
+      console.info(`[command] ${command}`);
+      execFileSync('curl', ['-L', '-o', filename, url.toString()]);   // ⭐ 无 shell
+    } catch (err) { /* … */ }
+  },
+};
 ```
 
-**路径与 URL 均未转义**，直接拼进 shell 命令。虽然数据源是本地数据库
-（需先经导入写入），但这是一个明显的命令注入 / 路径注入面，审计时应关注。
+修复要点有四个，都值得学：
+
+1. **`execSync(cmd)` → `execFileSync('curl', [args])`**：
+   不再经过 shell，参数数组天然免疫引号/分号注入。
+2. **`new URL()` 先规范化再使用**：URL 里的恶意字符会被转义或解析失败。
+3. **token 只在官方域名上附加**（`isOfficial` 判断），
+   避免把 `CIVITAI_TOKEN` 泄露给任意第三方域名 —— 这是旧版没有的一层。
+4. `checker.notNullOrWhitespace('download', ...)` 让空 URL 明确报错。
+
+> 📌 旧笔记把这条列为「值得修的注入面」，作者也确实修了，
+> 而且不只是「换个 API」——顺带补上了 token 的域名白名单。
+> 这是本轮复核里**质量最高的一处修复**。
+
+> ⚠️ 留在原地的部分：`filename` 仍然来自
+> `setting.directory + 类型目录 + model.path`，而 `model.path` 是
+> 可从导入数据（Civitai API 响应）来的字符串。
+> 由于不再过 shell，这已经不是「命令注入」，但仍是**路径穿越**
+> （`../../` 之类）的潜在面，取决于 `model.path` 的来源可信度。
 
 ---
 
@@ -293,23 +386,30 @@ useComfyUIModelState / useComfyUIWorkflowState / useComfyUIParamState;
 
 ---
 
-## 10. 已知问题
+## 10. 已知问题（`1.3.5.0` 复核）
 
 1. **持久化介质不统一**：模型设置用 `dbStorage`（后端 settings 表），
    而 `useComfyUIState` 用 localStorage。
 2. **`proxy.generate` 响应未做错误处理**：ComfyUI 返回错误对象时，
    `feature.tsx` 直接解构 `prompt_id` 会得到 undefined。
-3. **`model_select` 的默认 `type` 是 `'unet'`**，但 `comfyuis.model.types`
-   中并无 `'unet'`；自动生成路径显式传 `'diffusion_model'` 才正确。
-4. **`power_lora_select.generatingCalling` 整体替换节点 inputs**，
+3. ~~`model_select` 的默认 `type` 是 `'unet'`~~ → ✅ **已改为 `'diffusion_model'`**
+   （`src/comfyui/select/index.ts` 的 `defaultModelSelectConfig.type`）。
+   自动发现路径也传 `'diffusion_model'`，两处现在一致。
+4. **`power_lora_select` 整体替换节点 inputs**，
    只保留 `model` / `PowerLoraLoaderHeaderWidget` / `'➕ Add Lora'`，
    节点上的其他输入会被丢弃。
 5. **`configureInput` 写入的是 `name`（路径）而非 `value`（id）** —— 测试用例
    `tests/comfyui/select.test.ts` 明确记录了这一语义，并验证未使用的 `lora_i`
    必须 `delete`（避免上次残留）。
    > laotu：这点确实可能令人困惑，主要我这个程序的主键是uuid，但是confyui识别的是本地模型路径
-6. **Civitai 下载的 shell 命令注入面**（见 §6）。
-7. **Civitai 客户端直连**：未经 `/api/proxy`，可能受 CORS 影响。
+6. ~~Civitai 下载的 shell 命令注入面~~ → ✅ **已修复**（见 §6）。
+7. **Civitai 客户端直连**：`src/comfyui/civitai/client/index.tsx` 直接请求
+   `https://civitai.com/api/v1/...`，未经 `/api/proxy`，可能受 CORS 影响。
+8. **下载任务的重复点击会产生失败记录**：文件已存在时抛
+   `comfyui.file_exists`，任务状态记为 `failed`。功能上安全，
+   但任务列表里会堆积「失败」条目，容易被误读成真故障。
+9. **`model.path` 仍是路径拼接的输入**：命令注入已消除，
+   但 `../` 之类的路径穿越未做校验（见 §6 末尾）。
 
 > laotu：未细察，但是我做过提成测试，流程方面应该没问题
 
@@ -322,3 +422,6 @@ useComfyUIModelState / useComfyUIWorkflowState / useComfyUIParamState;
 - 怎么出图？两条路：UI 对话框（`configureInput`）或 LLM 工具（`generateCalling`）。
 - 图片存哪？ComfyUI 回调 `/api/stories/{id}/image`，成为故事图片条目。
 - 想加新参数类型？写一个 configurator 并注册，实现那四个钩子里需要的部分。
+- 模型怎么下载？`POST .../download` 只入队，真正的活在
+  `task_provider` 的 `comfyui-model-download` 里干（见 [17 篇](./17-任务与调度.md)）。
+- 下载进度怎么看？任务菜单；成功/失败另有 SSE `toast` 即时提示。
