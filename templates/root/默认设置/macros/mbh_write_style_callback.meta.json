@@ -1,9 +1,9 @@
 {
-  "code": "nsfw",
+  "code": "mbh",
   "disabled": true,
   "hidden": false,
   "json": false,
   "key": "write_style_callback",
   "multiple": true,
-  "name": "文风召回：NSFW"
+  "name": "文风召回：梦白话"
 }
