@@ -51,6 +51,19 @@ Two variables, `input` and `context`, will be passed in: the parameters given by
     }
     ```
 
+### MCP Tool
+
+Connects to a remote MCP server and exposes its tools to the model directly.
+
+* Tool ID is the tool name prefix. Tools from different servers easily collide, so use a prefix to tell them apart; leave it empty to use the original names.
+* Server URL is the Streamable HTTP endpoint, such as `https://example.com/mcp`.
+* Headers is a piece of JSON. When authentication is needed, write `{"Authorization": "Bearer xxx"}`.
+* Enabled tools left empty means all of them. When a server exposes many tools, pick a few to save tokens.
+* Adjust timeout and maximum return length as needed; longer content is truncated.
+
+> Only Streamable HTTP is supported. Servers that need a child process over stdio cannot be connected, because tools in this project run in the browser.
+> The tool list is fetched only once when the preset is loaded. If the server is unreachable or misconfigured, that entry simply has no tools and the preset still loads; check the console for the reason.
+
 ### Sub-agent
 
 You can define your own sub-agent to provide custom analysis or operations.
