@@ -10,15 +10,18 @@
 
     <!-- 预设的样式：root/默认交互/styles/ -->
     <link rel="stylesheet" href="../root/默认交互/styles/ui-0.style.css" />
-    <link rel="stylesheet" href="../root/默认交互/styles/component-1.style.css" />
+    <link
+      rel="stylesheet"
+      href="../root/默认交互/styles/component-1.style.css"
+    />
 
     <!-- 与 root/默认交互/scripts/preact-0.script.json 一致，importmap 只能写在文档里 -->
     <script type="importmap">
       {
         "imports": {
+          "@preact/signals": "https://esm.sh/@preact/signals@1.3.0?external=preact",
           "preact": "https://esm.sh/preact@10.23.1",
-          "preact/": "https://esm.sh/preact@10.23.1/",
-          "@preact/signals": "https://esm.sh/@preact/signals@1.3.0?external=preact"
+          "preact/": "https://esm.sh/preact@10.23.1/"
         }
       }
     </script>
@@ -28,23 +31,56 @@
     <script>
       window.__messageData = {
         content: {
-          inputs: [
-            '推开木门，屋里一片昏暗。',
-            '我摸了摸口袋，只有半包火柴。',
-          ],
-          thought:
-            '玩家第一次进入木屋，手上还没有任何线索。\n' +
-            '先交代环境，再给一个能追下去的物件，别把答案直接说出来。',
-          output:
-            '门轴发出一声沙哑的呻吟。\n' +
-            '屋里的空气又冷又潮，混着木头腐朽的味道。你借着门缝漏进来的那点光，看见靠墙的小桌上摆着一盏煤油灯——灯芯是湿的，说明不久前有人点过它。',
+          inputs: ['推开木门，屋里一片昏暗。', '我摸了摸口袋，只有半包火柴。'],
+          thought: `The user seems to want me to continue the story. Let me first check lorebook and memory for context. The scene is the apocalypse starting - 新历0年, 旧历3456年. Let me search for relevant lore and set up variables.
+Let me search lorebook for 蜀中, and set up the user variable (林零).
+Let me do the tool calls.
+Memory empty, variables empty. Let me set up the user variable. Name 林零. Let me also check lorebook more for 蜀中.
+Let me initialize user and charas. The user is 林零. Let me set up.
+Let me also check the lore for 蜀中 and 异能.
+Let me continue the story. The user is 林零, awakened 符文 (rune) ability. Let me write about the awakening moment and the immediate aftermath.
+Let me write about 750 words in web novel style. First person, 林零's perspective.
+I need to describe the awakening of 符文 power. Let me continue from the cliffhanger.
+Let me write.`,
+          output: `那道力量钻进脑子的时候，像有人往我颅骨里钉了一根烧红的铁钉。
+我下意识抬手，指尖擦过窗台上的碎玻璃。血珠滚落的刹那，血面上浮起一个极小的符号，裂纹一样的东西，扭动着，随即整块窗台在我掌下炸开，水泥碎块裹着风往教室里泼出去，正面撞上那头扑来的怪物。它的胸口被砸出个坑，惨叫着翻滚出去。
+我愣住了。
+手心残留着灼烫的余温，像是刚攥过一块烧红的木炭。我低头看，血已经止住，皮肤上留着一道浅浅的纹路，形状和我刚才"看见"的那个符号一模一样。脑子里涌进一堆东西，乱的，像被人硬塞进来一整本我没读过的字典，字都认得，意思一个都对不上。
+前排一个男生还在往门边爬，左腿反着折了个角度，膝盖下面拖着一条血道。黑爪子的怪物已经堵住了门，两头，龇着牙低吼，唾液滴在地上滋滋响。
+我做什么？
+脑子里那个声音很清晰，像自己跟自己说话。抬手，画，就这样。
+我盯住离我最近的那头怪物。它正低头去咬那个爬行男生的后腿，牙合拢的瞬间男生发出一声不似人的叫。我的手在空中划了一下，指尖带出的不是空气，是一道暗红的光痕，悬着没散。脑里那本"字典"自动翻到了某一页，我知道该往哪落笔。
+光痕砸进怪物的后颈，啪的一声，那块皮肉陷下去，像被什么东西从里面顶了一下。它没死，甩着头转过来，红眼睛对准了我。
+门边那头也转过头。
+两头一起朝我过来。
+我退了一步，后腰撞上课桌。桌面上横着半截断掉的椅子腿，铁的。我抓住它，另一只手在腿上飞快划了个纹路，暗红的光缠上桌腿，原本锈得发黑的铁面浮起细密的花纹。
+第一头扑到面前，我抡起铁腿砸它脸。咣，骨头碎的声音。它的头被打偏，砸上旁边一排课桌，桌子腿全折了。这东西比我想的重，也比我想的脆。
+第二头从侧面咬过来，我侧身，牙擦着我的胳膊过去，在袖子上撕开一道口子，皮肉也带了进去，火辣辣地疼。我反手把带符的桌腿捅进它张开的嘴里，往上一顶。
+喉咙。光纹在它体内炸开，从脖子里透出红光，几秒后那光顺着血管爬遍了全身。它倒下去，抽搐了两下，不动了。
+我喘着气，撑着桌子，胳膊在滴血。教室里安静了一瞬。剩下几只怪物在门口徘徊，没敢进来，眼睛盯着我手里的桌腿，还有我指尖没散尽的红光。
+我懂了。它们怕这个。
+有人从桌子底下探出头，是后排那个整天睡觉的胖子，他脸上全是血，不知道是自己的还是别人的。他看着我，嘴唇动了动。
+"你……那是什么？"
+我没回答。门口的怪物又逼近了两步，我举起桌腿，指尖重新凝出暗红的光。
+有人拉我胳膊。我回头，是个女生，头发散着，脸白得没有血色，是她——班里那个总坐窗边看书的。她拽着我的袖子，声音都抖着："后门……后门没堵。"
+后门。
+两头怪物同时低吼着扑进来，我一把把那女生和胖子拽到身后，另一只手在空气里连划三笔。三道红痕叠在一起，在空中搭成个古怪的架子，一瞬之后，前门那块门框整片塌下来，砸在两头怪物的脊梁上。
+血和尘土炸开，糊了满地。
+我攥着桌腿，往后退，朝后门的方向。
+"走。"`,
         },
         variables: {},
       };
     </script>
 
     <!-- 预设的脚本：root/默认交互/scripts/，顺序不能反 -->
-    <script type="module" src="../root/默认交互/scripts/components-2.script.js"></script>
-    <script type="module" src="../root/默认交互/scripts/script-1.script.js"></script>
+    <script
+      type="module"
+      src="../root/默认交互/scripts/components-2.script.js"
+    ></script>
+    <script
+      type="module"
+      src="../root/默认交互/scripts/script-1.script.js"
+    ></script>
   </body>
 </html>

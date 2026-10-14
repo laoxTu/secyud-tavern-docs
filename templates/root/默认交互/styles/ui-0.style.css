@@ -5,9 +5,7 @@
 }
 #app,
 body {
-  max-height: 96vh;
-}
-body {
+  height: 100vh;
   display: flex;
   justify-content: center;
   padding: 24px 20px;
@@ -21,12 +19,14 @@ body {
 }
 #app {
   width: 100%;
+  height: 100%;
   max-width: 720px;
-  overflow: auto;
 }
 /* 容器不画卡片，分区只靠留白和细线 */
 .container {
-  padding: 4px 0 32px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 /* 用户输入：缩小、压灰，退到后面 */
 .user-inputs {
@@ -92,6 +92,7 @@ body {
   line-height: 1.9;
   color: #1c1a17;
   word-break: break-word;
+  flex: 1;
 }
 .ai-output div {
   margin-bottom: 8px;
@@ -101,17 +102,17 @@ body {
 .user-input div:last-child {
   margin-bottom: 0;
 }
-.think-content::-webkit-scrollbar {
+*::-webkit-scrollbar {
   width: 4px;
 }
-.think-content::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
   background: transparent;
 }
-.think-content::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
   background: #e0d9cb;
   border-radius: 2px;
 }
-.think-content::-webkit-scrollbar-thumb:hover {
+*::-webkit-scrollbar-thumb:hover {
   background: #cfc7b6;
 }
 @media (max-width: 600px) {
