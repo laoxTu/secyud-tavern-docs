@@ -8,142 +8,124 @@ body {
   max-height: 96vh;
 }
 body {
+  display: flex;
+  justify-content: center;
+  padding: 24px 20px;
   font-family:
     -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
     Arial, sans-serif;
-  background: #f7f8fc;
-  display: flex;
-  justify-content: center;
-  padding: 20px;
+  /* 米白纸色，比纯白暗一档，久看眼睛不累 */
+  color: #2b2721;
+  background: #f6f3ec;
+  -webkit-font-smoothing: antialiased;
 }
 #app {
   width: 100%;
-  max-width: 900px;
+  max-width: 720px;
   overflow: auto;
 }
+/* 容器不画卡片，分区只靠留白和细线 */
 .container {
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-  padding: 28px 32px;
-  transition: all 0.2s;
+  padding: 4px 0 32px;
 }
+/* 用户输入：缩小、压灰，退到后面 */
 .user-inputs {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-bottom: 24px;
+  gap: 6px;
+  margin-bottom: 20px;
 }
 .user-input {
-  background: #f0f4ff;
-  padding: 14px 20px;
-  border-radius: 16px;
-  border-left: 4px solid #4a6cf7;
-  font-size: 15px;
+  font-size: 13px;
   line-height: 1.6;
-  color: #1a2332;
+  color: #6b6558;
+  text-align: right;
   word-break: break-word;
 }
 .user-input div {
+  margin-bottom: 2px;
+}
+/* 思考：同样收小，只留上下两条细线 */
+.ai-think {
+  margin-bottom: 16px;
+  border-top: 1px solid #e6dfd2;
+  border-bottom: 1px solid #e6dfd2;
+}
+.think-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  cursor: pointer;
+  user-select: none;
+}
+.think-header span:first-child {
+  font-size: 12px;
+  color: #928b7f;
+  letter-spacing: 0.3px;
+  transition: color 0.15s;
+}
+.think-header span:last-child {
+  font-size: 11px;
+  color: #c4bcae;
+  transition: color 0.15s;
+}
+.think-header:hover span {
+  color: #6b6558;
+}
+.think-content {
+  max-height: 240px;
+  padding: 2px 0 12px;
+  overflow-y: auto;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: #7d776c;
+  word-break: break-word;
+}
+.think-content div {
   margin-bottom: 4px;
+}
+/* AI 回复：整页唯一的重点，字号最大、颜色最深、行距最松 */
+.ai-output {
+  padding-top: 2px;
+  font-size: 16px;
+  line-height: 1.9;
+  color: #1c1a17;
+  word-break: break-word;
+}
+.ai-output div {
+  margin-bottom: 8px;
 }
 .ai-output div:last-child,
 .think-content div:last-child,
 .user-input div:last-child {
   margin-bottom: 0;
 }
-.ai-think {
-  background: #f9faff;
-  border-radius: 16px;
-  margin-bottom: 20px;
-  border: 1px solid #e9ecf5;
-  overflow: hidden;
-  transition: all 0.2s;
-}
-.think-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 20px;
-  cursor: pointer;
-  user-select: none;
-  transition: background 0.15s;
-  background: #f3f6fe;
-}
-.think-header:hover {
-  background: #e8edfa;
-}
-.think-header span:first-child {
-  font-weight: 600;
-  color: #2d3a5e;
-  font-size: 15px;
-  letter-spacing: 0.3px;
-}
-.think-header span:last-child {
-  font-size: 14px;
-  color: #5a6b8a;
-  transition: transform 0.2s;
-}
-.think-content {
-  padding: 16px 22px 20px;
-  background: #fff;
-  border-top: 1px solid #e9ecf5;
-  font-size: 14.5px;
-  line-height: 1.7;
-  color: #2d3a5e;
-  word-break: break-word;
-  max-height: 400px;
-  overflow-y: auto;
-}
-.ai-output div,
-.think-content div {
-  margin-bottom: 6px;
-}
 .think-content::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 .think-content::-webkit-scrollbar-track {
-  background: #f0f2f7;
-  border-radius: 8px;
+  background: transparent;
 }
 .think-content::-webkit-scrollbar-thumb {
-  background: #cdd4e6;
-  border-radius: 8px;
+  background: #e0d9cb;
+  border-radius: 2px;
 }
 .think-content::-webkit-scrollbar-thumb:hover {
-  background: #b0b9d0;
-}
-.ai-output {
-  background: #fafcff;
-  padding: 18px 22px;
-  border-radius: 16px;
-  border: 1px solid #eef1f9;
-  font-size: 15px;
-  line-height: 1.7;
-  color: #1a2332;
-  word-break: break-word;
-  margin-top: 8px;
+  background: #cfc7b6;
 }
 @media (max-width: 600px) {
   body {
-    padding: 12px;
-  }
-  .container {
-    padding: 18px 16px;
+    padding: 16px 14px;
   }
   .user-input {
-    font-size: 14px;
+    font-size: 12.5px;
   }
-  .think-header,
-  .user-input {
-    padding: 12px 16px;
-  }
-  .ai-output,
   .think-content {
-    padding: 14px 16px 18px;
-    font-size: 14px;
+    font-size: 12px;
   }
   .ai-output {
-    padding: 14px 16px;
+    font-size: 15px;
+    line-height: 1.85;
   }
 }
