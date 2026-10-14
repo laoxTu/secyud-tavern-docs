@@ -25,6 +25,7 @@ body {
 /* 容器不画卡片，分区只靠留白和细线 */
 .container {
   height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
