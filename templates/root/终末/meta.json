@@ -1,0 +1,9 @@
+{
+  "cover": null,
+  "description": "",
+  "id": "story_terminal",
+  "name": "终末",
+  "requires": [{ "name": "模拟经营-1.2.0", "value": "app_simulation" }],
+  "tags": [],
+  "version": ""
+}

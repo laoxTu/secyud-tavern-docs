@@ -1,0 +1,9 @@
+{
+  "code": "lorebook",
+  "disabled": false,
+  "hidden": false,
+  "json": false,
+  "key": "callback",
+  "multiple": true,
+  "name": "世界书设置召回"
+}

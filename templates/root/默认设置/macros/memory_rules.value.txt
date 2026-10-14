@@ -14,4 +14,4 @@ memory should be get when:
 > 此工具读取记忆时会得到记忆的标题。
 > 记忆的内容会通过get_knowledge工具type为memory注入。
 
-</variable_rules>
+</memory_rules>

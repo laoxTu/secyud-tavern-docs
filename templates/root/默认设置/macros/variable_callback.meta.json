@@ -5,5 +5,5 @@
   "json": false,
   "key": "callback",
   "multiple": true,
-  "name": "记忆设置召回"
+  "name": "变量设置召回"
 }

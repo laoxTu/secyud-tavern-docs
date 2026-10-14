@@ -11,6 +11,7 @@
 * [样式](style.md)：`styles/`
 * [工具](tool.md)：`tools/`
 * [工作区](workspace.md)：`model/`、`comfyui/`
+* [踩过的坑](pitfalls.md)：向量条目、`event`匹配、`role`取舍、归档等容易改错的地方
 
 ## 归档长什么样
 
