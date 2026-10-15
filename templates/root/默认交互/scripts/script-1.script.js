@@ -17,8 +17,10 @@ function App() {
       ? h(
           'div',
           { className: 'user-inputs' },
-          message.inputs.map((u) =>
-            h('div', { className: 'user-input' }, h(SText, { text: u })),
+          h(
+            'div',
+            { className: 'user-input' },
+            h(SText, { text: message.inputs }),
           ),
         )
       : null,
