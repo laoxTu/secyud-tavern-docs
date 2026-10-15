@@ -1,41 +1,26 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-#app,
 body {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  padding: 24px 20px;
   font-family:
     -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
     Arial, sans-serif;
   /* 米白纸色，比纯白暗一档，久看眼睛不累 */
   color: #2b2721;
   background: #f6f3ec;
-  -webkit-font-smoothing: antialiased;
 }
 #app {
-  width: 100%;
-  height: 100%;
-  max-width: 720px;
+  display: flex;
+  justify-content: center;
+  margin: 24px 20px;
+  overflow: auto;
 }
 /* 容器不画卡片，分区只靠留白和细线 */
 .container {
   height: 100%;
   width: 100%;
+  max-width: 720px;
   display: flex;
   flex-direction: column;
 }
 /* 用户输入：缩小、压灰，退到后面 */
-.user-inputs {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: 20px;
-}
 .user-input {
   font-size: 13px;
   line-height: 1.6;
@@ -43,12 +28,9 @@ body {
   text-align: right;
   word-break: break-word;
 }
-.user-input div {
-  margin-bottom: 2px;
-}
 /* 思考：同样收小，只留上下两条细线 */
 .ai-think {
-  margin-bottom: 16px;
+  padding: 8px;
   border-top: 1px solid #e6dfd2;
   border-bottom: 1px solid #e6dfd2;
 }
@@ -56,7 +38,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 0;
   cursor: pointer;
   user-select: none;
 }
