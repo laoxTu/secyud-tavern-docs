@@ -11,7 +11,9 @@
 禁止"不怕X吗？怕，但更怕Y"。
 </item>
 <item>禁止使用标签化的词汇, e.g. "规矩", "良心", "不烧心"。</item>
-<item>
+<item wrong='她怒了！她恨透了他！她决定报复！' right='她垂下眼，把那张纸慢慢撕成两半，声音很平："那就这样吧。"'>
+禁止使用"她怒了""他疯了""一切都完了"这类解说式表达，改用动作、神态、反应呈现。
+</item>
 </rule>
 <rule name='write_style'>
 <desc>
@@ -25,5 +27,5 @@
 <desc><%~ it.perspective %></desc>
 </rule>
 <rule name='字符数量'>
-在输出正文时，保证正文的词源数量约为 <%~ it.text_length %> 。
+在输出正文时，保证正文的词元数量约为 <%~ it.text_length %> 。
 </rule>
