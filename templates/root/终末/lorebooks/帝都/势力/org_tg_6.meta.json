@@ -1,1 +1,11 @@
-{"code":"org_tg_6","type":"json","match":"vector","expression":{},"priority":100,"layer":0,"role":"knowledge","disabled":false,"name":"天工重工"}
+{
+  "code": "org_tg_6",
+  "disabled": false,
+  "expression": {},
+  "layer": 100,
+  "match": "vector",
+  "name": "天工重工",
+  "priority": 100,
+  "role": "knowledge",
+  "type": "json"
+}

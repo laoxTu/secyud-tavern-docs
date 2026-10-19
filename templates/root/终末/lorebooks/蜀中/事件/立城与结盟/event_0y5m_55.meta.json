@@ -1,1 +1,11 @@
-{"code":"event_0y5m_55","type":"json","match":"vector","expression":{},"priority":100,"layer":0,"role":"knowledge","disabled":false,"name":"蜀山浮石升空"}
+{
+  "code": "event_0y5m_55",
+  "disabled": false,
+  "expression": {},
+  "layer": 100,
+  "match": "vector",
+  "name": "蜀山浮石升空",
+  "priority": 100,
+  "role": "knowledge",
+  "type": "json"
+}

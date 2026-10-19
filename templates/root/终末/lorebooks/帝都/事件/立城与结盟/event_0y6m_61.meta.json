@@ -1,1 +1,11 @@
-{"code":"event_0y6m_61","type":"json","match":"vector","expression":{},"priority":100,"layer":0,"role":"knowledge","disabled":false,"name":"幻境覆盖帝都废墟"}
+{
+  "code": "event_0y6m_61",
+  "disabled": false,
+  "expression": {},
+  "layer": 100,
+  "match": "vector",
+  "name": "幻境覆盖帝都废墟",
+  "priority": 100,
+  "role": "knowledge",
+  "type": "json"
+}

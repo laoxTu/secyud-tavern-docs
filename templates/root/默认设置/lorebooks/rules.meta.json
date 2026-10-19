@@ -3,7 +3,7 @@
   "desc": "描述规则，需要稳定常驻的类型",
   "disabled": false,
   "expression": { "last": false },
-  "layer": 50,
+  "layer": 80,
   "match": "always",
   "name": "规则",
   "priority": 100,

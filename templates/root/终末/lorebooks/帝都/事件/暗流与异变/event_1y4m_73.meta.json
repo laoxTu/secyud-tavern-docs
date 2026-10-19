@@ -1,1 +1,11 @@
-{"code":"event_1y4m_73","type":"json","match":"vector","expression":{},"priority":100,"layer":0,"role":"knowledge","disabled":false,"name":"龙霄首次接入幻境"}
+{
+  "code": "event_1y4m_73",
+  "disabled": false,
+  "expression": {},
+  "layer": 100,
+  "match": "vector",
+  "name": "龙霄首次接入幻境",
+  "priority": 100,
+  "role": "knowledge",
+  "type": "json"
+}

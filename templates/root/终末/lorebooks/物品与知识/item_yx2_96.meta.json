@@ -1,1 +1,11 @@
-{"code":"item_yx2_96","type":"json","match":"vector","expression":{},"priority":100,"layer":0,"role":"knowledge","disabled":false,"name":"驭兽"}
+{
+  "code": "item_yx2_96",
+  "disabled": false,
+  "expression": {},
+  "layer": 100,
+  "match": "vector",
+  "name": "驭兽",
+  "priority": 100,
+  "role": "knowledge",
+  "type": "json"
+}

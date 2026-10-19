@@ -1,1 +1,11 @@
-{"code":"event_0y3m_52","type":"json","match":"vector","expression":{},"priority":100,"layer":0,"role":"knowledge","disabled":false,"name":"韩铁山封死地下生产线"}
+{
+  "code": "event_0y3m_52",
+  "disabled": false,
+  "expression": {},
+  "layer": 100,
+  "match": "vector",
+  "name": "韩铁山封死地下生产线",
+  "priority": 100,
+  "role": "knowledge",
+  "type": "json"
+}

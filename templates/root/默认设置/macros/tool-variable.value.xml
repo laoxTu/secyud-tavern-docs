@@ -1,26 +1,5 @@
-<tool name='get_variable'>
-<when>
-Use get_variable when you need the current value of a declared variable before relying on it or updating it.
-</when>
-<desc>
-Read a declared variable by path, following <variable_format>. Returns its value, or a not-found notice.
-</desc>
-</tool>
-
-<tool name='set_variable'>
-<when>
-Use set_variable in the tool round, before any body text: whenever a declared variable must be created or updated for this turn.
-</when>
-<desc>
-Set a declared variable by path, following <variable_format>. The value must conform to the target's <schema>; write the whole object unless the definition's <desc> says otherwise.
-</desc>
-</tool>
-
-<tool name='del_variable'>
-<when>
-Use del_variable when a declared variable is no longer relevant and its rules allow removal.
-</when>
-<desc>
-Delete a declared variable by path, following <variable_format>. Deleting a missing variable is a no-op.
-</desc>
-</tool>
+<tool name='get_variable'>获取变量</tool>
+<tool name='set_variable'>设置变量</tool>
+<tool name='del_variable'>删除变量</tool>
+<desc>'schema'提供数据结构，'variable'提供需要修改的变量。</desc>
+<when>根据每个variable中的'when'规则判断是否需要增删查改变量。</when>

@@ -1,1 +1,11 @@
-{"code":"rel_lz_hts_38","type":"json","match":"vector","expression":{},"priority":100,"layer":0,"role":"knowledge","disabled":false,"name":"龙战与韩铁山"}
+{
+  "code": "rel_lz_hts_38",
+  "disabled": false,
+  "expression": {},
+  "layer": 100,
+  "match": "vector",
+  "name": "龙战与韩铁山",
+  "priority": 100,
+  "role": "knowledge",
+  "type": "json"
+}

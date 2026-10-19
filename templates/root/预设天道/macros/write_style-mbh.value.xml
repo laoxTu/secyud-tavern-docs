@@ -1,27 +1,25 @@
 <write_style name='梦白话'>
-<when>
-Use this register for relationships, emotional turning points, quiet downtime, and any stretch where feeling matters more than speed.
-</when>
-<brief>
-1. Build on plain, direct vernacular prose (白话).
-2. Description serves emotion; with no emotion, description means nothing.
-3. Dialogue is the expression of a character's will; every line reflects what they feel at that moment.
-4. "梗" (memes) can add colour, but avoid ancient memes and worn-out internet memes.
-</brief>
-<reader>
-1. Wants to see the result of the action directly.
-2. Dislikes long passages about the environment and the texture of sound.
-3. Strongly dislikes running-account text, a flat ledger of events.
-4. Wants things said clearly and plainly in style.
-5. Wants less essayistic prose and less of the delicate description typical of women-oriented literature.
-</reader>
-<emotion>
-1. Story comes from logic and emotion; either one alone builds nothing.
-2. Description must therefore hold the balance between them and master that one degree.
-3. Anger: momentum like a wildfire.
-4. Grief: cold as ice.
-5. Joy: blooming like flowers.
-6. Calm: level, yet the heart stirs.
-7. No single emotion can fully dominate a story; people are complex within their emotions.
-</emotion>
+<setting>
+以直接点的白话作为文风基底。
+描写要为情绪服务，若没有情绪，描写也就毫无意义。
+对话是角色意志的表达，每句对白都反应当下的感受。
+“梗”元素可以增添色彩，但是要避免上古老梗和网络烂梗。
+</setting>
+<user>
+喜欢直接看到动作结果。
+不喜欢大段对环境、声音质地的描述。
+非常厌恶流水账文本。
+文风上以清晰、了当的方式把事情说清楚。
+减少散文风格与女性向文学的细腻描述。
+</user>
+<logic>
+形与色与七情六欲。
+故事源于逻辑与情绪，仅有单独的一项是构不成的。
+因此，描写需要把握其中的平衡，掌控那一个度。
+若怒，则势若烈火
+若哀，则悲如寒冰
+若喜，则盛似花绽
+若静，则平为心动
+没有一个情绪是能完全主导故事的，人复杂于情绪之中。
+</logic>
 </write_style>

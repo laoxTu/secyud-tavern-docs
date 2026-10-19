@@ -1,1 +1,11 @@
-{"code":"role_wcs_16","type":"json","match":"vector","expression":{},"priority":100,"layer":0,"role":"knowledge","disabled":false,"name":"王崇山"}
+{
+  "code": "role_wcs_16",
+  "disabled": false,
+  "expression": {},
+  "layer": 100,
+  "match": "vector",
+  "name": "王崇山",
+  "priority": 100,
+  "role": "knowledge",
+  "type": "json"
+}

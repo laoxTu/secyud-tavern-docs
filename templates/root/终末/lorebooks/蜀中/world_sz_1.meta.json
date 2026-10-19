@@ -1,1 +1,11 @@
-{"code":"world_sz_1","type":"json","match":"vector","expression":{},"priority":100,"layer":0,"role":"knowledge","disabled":false,"name":"蜀中"}
+{
+  "code": "world_sz_1",
+  "disabled": false,
+  "expression": {},
+  "layer": 100,
+  "match": "vector",
+  "name": "蜀中",
+  "priority": 100,
+  "role": "knowledge",
+  "type": "json"
+}

@@ -1,1 +1,11 @@
-{"code":"item_jx_85","type":"json","match":"vector","expression":{},"priority":100,"layer":0,"role":"knowledge","disabled":false,"name":"机械与机关"}
+{
+  "code": "item_jx_85",
+  "disabled": false,
+  "expression": {},
+  "layer": 100,
+  "match": "vector",
+  "name": "机械与机关",
+  "priority": 100,
+  "role": "knowledge",
+  "type": "json"
+}

@@ -1,1 +1,11 @@
-{"code":"rel_tl_ty_36","type":"json","match":"vector","expression":{},"priority":100,"layer":0,"role":"knowledge","disabled":false,"name":"唐烈与唐韵"}
+{
+  "code": "rel_tl_ty_36",
+  "disabled": false,
+  "expression": {},
+  "layer": 100,
+  "match": "vector",
+  "name": "唐烈与唐韵",
+  "priority": 100,
+  "role": "knowledge",
+  "type": "json"
+}

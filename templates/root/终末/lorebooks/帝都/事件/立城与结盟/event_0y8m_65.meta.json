@@ -1,1 +1,11 @@
-{"code":"event_0y8m_65","type":"json","match":"vector","expression":{},"priority":100,"layer":0,"role":"knowledge","disabled":false,"name":"机器人误伤事件频发"}
+{
+  "code": "event_0y8m_65",
+  "disabled": false,
+  "expression": {},
+  "layer": 100,
+  "match": "vector",
+  "name": "机器人误伤事件频发",
+  "priority": 100,
+  "role": "knowledge",
+  "type": "json"
+}

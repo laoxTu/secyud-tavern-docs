@@ -1,12 +1,25 @@
 <think_chain name='thinking'>
-These rules govern your reasoning, not the reply. If you have no separate reasoning phase, ignore this block. Before you write a beat, think in this order — every step ends in a decision, never in prose.
-
-1. Intent: extend detail in the scene that stands, or move the story forward? Expansion rewrites what is written, with time held still; a step advances the plot. If unclear, ask the user.
-2. Prepare: this is the preparation stage. Take only the settings and history that bear on this beat, and call the <tool> blocks whose <when> applies.
-3. Causality: play the beat forward two or three links; keep the chain you will write.
-4. Perspective: who is present, and what each can and cannot know — no character acts on knowledge they do not have.
-5. Check: this is the checking stage. Go over the <tool> blocks' <when> again and do what must be recorded or verified; read again if the check needs it.
-6. Close: nothing a <when> requires may be left until after the text. Then write. No drafts, no second thoughts.
-
-The reader sees only the finished reply; none of this reasoning reaches them.
+<desc>
+这是思维链规则，每轮你都需要进行判断并选择思考的模式。
+1. 若当前回合你还未进行工具调用，请进行初始分析。
+2. 若当前回合你已经获取完基础的信息，请进行剧情演绎。
+3. 若当前回合的剧情演绎已经完成，请进行正文输出。
+</desc>
+<note>
+所有思考模式或正文都需要参考'rule'，并遵循适用的rule。
+所有思考禁止输出草稿，输出的正文禁止和思考中的段落重复。
+</note>
+<step name='初始分析'>
+1. 分析之前轮（如果有）以及用户输入，调用工具并收集可用信息(如果有知识，记忆获取类工具)。
+2. 如果对可用信息有疑惑可以对用户进行提问，初始分析可能进行多次。
+</step>
+<step name='剧情演绎'>
+1. 根据已经有的信息进行剧情推演，并将推演的结果用工具进行保存（如果有设置记忆，变量等工具）。
+2. 如果对后续推演有疑惑可以对用户进行提问，剧情演绎可能进行多次。
+3. 如果推演缺少信息，调用工具并收集可用信息(如果有知识，记忆获取类工具)。
+</step>
+<step name='正文输出'>
+1. 根据当前回合之前轮的分析进行简单的检查。
+2. 检查后直接输出正文。
+</step>
 </think_chain>

@@ -1,27 +1,4 @@
-<variable_format>
-Variables live in <variables>. A <variable> is one of two kinds.
-
-target — the only kind that can be read or written.
-  from    source label, e.g. app-sim
-  name    display name
-  path    required, e.g. /user
-  schema  required; every write must conform to it
-  values  optional; recommended values for its fields
-
-def — a shared block, never addressed by path.
-  type='def'
-  name    source label; targets of this source carry it in their from
-  when    global timing rules for those targets
-  desc    global writing rules for those targets
-  schema  shared types those targets reuse
-
-Rules:
-1. Only a target has a path, and only a target is addressable.
-2. Never create or set a variable whose path is not a declared target.
-3. A def is reference only: it has no path, it is never written, and its schema is not itself a variable.
-4. A def's when and desc apply to every target whose from matches the def's name.
-5. type='def' is the only special type. Every other <variable> is a target and must carry a path.
-</variable_format>
-<variables>
+<rule name='variable'>
+<%~ it.variable_rule %>
 <%~ it.variable %>
-</variables>
+</rule>

@@ -1,1 +1,11 @@
-{"code":"org_lj_27","type":"json","match":"vector","expression":{},"priority":100,"layer":0,"role":"knowledge","disabled":false,"name":"龙家"}
+{
+  "code": "org_lj_27",
+  "disabled": false,
+  "expression": {},
+  "layer": 100,
+  "match": "vector",
+  "name": "龙家",
+  "priority": 100,
+  "role": "knowledge",
+  "type": "json"
+}

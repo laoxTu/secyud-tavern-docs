@@ -1,1 +1,11 @@
-{"code":"org_fd_29","type":"json","match":"vector","expression":{},"priority":100,"layer":0,"role":"knowledge","disabled":false,"name":"酆都"}
+{
+  "code": "org_fd_29",
+  "disabled": false,
+  "expression": {},
+  "layer": 100,
+  "match": "vector",
+  "name": "酆都",
+  "priority": 100,
+  "role": "knowledge",
+  "type": "json"
+}

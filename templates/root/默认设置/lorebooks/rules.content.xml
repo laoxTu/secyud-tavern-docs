@@ -1,13 +1,13 @@
+<definition name='回合'>
+一个回合是多个工具轮次加一个AI正文回复的集合。
+一个轮次是回合中的一个完整的单元。
+用户轮为一个User输入。
+工具轮为一个工具请求+多条工具回复，工具轮不应有正文，即便有body，也不应视为正文。
+AI轮为没有工具请求，且有正文的AI输出。
+</definition>
+<rule name='knowledge'>
 <tool name='get_knowledge'>
-<invoke policy="user-only"/>
-<when_not>
-The assistant must not call get_knowledge.
-Only use results injected by the system.
-get_knowledge is system-triggered, typically after get_memory, and may also run on user-simulated calls.
-</when_not>
-<desc>
-System-side retrieval tool. It decides what to inject and deduplicates content: entries already present in context may be skipped. A skipped injection is not a failure and should not be retried. Default type is "lorebook"; type "memory" is used for memory bodies.
-</desc>
-</tool>
-
+系统侧检索工具。它决定注入的内容，并去除重复项：上下文中已存在的条目可被跳过。跳过的注入不视为失败，不应重试。默认类型为“lorebook”。</tool>
+<when_not>AI禁止调用'get_knowledge'</when_not>
+</rule>
 <%~ it.tools %>

@@ -1,1 +1,11 @@
-{"code":"event_0y8m_66","type":"json","match":"vector","expression":{},"priority":100,"layer":0,"role":"knowledge","disabled":false,"name":"天工承接T-1订单"}
+{
+  "code": "event_0y8m_66",
+  "disabled": false,
+  "expression": {},
+  "layer": 100,
+  "match": "vector",
+  "name": "天工承接T-1订单",
+  "priority": 100,
+  "role": "knowledge",
+  "type": "json"
+}

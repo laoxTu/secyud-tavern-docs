@@ -1,1 +1,1 @@
-Use third-person narration. Follow user instructions to fill in details rather than expand. If contradictions arise, ask the user before expanding.
+第三人称

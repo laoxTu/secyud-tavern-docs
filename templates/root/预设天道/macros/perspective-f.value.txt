@@ -1,1 +1,1 @@
-Narrate in first person, focusing on the protagonist's subjective perspective. Do not make decisions for the protagonist; when the protagonist acts, ask the user or follow the user's input.
+第一人称

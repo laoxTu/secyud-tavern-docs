@@ -1,1 +1,11 @@
-{"code":"org_xsxz_7","type":"json","match":"vector","expression":{},"priority":100,"layer":0,"role":"knowledge","disabled":false,"name":"小圣贤庄"}
+{
+  "code": "org_xsxz_7",
+  "disabled": false,
+  "expression": {},
+  "layer": 100,
+  "match": "vector",
+  "name": "小圣贤庄",
+  "priority": 100,
+  "role": "knowledge",
+  "type": "json"
+}

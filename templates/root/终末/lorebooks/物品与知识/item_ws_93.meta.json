@@ -1,1 +1,11 @@
-{"code":"item_ws_93","type":"json","match":"vector","expression":{},"priority":100,"layer":0,"role":"knowledge","disabled":false,"name":"醒神散"}
+{
+  "code": "item_ws_93",
+  "disabled": false,
+  "expression": {},
+  "layer": 100,
+  "match": "vector",
+  "name": "醒神散",
+  "priority": 100,
+  "role": "knowledge",
+  "type": "json"
+}

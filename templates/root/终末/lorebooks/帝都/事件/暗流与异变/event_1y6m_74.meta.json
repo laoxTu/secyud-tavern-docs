@@ -1,1 +1,11 @@
-{"code":"event_1y6m_74","type":"json","match":"vector","expression":{},"priority":100,"layer":0,"role":"knowledge","disabled":false,"name":"白虎机甲下线"}
+{
+  "code": "event_1y6m_74",
+  "disabled": false,
+  "expression": {},
+  "layer": 100,
+  "match": "vector",
+  "name": "白虎机甲下线",
+  "priority": 100,
+  "role": "knowledge",
+  "type": "json"
+}

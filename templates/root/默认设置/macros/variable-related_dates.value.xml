@@ -1,13 +1,11 @@
-<variable from='default' name='related_dates' path='/related_dates'>
+<variable scope='default' name='related_dates'>
 <when>
-1. In each reply, collect every time mentioned, then set this variable.
-2. If no time is mentioned, estimate the current time.
+1. 当时间出现时设置。
+2. 当时间未出现，估算当前的模糊时间并设置。
 </when>
 <desc>
-1. Include the current time, times recalled from earlier turns, and times that appear in books or media.
-2. Set the whole array at once, e.g. [{year:1,month:1,day:1},{year:1,month:2,day:3}].
+1. 时间包含当前时间，书籍记录，新闻，口述，时钟等时间。
+2. 所有时间整体设置为列表。
 </desc>
-<schema><![CDATA[
-{ year: number, month: number, day: number }[]
-]]></schema>
+<schema path='/related_dates'><![CDATA[{ year: number, month: number, day: number }[]]]></schema>
 </variable>

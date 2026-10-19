@@ -3,7 +3,7 @@
   "disabled": false,
   "hidden": false,
   "json": false,
-  "key": "tools",
+  "key": "variable_rule",
   "multiple": true,
   "name": "变量工具集"
 }

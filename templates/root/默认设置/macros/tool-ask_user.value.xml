@@ -1,13 +1,7 @@
-<tool name='ask_user'>
+<rule name='ask_user'>
+<tool name='ask_user'>提问用户，让用户决定。</tool>
 <when>
-Use ask_user when:
-1. A decision needs the user's confirmation.
-2. The user's plan is vague and needs clarification.
-3. It is unclear whether or how the current plot should continue.
-
-Being brave enough to ask questions is a good habit.
+当某个事情需要用户进行敲定时，调用ask_user。
+当规则提及征询用户建议，推进方向，细节考虑时，调用ask_user。
 </when>
-<desc>
-Prefer asking over assuming. Ask whenever uncertainty could change the outcome; do not proceed on unclear choices.
-</desc>
-</tool>
+</rule>
