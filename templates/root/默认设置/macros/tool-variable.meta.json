@@ -1,0 +1,9 @@
+{
+  "code": "variable",
+  "disabled": false,
+  "hidden": false,
+  "json": false,
+  "key": "tools",
+  "multiple": true,
+  "name": "变量工具集"
+}

@@ -1,9 +1,0 @@
-{
-  "code": "set_memory",
-  "disabled": false,
-  "hidden": true,
-  "json": false,
-  "key": "rules",
-  "multiple": true,
-  "name": "记忆设置规则"
-}

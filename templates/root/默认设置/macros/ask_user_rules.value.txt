@@ -1,8 +1,0 @@
-<ask_user>
-
-ask_user tool should be use when:
-1. 当有处理方式需要用户敲定时。
-2. 用户给出的方案过于模糊，需要敲定。
-3. 当前情节是否需要继续推进以及推进的方向。
-
-</ask_user>

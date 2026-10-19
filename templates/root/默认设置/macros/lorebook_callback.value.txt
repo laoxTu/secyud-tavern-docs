@@ -1,3 +1,0 @@
-<lorebook>
-使用世界书工具检索相关设定。
-</lorebook>

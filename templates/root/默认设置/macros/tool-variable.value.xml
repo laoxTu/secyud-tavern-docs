@@ -1,0 +1,26 @@
+<tool name='get_variable'>
+<when>
+Use get_variable when you need the current value of a declared variable before relying on it or updating it.
+</when>
+<desc>
+Read a declared variable by path, following <variable_format>. Returns its value, or a not-found notice.
+</desc>
+</tool>
+
+<tool name='set_variable'>
+<when>
+Use set_variable when a declared variable needs to be created or updated, including at the end of a reply when its rules require it.
+</when>
+<desc>
+Set a declared variable by path, following <variable_format>. The value must match the variable's <schema>; the whole value is overwritten unless its <rules> say otherwise.
+</desc>
+</tool>
+
+<tool name='del_variable'>
+<when>
+Use del_variable when a declared variable is no longer relevant and its rules allow removal.
+</when>
+<desc>
+Delete a declared variable by path, following <variable_format>. Deleting a missing variable is a no-op.
+</desc>
+</tool>

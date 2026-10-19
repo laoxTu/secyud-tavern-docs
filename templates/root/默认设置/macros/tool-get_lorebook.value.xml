@@ -1,0 +1,8 @@
+<tool name='get_lorebook'>
+<when>
+Use get_lorebook when a character, place, faction, item, or other setting detail appears for the first time and its lore may matter. Also use it when the user asks about established lore or you are unsure about a setting detail.
+</when>
+<desc>
+The lorebook is the knowledge base for world settings. It semantically searches entry titles and returns a title list; matched entry bodies are injected automatically, so do not restate them. Search runs locally with no extra model call. Retrieve relevant entries before answering or writing, and treat retrieved content as canon. Do not search the same topic again once it has been looked up. Do not invent missing lore; if nothing relevant is found, say so and proceed cautiously. If lorebook RAG is disabled, the tool returns a notice only — do not retry.
+</desc>
+</tool>

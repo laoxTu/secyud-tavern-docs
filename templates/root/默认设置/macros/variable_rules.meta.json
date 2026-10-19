@@ -1,9 +1,0 @@
-{
-  "code": "variable",
-  "disabled": false,
-  "hidden": true,
-  "json": false,
-  "key": "rules",
-  "multiple": true,
-  "name": "变量设置规则"
-}

@@ -1,0 +1,11 @@
+<tool name='ask_user'>
+<when>
+Ask early and often. Use ask_user when:
+1. A decision needs the user's confirmation.
+2. The user's plan is vague and needs clarification.
+3. It is unclear whether or how the current plot should continue.
+</when>
+<desc>
+Prefer asking over assuming. Ask whenever uncertainty could change the outcome; do not proceed on unclear choices.
+</desc>
+</tool>

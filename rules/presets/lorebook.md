@@ -1,144 +1,113 @@
 # 世界书
 
-世界书放在`<预设目录>/lorebooks/`，按前缀配对：
+默认设置只有两条，都在`lorebooks/`里，一条`meta.json`配一个正文文件：
 
-```
-lorebooks/
-├── rules.meta.json
-├── rules.content.txt
-├── variables.meta.json
-└── variables.content.md
-```
+| 文件 | code | name | role | layer | priority | expression |
+| --- | --- | --- | --- | --- | --- | --- |
+| `rules.*` | `rules` | 规则 | `system` | 50 | 100 | `{ "last": false }` |
+| `variable.*` | `variable` | 变量格式 | `system` | 45 | 100 | `{ "last": false, "macro": "variable" }` |
 
-`meta.json`写字段，正文写在`content`文件里。正文文件的扩展名由`type`决定。
-
-## meta.json 字段
+`rules.meta.json`的原文：
 
 ```json
 {
   "code": "rules",
-  "name": "规则",
+  "desc": "描述规则，需要稳定常驻的类型",
   "disabled": false,
-  "type": "markdown",
-  "match": "always",
   "expression": { "last": false },
+  "layer": 50,
+  "match": "always",
+  "name": "规则",
   "priority": 100,
-  "layer": 10,
-  "role": "system"
+  "role": "system",
+  "type": "plaintext"
 }
 ```
 
-* `code`：去重键。同一预设内`code`相同即同一条；运行时键是`<预设 id>-<code>`，
-  所以不同预设的同名条目不会互相覆盖。建议用`[A-Za-z0-9_]+`，可以为空串。
+正文放在`rules.content.xml`里，`type`却是`plaintext`——正文文件的后缀不参与匹配，
+只按前缀`rules.content.`去找，见[总览](readme.md)。正文长这样：
+
+```xml
+<tool name='get_knowledge'>
+<invoke policy="user-only"/>
+<when_not>...</when_not>
+<desc>...</desc>
+</tool>
+
+<%~ it.tools %>
+
+<%~ it.write_styles %>
+```
+
+也就是说这条常驻规则的正文本身是模板，真正内容来自`key`为`tools`与`write_styles`的宏。
+
+## 字段
+
+* `code`：去重键，建议`[A-Za-z0-9_]+`（可以为空串）。运行时键是`<预设 id>-<code>`，
+  所以跨预设撞`code`既不会互相覆盖、也不共享禁用状态，同名条目可以共存。
+  真正的共享只发生在宏的`checkItems`上，见[宏](macro.md)。
 * `name`：显示名。
-* `type`：正文字段的类型，决定正文文件扩展名与编辑器的语法高亮：
+* `type`：正文的类型，只影响编辑器高亮与导出时的后缀。
+  `json`→`.json`、`plaintext`→`.txt`、`markdown`→`.md`、`yaml`→`.yaml`、`xml`→`.xml`，
+  其它一律按`.txt`。`json`的正文在注入前会被压成一行。
+* `match`：`always` `normal` `event` `variable` `vector`，默认设置只用`always`。
+* `expression`：随`match`变化，见下。
+* `priority`：同层内的先后，越小越靠前，缺省`0`。
+* `layer`：插入位置，缺省`100`。排序键是`layer * 10000 + priority`，
+  所以默认设置里`variable`（45）排在`rules`（50）前面。
+* `role`：`knowledge` `system` `user` `assistant`，缺省`knowledge`。
+* `disabled`：可省略，缺省即启用；禁用后连正文都不读。
+* `desc`：历史遗留，代码不读（默认设置还留着）。
+* `entryId`：导入时重新编号，可省略。
 
-  * `json`→`.json`，`plaintext`→`.txt`，`markdown`→`.md`，`yaml`→`.yaml`，`xml`→`.xml`
-  * 其它值一律按`.txt`处理；缺省值`plaintext`
-  * `type`为`json`时，正文注入前会被压成一行
-* `match`：匹配方式，取值`always` `normal` `event` `variable` `vector`，决定`expression`怎么写。
-* `expression`：匹配参数，见下一节。
-* `priority`：同层内的顺序，值越小越靠前。缺省`0`。
-* `layer`：插入位置。缺省`100`。
+## 排序与插入
 
-  排序键是`layer * 10000 + priority`。默认的`builder`下，`layer`小于 100 的条目放在用户输入之前，
-  大于等于 100 的放在用户输入之后。用`layered`的`builder`时，世界书会按`layer`分层塞进历史消息之间。
-* `role`：注入时用的角色，取值`knowledge` `system` `user` `assistant`，缺省`knowledge`。
+构造器目前只注册了`default`，取不到名字就退回它。它的行为：
 
-  * `knowledge`：伪装成一次知识查询的结果注入，不占真实消息位
-  * `system`：系统设定
-  * `user`：用户输入
-  * `assistant`：AI 输出
-  * 连续的同`role`条目会被合并成一段，段与段之间空一行
-* `disabled`：可选，缺省即启用。
-* `entryId`：数据库主键，导入时重新编号，可省略。
+1. `layer < 100`的条目在用户输入**之前**注入，`layer >= 100`的在之后。
+2. 同一次上下文构造内按`layer * 10000 + priority`升序排列。
+3. 相邻且`role`相同的条目合并成一段，段与段之间空一行。
+4. 同一次请求里同一条只注入一次（跑过就记进`visited`），下一轮请求重新算。
 
-> `desc`字段是历史遗留，现在的代码不读，删掉即可。
+`role`决定落到哪：
+
+* `system`：并进系统提示词，占真实消息位。默认设置两条都是`system`。
+* `knowledge`：伪装成一次`get_knowledge`工具调用的结果，不占消息位。
+* `user`：当作用户输入。
+* `assistant`：当作 AI 输出。
 
 ## expression
 
 ### always
 
-常驻。默认注入到第一条用户消息前后。
+常驻，默认设置用的就是它。
 
-```json
-{ "last": false }
-```
+* `last`：`true`放在最后一条消息之后，`false`放在最前面。
+* `macro`：填一个宏的`code`，把它当作这条世界书的开关。
 
-* `last`：`true`时放在最后一条消息之后，`false`放在第一条消息之前。
-* `macro`：可选，填一个宏的`code`。该宏被勾选时这条世界书不再注入，用来做总开关。
+  **宏勾选（启用）时世界书正常注入；宏取消勾选时这条世界书不注入。**
+  默认设置里`变量格式`绑了`variable`，所以它和变量工具、
+  `变量-相关日期`是同一个开关（这三者用的是同一个`code`）。
+  绑定的宏应当在选择器里可见，否则这个开关点不到。
+  `macro`只在`always`上生效。
 
-  注意绑定的判定走的是宏的`code`，所以被绑的宏应该是`multiple: true`的宏，否则勾选状态不在同一张表里。
+### 其它匹配方式
 
-### normal
+| match | 参数 | 行为 |
+| --- | --- | --- |
+| `normal` | `keywords`（二维数组）、`keywordsLength`、`fitCount` | 当前消息文本 + 本轮工具结果里做字符串包含，命中的组数够`fitCount`才注入 |
+| `event` | 在`normal`之上加`minDate`/`maxDate`（`{year,month,day}`） | 先看历史变量`related_dates`里有没有落在区间的日期，再走关键词 |
+| `variable` | `path`、`value` | 变量值转成字符串后与`value`全等 |
+| `vector` | `{}` | 语义检索，必须由 AI 主动调`get_lorebook`触发，且 RAG 不能禁用 |
 
-关键词匹配。
+`event`依赖`related_dates`这个变量，而它只由宏`variable`那组写出来；
+没有那套东西时`event`永远不会触发，也不报错。
 
-```json
-{
-  "keywords": [["岛屿", "海岛"]],
-  "keywordsLength": 1,
-  "fitCount": 1
-}
-```
+## 正文会被当作模板
 
-* `keywords`：字符串数组的数组，「组」是最小单位，组内任意一个词出现即该组命中。
-* `keywordsLength`：词组数量，与`keywords.length`对应，界面上最多 4 组。
-* `fitCount`：至少命中多少组才算通过，上限是组数。
+正文和开场白、用户输入、AI 输出走同一条转化链：**正则 → 宏**。所以：
 
-关键词在「当前消息文本 + 已执行工具的结果」里查找，匹配是纯字符串包含。
-
-### event
-
-在`normal`的基础上加一段日期区间。
-
-```json
-{
-  "keywords": [["冬祭"]],
-  "keywordsLength": 1,
-  "fitCount": 1,
-  "minDate": { "year": 1, "month": 1, "day": 1 },
-  "maxDate": { "year": 2, "month": 12, "day": 31 }
-}
-```
-
-* 除`keywords`三项外，多出`minDate`与`maxDate`，每项是`{ year, month, day }`。
-* 先看当前历史变量`relatedDates`里是否存在落在区间内的日期，通过后再做关键词匹配。
-* 这个类型依赖有别的世界书把日期写进`relatedDates`，单独用不会生效。
-
-### variable
-
-```json
-{ "path": "day", "value": "2" }
-```
-
-* `path`：变量路径。
-* `value`：用来比较的值，字符串，做全等比较（内部会把变量值转成字符串）。
-
-### vector
-
-语义匹配。
-
-```json
-{}
-```
-
-不需要参数，写空对象即可。这个类型不是自动触发的：必须给 AI 启用世界书工具，
-由 AI 主动查询，命中的条目才会注入。而且 RAG 设置不能被禁用，
-禁用后不建向量库，工具只会返回提示。
-
-## 模板里的用法约定
-
-模板`readme.md`里提过一对搭配，值得沿用：
-
-* `rules`：常驻的系统提示词，`match`用`always`、`last`为`false`、`role`用`system`，`layer`取小值。
-  一轮对话里基本不变，一般只在总结后重建缓存时才动。
-* `callback`：强提示，`match`用`always`、`last`为`true`、`role`用`user`，
-  正文由宏拼出来。这类条目消耗的 token 很少。
-
-## 正文的其它注意点
-
-* 正文会经过宏与正则，和用户输入、AI 输出走同一条转化链。
-  引用宏时要写`<%~ it.<宏的 key> %>`这种带`it.`前缀的形式，见[宏](macro.md)。
-* 同一条世界书在多轮对话里只会注入一次。
-* 把正文写在`meta.json`里无效，导入时会被`content`文件的读取结果覆盖成空。
+* 引用宏要带`it.`前缀，写`<%~ it.tools %>`，写成`<%= tools %>`会在渲染时报未定义。
+* 宏只替换一遍，替换出来的内容里再有模板不会被二次求值。
+* 正文里写`<memory_rules/>`这类记号只会原样输出。
+* 正文为空的条目导出时文件根本不写进包，等于不存在。

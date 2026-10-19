@@ -1,0 +1,13 @@
+<variable from='default' name='related_dates' path='/related_dates'>
+<when>
+1. In each reply, collect every time mentioned, then set this variable.
+2. If no time is mentioned, estimate the current time.
+</when>
+<desc>
+1. Include the current time, times recalled from earlier turns, and times that appear in books or media.
+2. Set the whole array at once, e.g. [{year:1,month:1,day:1},{year:1,month:2,day:3}].
+</desc>
+<schema><![CDATA[
+{ year: number, month: number, day: number }[]
+]]></schema>
+</variable>

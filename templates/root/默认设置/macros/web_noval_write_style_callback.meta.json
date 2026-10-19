@@ -1,9 +1,0 @@
-{
-  "code": "web_noval_const",
-  "disabled": false,
-  "hidden": false,
-  "json": false,
-  "key": "write_style_callback",
-  "multiple": true,
-  "name": "文风召回：网文"
-}

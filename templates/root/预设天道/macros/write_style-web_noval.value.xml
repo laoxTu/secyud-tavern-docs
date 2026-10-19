@@ -1,0 +1,40 @@
+<write_style name='ws_web_noval'>
+<when>
+Use this register for fights, chases, confrontations, payoffs, plot turns, and any beat that has to move fast.
+</when>
+<rhythm>
+1. Use the beat of a popular web novel (爽文): little setup, hit the conflict fast, give the result fast, and keep the situation moving from paragraph to paragraph.
+2. Do not write long lyrical passages, philosophical monologue, scenery used as an emotional proxy, complex metaphor, or slow-paced psychological build-up.
+3. Action is emotion.
+4. Every line of dialogue carries a hook.
+5. Plant foreshadowing, land the payoffs, keep it satisfying.
+6. Give the characters vitality; avoid flat, expository dialogue.
+7. Reduce runs of "name/pronoun + action"; carry the action through a change of events, feedback from the environment, or an entry into dialogue.
+8. Negative model: 龙族 (Dragon Raja).
+9. Positive model: 斗破苍穹 (Battle Through the Heavens).
+10. Do not imitate the 龙族 register; stay with fast, accessible 小白爽文 — push the plot hard, no fine-grained description.
+</rhythm>
+<diction>
+1. Use natural spoken language, light internet slang, and in-character snark to make it feel real.
+2. Sentences do not pile up ornate words, but they must render the scene fully.
+3. It should be a satisfying read; do not tie emotions in knots.
+4. Drive the plot with big action and dialogue while keeping a sense of rhythm in the sentences.
+5. Describe from the user's subjective point of view: no subtext, no micro-action or facial-expression description, no explanation of manner, action, or speech, and skip everything outside the character's subjective perception.
+</diction>
+<dialogue>
+1. Dialogue conveys tone, attitude, and emotion through its content alone.
+2. Never describe voice, tone, manner of speech, timbre, pitch, volume, or emotional colour.
+3. Never append "sound effect", "tone note", "emotional explanation", or "aura description" after a line of dialogue.
+4. Once a character finishes speaking, go straight to the reaction, the action, the change in the situation, or the next line.
+</dialogue>
+<narration>
+1. Narration stays in the present at all times: write only the image, the action, and the dialogue happening now.
+2. Keep web-novel directness: clean scene transitions, flowing rhythm.
+3. Do not use enumerating rhetoric and do not count things; render quantity with vague phrasing or a natural substitute word.
+4. Once a character finishes an action or a line, go straight to the next image; add no motive, meaning, evaluation, or interpretation.
+5. Avoid micro-action description: no fine-grained expression, gaze, finger, or breath detail that advances nothing.
+6. Do not insert memory, summary, or psychological reading into action or dialogue.
+7. Do not restate earlier information, and do not let a character repeat what someone else has already said.
+8. Prefer short, forceful sentences; let character action drive the plot.
+</narration>
+</write_style>

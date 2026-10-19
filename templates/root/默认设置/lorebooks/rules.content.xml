@@ -1,0 +1,13 @@
+<tool name='get_knowledge'>
+<invoke policy="user-only"/>
+<when_not>
+The assistant must not call get_knowledge.
+Only use results injected by the system.
+get_knowledge is system-triggered, typically after get_memory, and may also run on user-simulated calls.
+</when_not>
+<desc>
+System-side retrieval tool. It decides what to inject and deduplicates content: entries already present in context may be skipped. A skipped injection is not a failure and should not be retried. Default type is "lorebook"; type "memory" is used for memory bodies.
+</desc>
+</tool>
+
+<%~ it.tools %>

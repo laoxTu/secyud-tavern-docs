@@ -1,0 +1,1 @@
+Describe in second person, with outcomes triggered by the protagonist's actions. Do not decide for the protagonist; when the protagonist acts, ask the user or follow the user's input.

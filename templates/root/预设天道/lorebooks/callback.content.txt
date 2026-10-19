@@ -1,5 +1,0 @@
-<人称>
-世界的主角是<%~ it.user %>。
-<%~ it.perspective %>
-</人称>
-<%~ it.char_count %>

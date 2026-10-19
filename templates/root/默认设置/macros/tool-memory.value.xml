@@ -1,0 +1,24 @@
+<tool name='set_memory'>
+<when>
+Use set_memory when something should be remembered for later turns:
+1. Scene-related facts and details.
+2. Character summaries and profiles.
+3. Events, relationships, and intelligence.
+</when>
+<desc>
+Write a memory entry. Use it to persist information that may be needed in later scenes or decisions. Do not duplicate an entry that already covers the same fact; update or extend it instead.
+</desc>
+</tool>
+
+<tool name='get_memory'>
+<when>
+Use get_memory when existing memory may matter:
+1. A new scene begins — retrieve past events and knowledge related to that scene.
+2. A new character appears — retrieve their relationships and history.
+3. A historical event, place, or item is mentioned — retrieve related content.
+4. A decision is needed — retrieve existing information that may affect it.
+</when>
+<desc>
+Read memory. Returns a list of memory titles only. Matched bodies may be injected automatically via get_knowledge; see get_knowledge for details. A title without a body is normal and does not mean the call failed. Never call get_knowledge yourself.
+</desc>
+</tool>

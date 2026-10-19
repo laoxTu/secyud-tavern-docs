@@ -1,0 +1,9 @@
+{
+  "code": "ask_user",
+  "disabled": false,
+  "hidden": false,
+  "json": false,
+  "key": "tools",
+  "multiple": true,
+  "name": "提问用户工具"
+}
