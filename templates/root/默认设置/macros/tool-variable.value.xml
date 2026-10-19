@@ -9,10 +9,10 @@ Read a declared variable by path, following <variable_format>. Returns its value
 
 <tool name='set_variable'>
 <when>
-Use set_variable when a declared variable needs to be created or updated, including at the end of a reply when its rules require it.
+Use set_variable in the tool round, before any body text: whenever a declared variable must be created or updated for this turn.
 </when>
 <desc>
-Set a declared variable by path, following <variable_format>. The value must match the variable's <schema>; the whole value is overwritten unless its <rules> say otherwise.
+Set a declared variable by path, following <variable_format>. The value must conform to the target's <schema>; write the whole object unless the definition's <desc> says otherwise.
 </desc>
 </tool>
 

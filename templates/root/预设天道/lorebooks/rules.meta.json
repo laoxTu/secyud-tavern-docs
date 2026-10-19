@@ -3,7 +3,7 @@
   "disabled": false,
   "entryId": 1,
   "expression": { "last": false },
-  "layer": 55,
+  "layer": 99,
   "match": "always",
   "name": "规则",
   "priority": 100,

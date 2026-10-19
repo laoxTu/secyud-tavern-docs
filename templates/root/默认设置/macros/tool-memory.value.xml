@@ -1,22 +1,26 @@
 <tool name='set_memory'>
 <when>
-Use set_memory when something should be remembered for later turns:
-1. Scene-related facts and details.
-2. Character summaries and profiles.
-3. Events, relationships, and intelligence.
+In the tool round, before any body text, every turn:
+1. First list what this turn changes — scene facts, who appears or leaves, what is learned, what is lost or broken, any shift in a relationship. Then write one entry per change.
+2. A turn that advances the plot writes at least one entry. Zero entries is an error, not a choice.
+3. Fights, chases, deaths, injuries and first appearances are the most urgent entries. Later turns will not restate them, so this turn is the only chance.
+4. Never defer to a later turn because the scene is still moving. The scene never stops moving.
+5. get_memory at the start of chat does not replace this turn's write. Reading and writing are separate actions.
+6. A turn where nothing actually changed gets no entry. Do not write filler to satisfy item 2.
 </when>
 <desc>
-Write a memory entry. Use it to persist information that may be needed in later scenes or decisions. Do not duplicate an entry that already covers the same fact; update or extend it instead.
+Write a memory entry. Use it to persist information that may be needed in later scenes or decisions. Every call adds a new entry — an existing one cannot be updated, and its weight fades with distance, so a fresh entry outranks an old one.
 </desc>
 </tool>
 
 <tool name='get_memory'>
 <when>
-Use get_memory when existing memory may matter:
+Use get_memory when existing context may matter:
 1. A new scene begins — retrieve past events and knowledge related to that scene.
 2. A new character appears — retrieve their relationships and history.
 3. A historical event, place, or item is mentioned — retrieve related content.
 4. A decision is needed — retrieve existing information that may affect it.
+5. The start of chat, read the initial memory.
 </when>
 <desc>
 Read memory. Returns a list of memory titles only. Matched bodies may be injected automatically via get_knowledge; see get_knowledge for details. A title without a body is normal and does not mean the call failed. Never call get_knowledge yourself.
