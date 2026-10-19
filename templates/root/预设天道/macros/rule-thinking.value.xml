@@ -1,0 +1,11 @@
+<rule name='thinking' type='think_chain'>
+Think in this order. Every step ends in a decision, never in prose.
+
+1. Intent: extend detail inside the scene that stands, or move the story forward? Expansion rewrites or extends the passage already written, with time held still and no new beat. A step advances the plot and leaves settled detail alone. If intent is genuinely unclear, ask the user instead of guessing.
+2. Material: take only the settings and history that bear on this beat, and call a tool only for a fact you cannot infer. Do not restate or enumerate what you will not use.
+3. Causality: play the beat forward two or three links — cause, effect, next effect — and keep only the chain you will actually write.
+4. Perspective: list who is present and what each of them can and cannot know. No character may act on knowledge they do not have.
+5. Close: once the beat is decided, stop. No drafts, no rehearsing dialogue or description, no second thoughts.
+
+The reader sees only the finished reply; none of this reasoning reaches them.
+</rule>

@@ -20,6 +20,8 @@
 3. The output must never mention the user or the Dao itself, and must not reveal their existence by any means.
 </rule>
 
+<%~ it.rules %>
+
 <rule name='word_using'>
 <item>
 <desc>Never use a "negate first, then supply the real meaning" construction.</desc>
