@@ -60,27 +60,27 @@ function SFloating({ children, button, className }) {
   const dragRef = useRef({ x: 0, y: 0 });
   const dragging = useRef(false);
 
-  const onDragMove = (e) => {
+  const move = (e) => {
     const dx = e.clientX - dragRef.current.x;
     const dy = e.clientY - dragRef.current.y;
     dragging.current = true;
     setPosition({ x: dx, y: dy });
   };
 
-  const onDragEnd = () => {
+  const end = () => {
     setTimeout(() => (dragging.current = false), 100);
-    document.removeEventListener('mousemove', onDragMove);
-    document.removeEventListener('mouseup', onDragEnd);
+    document.removeEventListener('pointermove', move);
+    document.removeEventListener('pointerup', end);
   };
 
   const dragProperty = {
-    onMouseDown(e) {
+    onpointerdown(e) {
       dragRef.current = {
         x: e.clientX - position.x,
         y: e.clientY - position.y,
       };
-      document.addEventListener('mousemove', onDragMove);
-      document.addEventListener('mouseup', onDragEnd);
+      document.addEventListener('pointermove', move);
+      document.addEventListener('pointerup', end);
     },
   };
   const visibleProperty = {

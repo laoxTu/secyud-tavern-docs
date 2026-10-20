@@ -15,6 +15,7 @@
   bottom: auto;
 }
 .s-floating-btn {
+  touch-action: none;
   cursor: grab;
 }
 .s-floating-cls,
@@ -24,6 +25,7 @@
   z-index: 1;
 }
 .s-floating-drg {
+  touch-action: none;
   inset: 0;
   cursor: grab;
 }

@@ -1,7 +1,6 @@
 {
   "code": "identity",
   "disabled": false,
-  "entryId": 1,
   "expression": { "last": false },
   "layer": 99,
   "match": "always",

@@ -1,7 +1,6 @@
 {
   "code": "rules",
   "disabled": false,
-  "entryId": 1,
   "expression": { "last": false },
   "layer": 90,
   "match": "always",
