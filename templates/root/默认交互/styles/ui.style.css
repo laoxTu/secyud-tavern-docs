@@ -1,0 +1,75 @@
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, sans-serif;
+  /* 米白纸色，比纯白暗一档，久看眼睛不累 */
+  /* color: #2b2721; */
+  background: #f6f3ec;
+}
+#app {
+  max-width: 720px;
+  margin: auto;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  word-break: break-word;
+}
+.prompt {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #6b6558;
+  text-align: right;
+}
+/* 思考：同样收小，只留上下两条细线 */
+.collapse {
+  border: 1px solid #e6dfd2;
+  border-width: 1px 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.collapse-hd {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  justify-content: space-between;
+}
+.collapse-hd span {
+  font-size: 11px;
+  color: #928b7f;
+  transition: color 0.15s;
+  margin: 4px;
+}
+.collapse-hd:hover span {
+  color: #6b6558;
+}
+.collapse-bd {
+  max-height: 240px;
+  padding: 2px 0 12px;
+  overflow-y: auto;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: #7d776c;
+  word-break: break-word;
+}
+/* AI 回复：整页唯一的重点，字号最大、颜色最深、行距最松 */
+.output {
+  padding-top: 2px;
+  font-size: 16px;
+  line-height: 1.9;
+  color: #484642;
+}
+*::-webkit-scrollbar {
+  width: 4px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: #e0d9cb;
+  border-radius: 2px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #cfc7b6;
+}
