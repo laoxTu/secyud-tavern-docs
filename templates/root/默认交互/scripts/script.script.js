@@ -38,7 +38,7 @@ function space(space) {
       ? space.callings.map((u) =>
           h(collapsable, {
             label: `⚒️ 工具调用 ${u.name}`,
-            content: () => h('div', {}, u.content),
+            content: () => [h('div', {}, u.arguments), h('div', {}, u.result)],
           }),
         )
       : null,
