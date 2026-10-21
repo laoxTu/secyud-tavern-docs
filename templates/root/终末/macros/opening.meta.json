@@ -1,0 +1,10 @@
+{
+  "code": "opening",
+  "disabled": false,
+  "hidden": false,
+  "json": false,
+  "key": "opening",
+  "multiple": false,
+  "name": "开场白（默认）",
+  "value": "$file$opening.value.txt"
+}
