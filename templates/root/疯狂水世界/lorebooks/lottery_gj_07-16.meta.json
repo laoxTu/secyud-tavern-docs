@@ -1,1 +1,21 @@
-{"code":"lottery_gj_07","match":"normal","expression":{"keywords":[["全自动生产线"]],"keywordsLength":1,"fitCount":1},"priority":100,"layer":100,"role":"knowledge","type":"json","entryId":2207,"disabled":false,"name":"全自动生产线"}
+{
+  "code": "lottery_gj_07",
+  "content": "全自动生产线：自动泡面工厂（日产1000碗，24口味）、全自动咸菜线（日腌2吨）、无人捕捞船队（自动捕捞返港）、自动种植收割线（播种灌溉收割全自动）、自动罐头生产线。固定设施，无需人力，持续自动产出，需耗电和原料。",
+  "match": "normal",
+  "expression": {
+    "keywords": [
+      [
+        "全自动生产线"
+      ]
+    ],
+    "keywordsLength": 1,
+    "fitCount": 1
+  },
+  "priority": 100,
+  "layer": 100,
+  "role": "knowledge",
+  "type": "plaintext",
+  "entryId": 2207,
+  "disabled": false,
+  "name": "全自动生产线"
+}

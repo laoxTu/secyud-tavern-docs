@@ -1,1 +1,21 @@
-{"code":"lottery_zj_03","match":"normal","expression":{"keywords":[["通讯与探测设备"]],"keywordsLength":1,"fitCount":1},"priority":100,"layer":100,"role":"knowledge","type":"json","entryId":2103,"disabled":false,"name":"通讯与探测设备"}
+{
+  "code": "lottery_zj_03",
+  "content": "通讯与探测设备：信号旗、海螺传声器、水下声呐简易版、雷达组件、信号灯、深度探测绳、风向标、潮汐仪。看海探海联系别人。",
+  "match": "normal",
+  "expression": {
+    "keywords": [
+      [
+        "通讯与探测设备"
+      ]
+    ],
+    "keywordsLength": 1,
+    "fitCount": 1
+  },
+  "priority": 100,
+  "layer": 100,
+  "role": "knowledge",
+  "type": "plaintext",
+  "entryId": 2103,
+  "disabled": false,
+  "name": "通讯与探测设备"
+}

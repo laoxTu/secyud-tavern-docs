@@ -1,1 +1,21 @@
-{"code":"lottery_gj_12","match":"normal","expression":{"keywords":[["魔法资源"]],"keywordsLength":1,"fitCount":1},"priority":100,"layer":100,"role":"knowledge","type":"json","entryId":2212,"disabled":false,"name":"魔法资源"}
+{
+  "code": "lottery_gj_12",
+  "content": "魔法资源：发现一处蕴含魔力的资源。可选项：魔力海藻田（可提炼魔法药剂和魔力汁）、荧光珊瑚群（夜间照明和魔力结晶）、雷击木林（蕴含雷电之力，附魔材料）、磁铁矿脉（天然磁石，可做导航仪和磁悬浮装置）、元素结晶簇（魔力结晶散落矿，需采集提炼）、龙息温泉（泡澡恢复体力和魔力）。需人力采集，可反复收获，但每次产出有限。",
+  "match": "normal",
+  "expression": {
+    "keywords": [
+      [
+        "魔法资源"
+      ]
+    ],
+    "keywordsLength": 1,
+    "fitCount": 1
+  },
+  "priority": 100,
+  "layer": 100,
+  "role": "knowledge",
+  "type": "plaintext",
+  "entryId": 2212,
+  "disabled": false,
+  "name": "魔法资源"
+}

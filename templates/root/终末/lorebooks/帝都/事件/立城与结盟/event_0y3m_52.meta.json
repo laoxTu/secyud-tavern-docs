@@ -1,5 +1,6 @@
 {
   "code": "event_0y3m_52",
+  "content": "事件：0年3月，[韩铁山]带领工人封死地下生产线躲避地面尸潮，[韩霜]随父退入地下工厂，父女二人自此在地下经营[天工重工]。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "韩铁山封死地下生产线",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

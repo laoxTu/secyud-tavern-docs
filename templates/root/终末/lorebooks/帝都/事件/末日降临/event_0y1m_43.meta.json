@@ -1,5 +1,6 @@
 {
   "code": "event_0y1m_43",
+  "content": "事件：0年1月，末日爆发当日，[龙战]率旧部抢占某军用机器人实验室与自动化兵工厂，为[龙家]在帝都的立足取得最初的军工基础。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "龙战抢占兵工厂",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

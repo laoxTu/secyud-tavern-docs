@@ -1,1 +1,21 @@
-{"code":"lottery_gj_10","match":"normal","expression":{"keywords":[["魔法造物"]],"keywordsLength":1,"fitCount":1},"priority":100,"layer":100,"role":"knowledge","type":"json","entryId":2210,"disabled":false,"name":"魔法造物"}
+{
+  "code": "lottery_gj_10",
+  "content": "魔法造物：暴浪之球（投掷后召唤海啸范围冲击，冷却7天）、传送门卷轴（单次随机传送，可带1吨物资）、唤海之号角（一次召唤鱼群，收获500kg海鲜）、风暴瓶（一次平息10海里内风暴）、护盾符文石（激活后抵挡一次强力攻击）、瞬移符（紧急脱身至50海里外）、魔力炸弹（投掷后100米范围魔法冲击）。一次性消耗品，关键时候使用。",
+  "match": "normal",
+  "expression": {
+    "keywords": [
+      [
+        "魔法造物"
+      ]
+    ],
+    "keywordsLength": 1,
+    "fitCount": 1
+  },
+  "priority": 100,
+  "layer": 100,
+  "role": "knowledge",
+  "type": "plaintext",
+  "entryId": 2210,
+  "disabled": false,
+  "name": "魔法造物"
+}

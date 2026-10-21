@@ -1,5 +1,6 @@
 {
   "code": "event_0y1m_45",
+  "content": "事件：0年1月，末日爆发后，[蜀中]因地势封闭形成隐秘区域，民间开始流传[鬼门关]的传说，为日后[酆都]鬼域之说埋下伏笔。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "蜀中鬼门关传说",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

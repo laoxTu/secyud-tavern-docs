@@ -1,1 +1,21 @@
-{"code":"lottery_zj_07","match":"normal","expression":{"keywords":[["防御工事与陷阱"]],"keywordsLength":1,"fitCount":1},"priority":100,"layer":100,"role":"knowledge","type":"json","entryId":2107,"disabled":false,"name":"防御工事与陷阱"}
+{
+  "code": "lottery_zj_07",
+  "content": "防御工事与陷阱：石墙模块、尖刺陷阱、警报绳网、瞭望台、壕沟组件、铁栅栏、捕兽坑机关、拒马。防野兽防外敌。",
+  "match": "normal",
+  "expression": {
+    "keywords": [
+      [
+        "防御工事与陷阱"
+      ]
+    ],
+    "keywordsLength": 1,
+    "fitCount": 1
+  },
+  "priority": 100,
+  "layer": 100,
+  "role": "knowledge",
+  "type": "plaintext",
+  "entryId": 2107,
+  "disabled": false,
+  "name": "防御工事与陷阱"
+}

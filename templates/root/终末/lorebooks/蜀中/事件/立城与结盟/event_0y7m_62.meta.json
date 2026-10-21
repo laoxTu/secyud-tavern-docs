@@ -1,5 +1,6 @@
 {
   "code": "event_0y7m_62",
+  "content": "事件：0年7月，[蜀山]根据实力分层居住，浮石可移动。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "蜀山分层居住",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

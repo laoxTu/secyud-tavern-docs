@@ -1,5 +1,6 @@
 {
   "code": "event_0y5m_59",
+  "content": "事件：0年5月，[唐门]拉拢[蜀中]各势力，在蜀地各处形成堂口，[唐韵]开始参与门中事务。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "唐门在蜀地形成堂口",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

@@ -1,9 +1,12 @@
 {
   "config": {
     "code": "lottery",
+    "description": "抽奖时调用，返回奖励",
     "enableDoc": true,
     "enableVariable": false,
-    "hidden": false
+    "hidden": false,
+    "schema": "$file$抽奖-0.schema.json",
+    "script": "$file$抽奖-0.script.js"
   },
   "disabled": false,
   "name": "抽奖",

@@ -1,1 +1,21 @@
-{"code":"lottery_gj_02","match":"normal","expression":{"keywords":[["强力防御系统"]],"keywordsLength":1,"fitCount":1},"priority":100,"layer":100,"role":"knowledge","type":"json","entryId":2202,"disabled":false,"name":"强力防御系统"}
+{
+  "code": "lottery_gj_02",
+  "content": "强力防御系统：能量护盾发生器（覆盖全岛，抵御物理攻击和风暴）、电磁脉冲塔（瘫痪敌方电子设备）、自动弩炮阵（自动瞄准射击）、深海声呐防线（探测水下入侵）、风暴屏障（改变岛屿周围气流）。固定设施，一次性建造，需耗电维持。",
+  "match": "normal",
+  "expression": {
+    "keywords": [
+      [
+        "强力防御系统"
+      ]
+    ],
+    "keywordsLength": 1,
+    "fitCount": 1
+  },
+  "priority": 100,
+  "layer": 100,
+  "role": "knowledge",
+  "type": "plaintext",
+  "entryId": 2202,
+  "disabled": false,
+  "name": "强力防御系统"
+}

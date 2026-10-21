@@ -1,5 +1,6 @@
 {
   "code": "event_0y2m_77",
+  "content": "事件：0年2月，[蜀中]一处旧汽修厂的幸存者被自己改装的机器人反噬，全员丧命。事后赶到的[唐门]弟子发现那台机器人的控制核心上刻着一段陌生的纹路——它并非故障，而是被人有意改写。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "死亡机械",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

@@ -1,5 +1,6 @@
 {
   "code": "org_szhj_30",
+  "content": "势力：数字幻境。由二进制形成的网络区域，是覆盖[帝都]废墟的量子数据层，进入者意识化为代码，可改写现实规则但极易迷失自我。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "数字幻境",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

@@ -1,5 +1,6 @@
 {
   "code": "org_fd_29",
+  "content": "势力：酆都。由规则形成的鬼域，入口未知，进入者皆消失，内部有[忘川]、[奈何桥]等地貌。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "酆都",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

@@ -1,5 +1,6 @@
 {
   "code": "event_0y1m_47",
+  "content": "事件：0年1月，末日爆发，帝都天宫超算中心在物理断电前启动了最后的自主保护协议，量子核心转入地下深层——这是[数字幻境]与[零]的源头。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "天宫超算转入地下",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

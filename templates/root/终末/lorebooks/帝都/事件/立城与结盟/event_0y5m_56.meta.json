@@ -1,5 +1,6 @@
 {
   "code": "event_0y5m_56",
+  "content": "事件：0年5月，[龙家]依靠机器人部队建立安全区，命名为[龙城]。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "龙城建立",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

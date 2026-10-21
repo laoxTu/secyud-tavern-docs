@@ -1,5 +1,6 @@
 {
   "code": "event_1y1m_70",
+  "content": "事件：1年1月，[江南书院]完成第一批灵气典籍整理，更名[小圣贤庄]，此时[李清秋]已是文道体系重要的实践者。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "书院更名小圣贤庄",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

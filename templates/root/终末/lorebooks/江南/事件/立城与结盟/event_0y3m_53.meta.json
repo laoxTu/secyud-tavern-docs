@@ -1,5 +1,6 @@
 {
   "code": "event_0y3m_53",
+  "content": "事件：0年3月，[江南书院]内发现古籍中记载的灵气运转与末日异变有相通之处，书院自此转向以文入道的研究方向。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "书院发现古籍灵气记载",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

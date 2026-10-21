@@ -1,5 +1,6 @@
 {
   "code": "event_0y4m_54",
+  "content": "事件：0年4月，[南宫鹤]研究祖宅完毕，收拢周边幸存者，以祖宅为核心扩建形成[姑苏水榭]，[南宫灵]在其中长大。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "姑苏水榭建成",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

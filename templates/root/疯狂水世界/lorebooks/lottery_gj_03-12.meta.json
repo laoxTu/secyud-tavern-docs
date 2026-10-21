@@ -1,1 +1,21 @@
-{"code":"lottery_gj_03","match":"normal","expression":{"keywords":[["高级魔法物品"]],"keywordsLength":1,"fitCount":1},"priority":100,"layer":100,"role":"knowledge","type":"json","entryId":2203,"disabled":false,"name":"高级魔法物品"}
+{
+  "code": "lottery_gj_03",
+  "content": "高级魔法物品：海洋之心完整（永不迷航，海难概率降为0）、海皇披风（水下自由行动，呼吸无限制）、人鱼之歌（演奏治愈伤病）、生命珍珠（治愈一切伤病和断肢）、凤凰羽毛海洋（致命伤害后满血复活一次）、潮汐权杖（控制岛屿周围潮汐涨落）。随身携带或佩戴，永久有效。",
+  "match": "normal",
+  "expression": {
+    "keywords": [
+      [
+        "高级魔法物品"
+      ]
+    ],
+    "keywordsLength": 1,
+    "fitCount": 1
+  },
+  "priority": 100,
+  "layer": 100,
+  "role": "knowledge",
+  "type": "plaintext",
+  "entryId": 2203,
+  "disabled": false,
+  "name": "高级魔法物品"
+}

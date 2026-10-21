@@ -1,5 +1,6 @@
 {
   "code": "event_0y6m_60",
+  "content": "事件：0年6月，[蜀山]研究浮石结构，阵法符文初步成型。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "蜀山阵法符文成型",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

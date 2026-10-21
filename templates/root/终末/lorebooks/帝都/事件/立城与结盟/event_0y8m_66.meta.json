@@ -1,5 +1,6 @@
 {
   "code": "event_0y8m_66",
+  "content": "事件：0年8月，[天工重工]与[龙家]接触，承接T-1型武装机器人的履带底盘与武器站订单。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "天工承接T-1订单",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

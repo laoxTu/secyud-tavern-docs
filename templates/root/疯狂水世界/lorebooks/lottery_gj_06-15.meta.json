@@ -1,1 +1,21 @@
-{"code":"lottery_gj_06","match":"normal","expression":{"keywords":[["高级能源核心"]],"keywordsLength":1,"fitCount":1},"priority":100,"layer":100,"role":"knowledge","type":"json","entryId":2206,"disabled":false,"name":"高级能源核心"}
+{
+  "code": "lottery_gj_06",
+  "content": "高级能源核心：核聚变反应堆小型（日发电10000kWh）、巨型潮汐核心（日发电500kWh）、深层地热系统（日发电200kWh，恒温供暖）、等离子发电单元（日发电5000kWh）、永动储能核心（无限存储电力，无损耗）。固定设施，永续能源。",
+  "match": "normal",
+  "expression": {
+    "keywords": [
+      [
+        "高级能源核心"
+      ]
+    ],
+    "keywordsLength": 1,
+    "fitCount": 1
+  },
+  "priority": 100,
+  "layer": 100,
+  "role": "knowledge",
+  "type": "plaintext",
+  "entryId": 2206,
+  "disabled": false,
+  "name": "高级能源核心"
+}

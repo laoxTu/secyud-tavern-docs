@@ -1,5 +1,6 @@
 {
   "code": "event_0y11m_68",
+  "content": "事件：0年11月，[龙战]联合[天工重工]总工[韩铁山]，整合所有机器人控制协议，构建统一作战指挥网络[龙渊]。[龙霄]参与底层维护。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "龙渊系统构建",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

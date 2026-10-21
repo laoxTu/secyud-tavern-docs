@@ -1,5 +1,6 @@
 {
   "code": "event_0y1m_48",
+  "content": "事件：0年1月，末日爆发后，周边的学生携书逃至[江南书院]，为这所以文入道的书院聚起了最初的人。这一支后来发展为[小圣贤庄]。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "学生逃入江南书院",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

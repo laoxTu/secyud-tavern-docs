@@ -1,5 +1,6 @@
 {
   "code": "event_0y1m_46",
+  "content": "事件：0年1月，末日爆发，[南宫家]祖宅阵法自行启动，封闭水路要道，为[南宫世家]在江南守住了一块立足之地。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "南宫家祖宅阵法",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

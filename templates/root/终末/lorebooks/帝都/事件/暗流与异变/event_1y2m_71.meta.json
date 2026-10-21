@@ -1,5 +1,6 @@
 {
   "code": "event_1y2m_71",
+  "content": "事件：1年2月，[龙渊]系统成熟，具备自主分析战场态势的能力，但[龙战]保留最高否决密钥，形成[人控天网]体系。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "龙渊成熟人控天网",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

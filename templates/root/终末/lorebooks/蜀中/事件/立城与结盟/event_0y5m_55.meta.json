@@ -1,5 +1,6 @@
 {
   "code": "event_0y5m_55",
+  "content": "事件：0年5月，[蜀中][蜀山]成为幸存者聚集地，浮石飘起，聚集地转移至天空，[蜀山派]初具雏形，以保卫百姓、镇妖除魔为己任。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "蜀山浮石升空",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

@@ -1,1 +1,21 @@
-{"code":"lottery_zj_01","match":"normal","expression":{"keywords":[["中级建材与构件"]],"keywordsLength":1,"fitCount":1},"priority":100,"layer":100,"role":"knowledge","type":"json","entryId":2101,"disabled":false,"name":"中级建材与构件"}
+{
+  "code": "lottery_zj_01",
+  "content": "中级建材与构件：铁钉、合页、玻璃板、防水涂层布、石灰砂浆、预制木梁、陶管、砖瓦、石板。盖正经房子用的构件。",
+  "match": "normal",
+  "expression": {
+    "keywords": [
+      [
+        "中级建材与构件"
+      ]
+    ],
+    "keywordsLength": 1,
+    "fitCount": 1
+  },
+  "priority": 100,
+  "layer": 100,
+  "role": "knowledge",
+  "type": "plaintext",
+  "entryId": 2101,
+  "disabled": false,
+  "name": "中级建材与构件"
+}

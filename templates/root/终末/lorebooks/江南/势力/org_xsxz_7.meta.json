@@ -1,5 +1,6 @@
 {
   "code": "org_xsxz_7",
+  "content": "势力：小圣贤庄。原[江南书院]，末日时幸存读书人聚于此地研究灵气与古籍，以文入道，不擅武力争斗。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "小圣贤庄",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

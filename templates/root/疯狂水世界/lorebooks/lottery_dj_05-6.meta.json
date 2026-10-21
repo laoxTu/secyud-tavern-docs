@@ -1,1 +1,21 @@
-{"code":"lottery_dj_05","match":"normal","expression":{"keywords":[["基础建材与容器"]],"keywordsLength":1,"fitCount":1},"priority":100,"layer":100,"role":"knowledge","type":"json","entryId":2005,"disabled":false,"name":"基础建材与容器"}
+{
+  "code": "lottery_dj_05",
+  "content": "基础建材与容器：木板、石砖、竹材、草席、陶罐、木桶、藤筐、防水布、贝壳容器。建小棚子和装东西用的。",
+  "match": "normal",
+  "expression": {
+    "keywords": [
+      [
+        "基础建材与容器"
+      ]
+    ],
+    "keywordsLength": 1,
+    "fitCount": 1
+  },
+  "priority": 100,
+  "layer": 100,
+  "role": "knowledge",
+  "type": "plaintext",
+  "entryId": 2005,
+  "disabled": false,
+  "name": "基础建材与容器"
+}

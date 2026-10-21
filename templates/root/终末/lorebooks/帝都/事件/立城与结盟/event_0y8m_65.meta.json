@@ -1,5 +1,6 @@
 {
   "code": "event_0y8m_65",
+  "content": "事件：0年8月，[龙家]的机器人数量激增，指挥混乱，误伤事件频发——这直接促成了日后[龙渊]系统的建立。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "机器人误伤事件频发",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

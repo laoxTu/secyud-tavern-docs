@@ -1,5 +1,6 @@
 {
   "code": "event_1y9m_75",
+  "content": "事件：1年9月，首台有人驾驶机甲[朱雀]下线，交由[龙瑶]驾驶。此后她的斩首作战多由[龙霄]远程策应。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "朱雀机甲下线交龙瑶",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

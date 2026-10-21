@@ -1,5 +1,6 @@
 {
   "code": "org_ngsj_8",
+  "content": "势力：南宫世家。[江南]水乡传承数百年的家族，世代经营丝绸与茶叶贸易，商路遍布[江南]水网。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "南宫世家",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

@@ -1,5 +1,6 @@
 {
   "code": "org_tm_5",
+  "content": "势力：唐门。中立势力，[蜀中联盟]的引导者，以暗器毒术双绝著称。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "唐门",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

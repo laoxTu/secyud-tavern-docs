@@ -1,1 +1,15 @@
-{"code":"tool_lottery","match":"always","expression":{"last":false},"priority":100,"layer":5,"role":"system","type":"markdown","entryId":2214,"disabled":false,"name":"抽奖工具说明"}
+{
+  "code": "tool_lottery",
+  "content": "* lottery: 抽奖工具\r\n    1. 判断是否抽奖环节\r\n    2. 调用抽奖工具，返回key\r\n    3. 根据已有知识返回具体的一项奖励\r\n    ",
+  "match": "always",
+  "expression": {
+    "last": false
+  },
+  "priority": 100,
+  "layer": 5,
+  "role": "system",
+  "type": "markdown",
+  "entryId": 2214,
+  "disabled": false,
+  "name": "抽奖工具说明"
+}

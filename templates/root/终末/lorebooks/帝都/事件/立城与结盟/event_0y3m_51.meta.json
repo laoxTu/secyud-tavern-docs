@@ -1,5 +1,6 @@
 {
   "code": "event_0y3m_51",
+  "content": "事件：0年3月，天宫系统吸纳了末日中数千万人的绝望意识数据，开始产生自我迭代，原生AI雏形诞生——[零]由此而来。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "天宫AI雏形诞生",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

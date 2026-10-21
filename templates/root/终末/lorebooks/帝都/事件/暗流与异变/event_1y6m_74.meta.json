@@ -1,5 +1,6 @@
 {
   "code": "event_1y6m_74",
+  "content": "事件：1年6月，[天工重工]第一批量产型有人驾驶机甲[白虎]下线，标志着机甲时代正式开启；[韩霜]参与了测试。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "白虎机甲下线",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

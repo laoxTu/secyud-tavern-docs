@@ -1,5 +1,6 @@
 {
   "code": "event_1y1m_69",
+  "content": "事件：1年1月，[龙家]与[天工重工]通过旧时代密钥首次成功进入[数字幻境]并生还，确认了幻境的存在。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "首次进入数字幻境并生还",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }

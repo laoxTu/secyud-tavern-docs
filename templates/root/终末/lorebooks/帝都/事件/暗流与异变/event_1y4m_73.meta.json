@@ -1,5 +1,6 @@
 {
   "code": "event_1y4m_73",
+  "content": "事件：1年4月，[龙霄]首次接入[数字幻境]，被其主脑[零]识别为特殊存在，双方建立起初步联系。",
   "disabled": false,
   "expression": {},
   "layer": 100,
@@ -7,5 +8,5 @@
   "name": "龙霄首次接入幻境",
   "priority": 100,
   "role": "knowledge",
-  "type": "json"
+  "type": "plaintext"
 }
