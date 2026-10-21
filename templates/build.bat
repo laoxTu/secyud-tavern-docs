@@ -1,0 +1,1 @@
+tar -a -c -f "default.zip" "root"

@@ -1,7 +1,7 @@
 {
   "properties": {
-    "min": { "type": "number", "default": 0 },
-    "max": { "type": "number", "default": 100 }
+    "max": { "default": 100, "type": "number" },
+    "min": { "default": 0, "type": "number" }
   },
   "type": "object"
 }
