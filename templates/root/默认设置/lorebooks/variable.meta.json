@@ -1,5 +1,6 @@
 {
   "code": "variable",
+  "content": "$file$variable.content.md",
   "desc": "描述变量格式",
   "disabled": false,
   "expression": { "last": false, "macro": "variable" },

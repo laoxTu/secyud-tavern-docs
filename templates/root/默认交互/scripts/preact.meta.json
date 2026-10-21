@@ -1,5 +1,6 @@
 {
   "code": "preact",
+  "content": "$file$preact.script.json",
   "disabled": false,
   "entryId": 3,
   "name": "preact导入",

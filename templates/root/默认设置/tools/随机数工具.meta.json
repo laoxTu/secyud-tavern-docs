@@ -1,9 +1,12 @@
 {
   "config": {
-    "hidden": false,
+    "code": "random",
+    "description": "get a random value between min and max.",
     "enableDoc": false,
     "enableVariable": false,
-    "code": "random"
+    "hidden": false,
+    "schema": "$file$随机数工具.schema.json",
+    "script": "$file$随机数工具.script.js"
   },
   "disabled": false,
   "name": "随机数",

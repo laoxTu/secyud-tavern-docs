@@ -1,5 +1,6 @@
 {
   "code": "components",
+  "content": "$file$components.script-min.js",
   "disabled": false,
   "name": "组件",
   "priority": 0,

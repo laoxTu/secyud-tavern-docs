@@ -1,5 +1,6 @@
 {
   "code": "identity",
+  "content": "$file$identity.content.md",
   "disabled": false,
   "expression": { "last": false },
   "layer": 99,

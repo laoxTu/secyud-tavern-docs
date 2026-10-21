@@ -1,5 +1,6 @@
 {
   "code": "rules",
+  "content": "$file$rules.content.md",
   "disabled": false,
   "expression": { "last": false },
   "layer": 90,

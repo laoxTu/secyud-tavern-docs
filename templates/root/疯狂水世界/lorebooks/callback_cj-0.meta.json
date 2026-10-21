@@ -1,1 +1,13 @@
-{"code":"callback_cj","match":"always","expression":{"last":true},"priority":100,"layer":200,"role":"user","type":"markdown","entryId":2213,"disabled":false,"name":"召回"}
+{
+  "code": "callback_cj",
+  "content": "抽奖或开宝箱时，需要使用抽奖工具。",
+  "disabled": false,
+  "entryId": 2213,
+  "expression": { "last": true },
+  "layer": 200,
+  "match": "always",
+  "name": "召回",
+  "priority": 100,
+  "role": "user",
+  "type": "markdown"
+}

@@ -1,5 +1,6 @@
 {
-  "code": "",
+  "code": "rules",
+  "content": "$file$prompt.content.md",
   "disabled": false,
   "expression": { "last": true, "macro": false },
   "layer": 100,

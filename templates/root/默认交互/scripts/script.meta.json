@@ -1,5 +1,6 @@
 {
   "code": "script",
+  "content": "$file$script.script-min.json",
   "disabled": false,
   "entryId": 2,
   "name": "script",

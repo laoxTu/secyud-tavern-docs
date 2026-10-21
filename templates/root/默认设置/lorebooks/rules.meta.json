@@ -1,5 +1,6 @@
 {
   "code": "rules",
+  "content": "$file$rules.content.md",
   "desc": "描述规则，需要稳定常驻的类型",
   "disabled": false,
   "expression": { "last": false },

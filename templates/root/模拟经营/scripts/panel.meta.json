@@ -1,5 +1,6 @@
 {
   "code": "panel",
+  "content": "$file$panel.script-min.css",
   "disabled": false,
   "entryId": 1,
   "name": "panel",

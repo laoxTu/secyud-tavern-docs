@@ -5,5 +5,6 @@
   "json": false,
   "key": "write_styles",
   "multiple": true,
-  "name": "文风：网文"
+  "name": "文风：网文",
+  "value": "$file$write_style-web_noval.value.md"
 }

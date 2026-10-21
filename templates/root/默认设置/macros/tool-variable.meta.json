@@ -5,5 +5,6 @@
   "json": false,
   "key": "tools",
   "multiple": true,
-  "name": "变量工具集"
+  "name": "变量工具集",
+  "value": "$file$tool-variable.value.md"
 }

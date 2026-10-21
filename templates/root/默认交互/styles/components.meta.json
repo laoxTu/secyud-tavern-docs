@@ -1,5 +1,6 @@
 {
-  "code": "component",
+  "code": "components",
+  "content": "$file$components.style-min.css",
   "disabled": false,
   "entryId": 2,
   "name": "组件",

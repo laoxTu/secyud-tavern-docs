@@ -1,6 +1,7 @@
 {
   "config": {
     "code": "agent_mind_analyze",
+    "description": "思维分析工具，使用这个工具可以分析故事角色的心理",
     "disablePreset": true,
     "disableTags": [],
     "maxLength": 5,
@@ -8,7 +9,8 @@
       "name": "default",
       "value": "721d5c7d-352e-43eb-be54-7ab3332fa487"
     },
-    "presets": [{ "name": "心理分析Agent-1.0.0", "value": "agent_mind" }]
+    "presets": [{ "name": "心理分析Agent-1.0.0", "value": "agent_mind" }],
+    "schema": "$file$思维分析.schema.json"
   },
   "disabled": true,
   "macro": false,

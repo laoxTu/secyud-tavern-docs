@@ -1,1 +1,34 @@
-{"macro":false,"type":"comfyui","config":{"code":"painter_comfyui_krea2","workflow":{"name":"krea2_example-94bb6ad1-9104-48e7-b0ca-4e4fb69e5354","value":"94bb6ad1-9104-48e7-b0ca-4e4fb69e5354"},"params":[{"id":0,"code":"lora","description":"绘图所需lora，列表可以通过comfyui_model_fetcher获得。type为lora。","disabled":false},{"id":1,"code":"title","description":"绘制图像的标题","disabled":false},{"id":2,"code":"prompt","description":"绘制图像的提示词，只包含主体描写，不需要画风，画质等。","disabled":false}]},"disabled":false,"name":"绘图示例"}
+{
+  "config": {
+    "code": "painter_comfyui_krea2",
+    "description": "一个绘图工具，当用户需要绘图时，尝试调用此工具。",
+    "params": [
+      {
+        "code": "lora",
+        "description": "绘图所需lora，列表可以通过comfyui_model_fetcher获得。type为lora。",
+        "disabled": false,
+        "id": 0
+      },
+      {
+        "code": "title",
+        "description": "绘制图像的标题",
+        "disabled": false,
+        "id": 1
+      },
+      {
+        "code": "prompt",
+        "description": "绘制图像的提示词，只包含主体描写，不需要画风，画质等。",
+        "disabled": false,
+        "id": 2
+      }
+    ],
+    "workflow": {
+      "name": "krea2_example-94bb6ad1-9104-48e7-b0ca-4e4fb69e5354",
+      "value": "94bb6ad1-9104-48e7-b0ca-4e4fb69e5354"
+    }
+  },
+  "disabled": false,
+  "macro": false,
+  "name": "绘图示例",
+  "type": "comfyui"
+}

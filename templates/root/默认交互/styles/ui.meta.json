@@ -1,5 +1,6 @@
 {
   "code": "ui",
+  "content": "$file$ui.style-min.css",
   "disabled": false,
   "entryId": 1,
   "name": "样式",
