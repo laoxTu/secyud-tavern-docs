@@ -1,11 +1,6 @@
 import { h, render } from 'preact';
 import { useEffect, useRef, useState } from 'preact/hooks';
 
-// 辅助函数：渲染带换行的文本
-function SText({ text }) {
-  return text ? text.split('\n').map((line) => h('div', {}, line)) : null;
-}
-
 /**
  *
  * @param obj {object}
@@ -428,5 +423,4 @@ window.sComponents = {
   SRadarChart,
   SExpand,
   SVariableImage,
-  SText,
 };

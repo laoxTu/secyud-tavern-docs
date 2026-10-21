@@ -1,4 +1,0 @@
-<rule name='variable'>
-<%~ it.variable_rule %>
-<%~ it.variable %>
-</rule>

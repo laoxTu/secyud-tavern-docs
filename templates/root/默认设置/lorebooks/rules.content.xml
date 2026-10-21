@@ -1,6 +1,0 @@
-<rule name='knowledge'>
-<tool name='get_knowledge'>
-系统侧检索工具。它决定注入的内容，并去除重复项：上下文中已存在的条目可被跳过。跳过的注入不视为失败，不应重试。默认类型为“lorebook”。</tool>
-<when_not>AI禁止调用'get_knowledge'</when_not>
-</rule>
-<%~ it.tools %>

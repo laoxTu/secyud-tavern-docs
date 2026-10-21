@@ -1,5 +1,0 @@
-<tool name='get_variable'>获取变量</tool>
-<tool name='set_variable'>设置变量</tool>
-<tool name='del_variable'>删除变量</tool>
-<desc>'schema'提供数据结构，'variable'提供需要修改的变量。</desc>
-<when>根据每个variable中的'when'规则判断是否需要增删查改变量。</when>

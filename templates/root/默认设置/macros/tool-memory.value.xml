@@ -1,9 +1,0 @@
-<rule name='memory'>
-<tool name='get_memory'>获取记忆</tool>
-<tool name='set_memory'>设置记忆</tool>
-<when>
-每个回合开始时，需要get_memory以提供相应的素材。
-每个回合都要记录至少一条记忆，当涉及多个情节时，需要设置多条记忆。
-在正文输出前，检查本回合记忆是否设置，如果未设置，需要调用set_memory。
-</when>
-</rule>

@@ -1,0 +1,3 @@
+- `get_variable`: 需要确认变量时调用。
+- `set_variable`: 需要设置变量时调用。
+- `del_variable`: 需要删除变量时调用。

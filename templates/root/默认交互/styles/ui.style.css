@@ -61,6 +61,12 @@ body {
   line-height: 1.9;
   color: #484642;
 }
+.output,
+.collapse-bd,
+.prompt {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
 *::-webkit-scrollbar {
   width: 4px;
 }

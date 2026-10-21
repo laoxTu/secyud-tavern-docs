@@ -1,6 +1,0 @@
-<rule name='memory'>
-<tool name='get_lorebook'>获取世界书</tool>
-<when>
-每个回合开始时，需要获取世界书以提供相应的素材。
-</when>
-</rule>

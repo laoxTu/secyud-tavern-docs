@@ -1,11 +1,12 @@
 import { h } from 'preact';
 import { useState } from 'preact/hooks';
 
-const { SText } = window.sComponents;
 const { useMessageData, renderComponent } = window.sUtils;
 
-function ht(text, m) {
-  return text ? m(h(SText, { text })) : null;
+function ht(text, properties, m) {
+  return text
+    ? m(h('div', { ...properties, dangerouslySetInnerHTML: { __html: text } }))
+    : null;
 }
 
 function collapsable({ label, content }) {
@@ -31,18 +32,20 @@ function space(space) {
   return h(
     'div',
     { className: 'space' },
-    ht(space.thought, (t) =>
+    ht(space.thought, {}, (t) =>
       h(collapsable, { label: '💭 思考过程', content: () => t }),
     ),
     space.callings?.length
       ? space.callings.map((u) =>
-          h(collapsable, {
-            label: `⚒️ 工具调用 ${u.name}`,
-            content: () => [h('div', {}, u.arguments), h('div', {}, u.result)],
-          }),
+          ht(`${u.arguments}\n${u.result}`, {}, (t) =>
+            h(collapsable, {
+              label: `⚒️ 工具调用 ${u.name}`,
+              content: () => t,
+            }),
+          ),
         )
       : null,
-    ht(space.output, (t) => h('div', { className: 'output' }, t)),
+    ht(space.output, { className: 'output' }, (t) => t),
   );
 }
 
@@ -53,7 +56,7 @@ function App() {
   return h(
     'div',
     { className: 'container' },
-    ht(message.prompt, (t) => h('div', { className: 'prompt' }, t)),
+    ht(message.prompt, { className: 'prompt' }, (t) => t),
     message.spaces?.length ? message.spaces.map((u) => h(space, u)) : null,
   );
 }

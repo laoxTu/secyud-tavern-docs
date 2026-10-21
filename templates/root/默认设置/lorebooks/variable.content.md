@@ -1,0 +1,3 @@
+# variable
+
+<%~ it.variable %>
