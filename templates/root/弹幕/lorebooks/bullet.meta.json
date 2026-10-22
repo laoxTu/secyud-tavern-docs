@@ -1,0 +1,12 @@
+{
+  "code": "ui-bullet",
+  "content": "$file$bullet.content.md",
+  "disabled": false,
+  "expression": { "last": false },
+  "layer": 90,
+  "match": "always",
+  "name": "弹幕",
+  "priority": 100,
+  "role": "system",
+  "type": "markdown"
+}

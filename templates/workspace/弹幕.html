@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>弹幕测试</title>
+    <link rel="stylesheet" href="../root/默认交互/styles/component.style.css" />
+
+    <link rel="stylesheet" href="../root/弹幕/styles/panel.style.css" />
+    <!-- 与 root/默认交互/scripts/preact-0.script.json 一致，importmap 只能写在文档里 -->
+    <script type="importmap">
+      {
+        "imports": {
+          "@preact/signals": "https://esm.sh/@preact/signals@1.3.0?external=preact",
+          "preact": "https://esm.sh/preact@10.23.1",
+          "preact/": "https://esm.sh/preact@10.23.1/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <!-- 模拟主应用推给界面的数据，脚本第一次渲染就读它 -->
+    <script>
+      window.__messageData = {
+        variables: {
+          space: {
+            bullets: {
+              group1: {
+                前排卖瓜子: "雨声好大，隔着屏幕都听清了",
+                夜航船: "报个到",
+                橘子汽水: "这个开场有点电影感",
+                只想吃瓜: "板凳搬好了，就等他推门",
+                二刷的观众: "我发誓这扇门后面一定有人",
+                月亮不睡我不睡: "凌晨三点还有活人吗",
+                路过的咸鱼: "有，而且我一点没睡",
+              },
+              group2: {
+                门铃一响就有戏: "来了来了来了",
+                理智型选手: "注意门口那盏灯，闪了两下",
+                野生观察员: "他浑身都湿透了，怎么不擦一下",
+                糖分超标: "湿漉漉的样子好好看",
+                资深潜水员: "0.5 倍速看他的手，在抖",
+                "【主角独白】": "街角这家店，三年前明明已经关门了",
+                笑不活了: "男主这表情管理，稀碎",
+              },
+              group3: {
+                嗑到了: "他看她的眼神不对劲",
+                反骨仔本仔: "我赌一包辣条，他是来找人的",
+                暂停截图: "截图了，这个眼神能挂墙上",
+                "【店主独白】": "又是这个味道……三年了，他一点没变",
+                剧情党の愤怒: "编剧，你今晚最好别睡太死",
+                人间清醒: "别急着感动，先看他怀里抱着什么",
+                弹幕护体: "害怕的抱紧我，虽然我也不知道怕什么",
+              },
+              group4: {
+                前排卖瓜子: "这一段我反复看了五遍，还是没看出破绽",
+                只想吃瓜: "下章预告呢，别又留个钩子就跑",
+                二刷的观众: "二刷才发现，门口那把伞从头到尾没打开过",
+                "【主角独白】": "如果真的是她，那这一次我不会再走了",
+                谁家的眼泪不值钱: "别刀我，我真的会哭",
+                笑死: "铺垫那么久，结果就一句「进来吧」",
+                路过的咸鱼: "就这？我不同意，再给我三分钟",
+                夜航船: "打卡下班，明天还来",
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <script
+      type="module"
+      src="../root/默认交互/scripts/components.script.js"
+    ></script>
+    <script type="module" src="../root/弹幕/scripts/panel.script.js"></script>
+  </body>
+</html>

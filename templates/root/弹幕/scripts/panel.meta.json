@@ -1,0 +1,9 @@
+{
+  "code": "bullet",
+  "content": "$file$panel.script-min.js",
+  "disabled": false,
+  "entryId": 1,
+  "name": "bullet",
+  "priority": 100,
+  "type": "module"
+}

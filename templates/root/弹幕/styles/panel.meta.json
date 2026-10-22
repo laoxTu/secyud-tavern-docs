@@ -1,0 +1,9 @@
+{
+  "code": "bullet",
+  "content": "$file$panel.style-min.css",
+  "disabled": false,
+  "entryId": 1,
+  "name": "bullet",
+  "priority": 100,
+  "type": "text/css"
+}

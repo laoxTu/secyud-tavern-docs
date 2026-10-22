@@ -1,0 +1,13 @@
+{
+  "cover": null,
+  "description": null,
+  "id": "bullet",
+  "name": "弹幕",
+  "properties": {},
+  "requires": [
+    { "name": "默认交互-1.1.0", "value": "ui_default" },
+    { "name": "基础设置-1.1.3", "value": "settings" }
+  ],
+  "tags": ["ui"],
+  "version": "1.0.0"
+}
