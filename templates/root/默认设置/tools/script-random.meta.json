@@ -5,8 +5,8 @@
     "enableDoc": false,
     "enableVariable": false,
     "hidden": false,
-    "schema": "$file$随机数工具.schema.json",
-    "script": "$file$随机数工具.script.js"
+    "schema": "$file$script-random.schema.json",
+    "script": "$file$script-random.script.js"
   },
   "disabled": false,
   "name": "随机数",

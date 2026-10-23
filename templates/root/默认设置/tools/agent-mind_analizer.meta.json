@@ -10,7 +10,7 @@
       "value": "721d5c7d-352e-43eb-be54-7ab3332fa487"
     },
     "presets": [{ "name": "心理分析Agent-1.0.0", "value": "agent_mind" }],
-    "schema": "$file$思维分析.schema.json"
+    "schema": "$file$agent-mind_analizer.schema.json"
   },
   "disabled": true,
   "macro": false,

@@ -14,6 +14,7 @@ body {
   display: flex;
   flex-direction: column;
   word-break: break-word;
+  padding: 20px 4px 200px 4px;
 }
 .prompt {
   font-size: 13px;
