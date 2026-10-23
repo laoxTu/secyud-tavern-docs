@@ -10,7 +10,7 @@
       "logprobs": false,
       "max_tokens": 0,
       "model": "deepseek-flash",
-      "reasoning_effort": "",
+      "reasoning_effort": "max",
       "temperature": 1,
       "thinking": { "type": "disabled" },
       "top_logprobs": 0,
