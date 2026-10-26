@@ -8,6 +8,6 @@
   "match": "always",
   "name": "变量格式",
   "priority": 100,
-  "role": "system",
+  "role": "user",
   "type": "plaintext"
 }

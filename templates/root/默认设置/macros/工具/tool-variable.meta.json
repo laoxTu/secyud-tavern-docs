@@ -1,10 +1,9 @@
 {
-  "code": "elicit",
+  "code": "variable",
   "disabled": false,
   "hidden": false,
   "json": false,
   "key": "tools",
   "multiple": true,
-  "name": "提问用户工具",
-  "value": "$file$tool-ask_user.value.md"
+  "name": "变量工具集"
 }

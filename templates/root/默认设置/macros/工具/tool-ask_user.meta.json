@@ -1,10 +1,9 @@
 {
-  "code": "lorebook",
+  "code": "elicit",
   "disabled": false,
   "hidden": false,
   "json": false,
   "key": "tools",
   "multiple": true,
-  "name": "世界书工具",
-  "value": "$file$tool-lorebook.value.md"
+  "name": "提问用户工具"
 }

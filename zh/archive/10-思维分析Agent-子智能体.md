@@ -44,15 +44,15 @@
 
 > 📦 **备注 · `AgentConfig` 字段**
 >
-> | 字段 | 说明 |
-> | --- | --- |
-> | `code` | 工具名（模型看到的名字） |
-> | `description` | 工具说明（模型决定要不要调它） |
-> | `schema` | JSON Schema **文本**，定义入参 |
-> | `model` | `{ name, value }`，子 agent 用哪个模型；`null` 表示沿用主模型 |
-> | `presets` | 子 agent 用的预设列表 `[{ name, value(id) }]` |
-> | `disablePreset` | `true` = **不继承**主故事的预设，只用 `presets` 里列的 |
-> | `disableTags` | 继承来的预设里，凡带这些 tag 的都被剔除（比如 `theme`） |
+> | 字段            | 说明                                                          |
+> | --------------- | ------------------------------------------------------------- |
+> | `code`          | 工具名（模型看到的名字）                                      |
+> | `description`   | 工具说明（模型决定要不要调它）                                |
+> | `schema`        | JSON Schema **文本**，定义入参                                |
+> | `model`         | `{ name, value }`，子 agent 用哪个模型；`null` 表示沿用主模型 |
+> | `presets`       | 子 agent 用的预设列表 `[{ name, value(id) }]`                 |
+> | `disablePreset` | `true` = **不继承**主故事的预设，只用 `presets` 里列的        |
+> | `disableTags`   | 继承来的预设里，凡带这些 tag 的都被剔除（比如 `theme`）       |
 >
 > 工具条目本身还是 `{ type: "agent", macro?, config, disabled, name }`；
 > `macro` 可选（模板里写成 `false`，等于不绑开关）。
@@ -63,26 +63,26 @@
 
 ```json
 {
-  "name": "prompt",
   "code": "rules",
-  "type": "plaintext",
-  "match": "always",
-  "expression": { "last": true, "macro": false },
   "content": "$file$prompt.content.md",
-  "priority": 0,
+  "disabled": false,
+  "expression": { "last": true, "macro": false },
   "layer": 100,
+  "match": "always",
+  "name": "prompt",
+  "priority": 0,
   "role": "user",
-  "disabled": false
+  "type": "plaintext"
 }
 ```
 
 三个刻意的设计：
 
-| 选择 | 为什么 |
-| --- | --- |
-| `last: true` | 让它在**最后**注入——离"该怎么输出"最近，不容易被别的规则冲淡 |
-| `role: "user"` | 子 agent 的本质是"一次任务"，用 user 语气指令性更强 |
-| `priority: 0` | 只有这一条，无所谓顺序；保留 0 是为了让它在同层里排最前 |
+| 选择           | 为什么                                                       |
+| -------------- | ------------------------------------------------------------ |
+| `last: true`   | 让它在**最后**注入——离"该怎么输出"最近，不容易被别的规则冲淡 |
+| `role: "user"` | 子 agent 的本质是"一次任务"，用 user 语气指令性更强          |
+| `priority: 0`  | 只有这一条，无所谓顺序；保留 0 是为了让它在同层里排最前      |
 
 prompt 里靠 `it.character` 接收参数（来自工具 schema 的入参，**摊平在顶层**，没有 `it.args`）：
 
@@ -96,12 +96,12 @@ prompt 里靠 `it.character` 接收参数（来自工具 schema 的入参，**�
 
 ### 3.4 几个运行时细节
 
-| 细节 | 行为 |
-| --- | --- |
+| 细节     | 行为                                                                                                                       |
+| -------- | -------------------------------------------------------------------------------------------------------------------------- |
 | 历史复制 | 子 agent 拿到主故事的历史副本，且最后一条输出的 `outputs` 被切掉最后一个——所以它"能看见当前局面，但不覆盖正在生成的这一轮" |
-| 禁递归 | 子 realm 的 `properties.agent = 1`，`agent` 工具在子 agent 里**不会注册**（防止无限套娃） |
-| 标签过滤 | `disableTags` 是"继承父预设时"的过滤器；只列在 `presets` 里的预设不受影响 |
-| 参数 | 工具的 `args` 摊平成宏上下文，`it.character` 就来自这里 |
+| 禁递归   | 子 realm 的 `properties.agent = 1`，`agent` 工具在子 agent 里**不会注册**（防止无限套娃）                                  |
+| 标签过滤 | `disableTags` 是"继承父预设时"的过滤器；只列在 `presets` 里的预设不受影响                                                  |
+| 参数     | 工具的 `args` 摊平成宏上下文，`it.character` 就来自这里                                                                    |
 
 ### 3.5 导出时的连带
 
@@ -124,24 +124,30 @@ mkdir D:\demo\root\critic_agent\lorebooks
 `critic_agent/meta.json`：
 
 ```json
-{ "id": "critic_agent", "name": "评审Agent", "version": "1.0.0",
-  "description": "给刚写的段落挑毛病", "tags": ["agent"], "requires": [] }
+{
+  "description": "给刚写的段落挑毛病",
+  "id": "critic_agent",
+  "name": "评审Agent",
+  "requires": [],
+  "tags": ["agent"],
+  "version": "1.0.0"
+}
 ```
 
 `critic_agent/lorebooks/prompt.meta.json`：
 
 ```json
 {
-  "name": "评审提示",
   "code": "rules",
-  "type": "markdown",
-  "match": "always",
-  "expression": { "last": true, "macro": false },
   "content": "$file$prompt.md",
-  "priority": 0,
+  "disabled": false,
+  "expression": { "last": true, "macro": false },
   "layer": 100,
+  "match": "always",
+  "name": "评审提示",
+  "priority": 0,
   "role": "user",
-  "disabled": false
+  "type": "markdown"
 }
 ```
 
@@ -151,6 +157,7 @@ mkdir D:\demo\root\critic_agent\lorebooks
 你是这部作品的严格评审，不是作者。
 
 针对<%~ it.scene %>这个场景，只回答三件事，每件一行，不超过 40 字：
+
 1. 哪里读起来别扭；
 2. 哪个细节与设定冲突；
 3. 一条最小的修改建议。
@@ -160,7 +167,7 @@ mkdir D:\demo\root\critic_agent\lorebooks
 
 ### 步骤 2：父预设里的工具
 
-在某个人类可玩的预设（例如 [03](./03-预设天道-提示词骨架.md) 造的 `narrator`）里加一个工具：
+在某个人类可玩的预设（例如 [03](./03-预设作家-提示词骨架.md) 造的 `narrator`）里加一个工具：
 
 ```powershell
 mkdir D:\demo\root\narrator\tools
@@ -170,18 +177,18 @@ mkdir D:\demo\root\narrator\tools
 
 ```json
 {
-  "name": "评审",
-  "type": "agent",
-  "disabled": false,
   "config": {
     "code": "critic",
     "description": "对当前场景做严格评审，返回三条问题与建议",
-    "schema": "$file$critic.schema.json",
+    "disablePreset": true,
+    "disableTags": [],
     "model": null,
     "presets": [{ "name": "评审Agent-1.0.0", "value": "critic_agent" }],
-    "disablePreset": true,
-    "disableTags": []
-  }
+    "schema": "$file$critic.schema.json"
+  },
+  "disabled": false,
+  "name": "评审",
+  "type": "agent"
 }
 ```
 
@@ -189,10 +196,12 @@ mkdir D:\demo\root\narrator\tools
 
 ```json
 {
-  "type": "object",
-  "properties": { "scene": { "type": "string", "description": "要评审的场景名或一句话摘要" } },
+  "additionalProperties": false,
+  "properties": {
+    "scene": { "description": "要评审的场景名或一句话摘要", "type": "string" }
+  },
   "required": ["scene"],
-  "additionalProperties": false
+  "type": "object"
 }
 ```
 
@@ -231,13 +240,13 @@ tar -a -c -f demo.zip root
 
 ## 五、自检与下一步
 
-| 现象 | 原因 |
-| --- | --- |
-| 工具不出现在工具列表 | `type` 写错（没注册 provider）；或 `agent` 的 `create` 在**子 agent 内**被跳过（递归保护） |
-| 调用后返回 `error: empty content` | 子预设没有产出（prompt 太弱 / 没装子预设 / 模型报错） |
-| 子 agent 说的话和主模型一样 | 忘了 `disablePreset: true`，它继承了主故事的整套预设 |
-| `it.character` 是 `undefined` | schema 里的字段名与 prompt 里的 `it.<名字>` 不一致 |
-| 导入后子预设丢了 | 导出时只导了父预设且工具 `config.presets` 没写对；导入不会自动补依赖 |
+| 现象                              | 原因                                                                                       |
+| --------------------------------- | ------------------------------------------------------------------------------------------ |
+| 工具不出现在工具列表              | `type` 写错（没注册 provider）；或 `agent` 的 `create` 在**子 agent 内**被跳过（递归保护） |
+| 调用后返回 `error: empty content` | 子预设没有产出（prompt 太弱 / 没装子预设 / 模型报错）                                      |
+| 子 agent 说的话和主模型一样       | 忘了 `disablePreset: true`，它继承了主故事的整套预设                                       |
+| `it.character` 是 `undefined`     | schema 里的字段名与 prompt 里的 `it.<名字>` 不一致                                         |
+| 导入后子预设丢了                  | 导出时只导了父预设且工具 `config.presets` 没写对；导入不会自动补依赖                       |
 
 **学到这里你已经覆盖了整套机制**：存档与条目（01）、工具与开关（02）、提示词与宏（03–04）、
 渲染层（05–07）、工具×数据（08）、检索（09）、子智能体（10）。

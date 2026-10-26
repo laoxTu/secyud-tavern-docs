@@ -1,0 +1,16 @@
+{
+  "code": "ws_web_noval",
+  "content": "$file$write_style-web_noval.md",
+  "disabled": false,
+  "expression": {
+    "fitCount": 1,
+    "keywords": [["网文"], ["文风"]],
+    "keywordsLength": 1
+  },
+  "layer": 100,
+  "match": "normal",
+  "name": "网文",
+  "priority": 100,
+  "role": "user",
+  "type": "plaintext"
+}

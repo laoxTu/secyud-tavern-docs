@@ -1,10 +1,9 @@
 {
-  "code": "variable",
+  "code": "lorebook",
   "disabled": false,
   "hidden": false,
   "json": false,
   "key": "tools",
   "multiple": true,
-  "name": "变量工具集",
-  "value": "$file$tool-variable.value.md"
+  "name": "世界书工具"
 }

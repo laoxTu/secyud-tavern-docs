@@ -6,5 +6,5 @@
   "key": "text_length",
   "multiple": false,
   "name": "段落长度：长",
-  "value": "2500"
+  "value": "输出正文的字数约为2500"
 }

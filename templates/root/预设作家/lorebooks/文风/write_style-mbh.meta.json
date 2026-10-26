@@ -1,0 +1,16 @@
+{
+  "code": "ws_mbh",
+  "content": "$file$write_style-mbh.md",
+  "disabled": false,
+  "expression": {
+    "fitCount": 2,
+    "keywords": [["梦白话"], ["文风"]],
+    "keywordsLength": 2
+  },
+  "layer": 100,
+  "match": "normal",
+  "name": "梦白话",
+  "priority": 100,
+  "role": "user",
+  "type": "plaintext"
+}

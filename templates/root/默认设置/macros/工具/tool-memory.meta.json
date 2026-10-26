@@ -5,6 +5,5 @@
   "json": false,
   "key": "tools",
   "multiple": true,
-  "name": "记忆设置规则",
-  "value": "$file$tool-memory.value.md"
+  "name": "记忆设置规则"
 }
