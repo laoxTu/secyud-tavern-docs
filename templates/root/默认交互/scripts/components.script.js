@@ -35,7 +35,7 @@ function useMessageData(type = 'content') {
 }
 
 function appendItemInput(item) {
-  const input = window.userInput.text;
+  const input = window.__api.input.text;
   if (input) {
     const element = input.element();
     const pos = element.selectionStart;

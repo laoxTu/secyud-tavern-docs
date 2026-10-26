@@ -1,0 +1,12 @@
+{
+  "code": "rules",
+  "content": "$file$rules.content.md",
+  "disabled": false,
+  "expression": { "last": false },
+  "layer": 90,
+  "match": "always",
+  "name": "规则",
+  "priority": 100,
+  "role": "system",
+  "type": "markdown"
+}

@@ -2,8 +2,8 @@
   "cover": null,
   "description": "",
   "id": "preset_tiandao",
-  "name": "默认天道预设",
-  "opening": "<%~ it.opening %>",
+  "name": "天道预设",
+  "opening": "<%~ it.opening ?? '' %>",
   "properties": {},
   "requires": [
     { "name": "基础设置-1.1.2", "value": "settings" },

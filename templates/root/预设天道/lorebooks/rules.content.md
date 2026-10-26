@@ -63,7 +63,3 @@
 # 人称
 
 世界的主角是<%~ it.user %>，使用<%~ it.perspective %>视角进行描写。
-
-# 输出长度
-
-在输出正文时，保证正文的token数量约为 <%~ it.text_length %> 。

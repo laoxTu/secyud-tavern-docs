@@ -1,0 +1,12 @@
+{
+  "code": "callback",
+  "content": "$file$callback.content.txt",
+  "disabled": false,
+  "expression": { "last": true },
+  "layer": 100,
+  "match": "always",
+  "name": "召回",
+  "priority": 100,
+  "role": "user",
+  "type": "markdown"
+}

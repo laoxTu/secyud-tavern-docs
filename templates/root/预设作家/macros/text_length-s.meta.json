@@ -1,0 +1,10 @@
+{
+  "code": "tl_s",
+  "disabled": true,
+  "hidden": false,
+  "json": false,
+  "key": "text_length",
+  "multiple": false,
+  "name": "段落长度：短",
+  "value": "750"
+}
