@@ -1,0 +1,12 @@
+{
+  "code": "user",
+  "content": "$file$user.content.md",
+  "disabled": false,
+  "expression": { "last": false },
+  "layer": 99,
+  "match": "always",
+  "name": "规则",
+  "priority": 100,
+  "role": "user",
+  "type": "markdown"
+}

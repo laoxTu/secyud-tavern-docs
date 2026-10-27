@@ -4,7 +4,7 @@
   "desc": "描述变量格式",
   "disabled": false,
   "expression": { "last": false, "macro": "variable" },
-  "layer": 85,
+  "layer": 100,
   "match": "always",
   "name": "变量格式",
   "priority": 100,

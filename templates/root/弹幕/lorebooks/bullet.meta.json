@@ -3,10 +3,10 @@
   "content": "$file$bullet.content.md",
   "disabled": false,
   "expression": { "last": false },
-  "layer": 90,
+  "layer": 95,
   "match": "always",
   "name": "弹幕",
   "priority": 100,
-  "role": "system",
+  "role": "user",
   "type": "markdown"
 }
