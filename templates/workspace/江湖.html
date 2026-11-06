@@ -1,0 +1,50 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>江湖 · 静态预览</title>
+
+    <!-- 需要 http 打开（module 脚本与 fetch 在 file:// 下会被浏览器拦掉），并且能访问 esm.sh。
+         在仓库根目录执行：python -m http.server 8080
+         然后打开 http://localhost:8080/docs/templates/workspace/江湖.html -->
+
+    <link rel="stylesheet" href="../root/默认交互/styles/components.style.css" />
+    <link rel="stylesheet" href="../root/江湖/styles/ui.style.css" />
+
+    <!-- 与 root/默认交互/scripts/preact.script.json 一致，importmap 只能写在文档里 -->
+    <script type="importmap">
+      {
+        "imports": {
+          "@preact/signals": "https://esm.sh/@preact/signals@1.3.0?external=preact",
+          "preact": "https://esm.sh/preact@10.23.1",
+          "preact/": "https://esm.sh/preact@10.23.1/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <script type="module">
+      // 直接读预设里的静态数据，改 variables.json 后刷新即可。
+      const variables = await fetch('../root/江湖/variables.json').then((r) => r.json());
+
+      window.__messageData = {
+        variables,
+        content: {
+          prompt: '',
+          spaces: [
+            {
+              output: `<p>雨点砸在破庙的瓦上，一声紧过一声。</p>
+<p>沈砚靠在供桌边，左肩的血把半边衣襟染透了。他把半枚铜钱推到你面前，指节发白。</p>
+<p>“青城的事，不是内斗。”他说，“你要查，就从这枚铜钱查起。”</p>
+<p>庙外传来脚步声。不是一个人。</p>`,
+            },
+          ],
+        },
+      };
+
+      // 运行时由预设的 meta.requires(ui_default) 提供组件，这里手动加载同一份组件。
+      await import('../root/默认交互/scripts/components.script.js');
+      await import('../root/江湖/scripts/script.script.js');
+    </script>
+  </body>
+</html>

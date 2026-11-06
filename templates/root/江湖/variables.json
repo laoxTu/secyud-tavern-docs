@@ -1,0 +1,397 @@
+{
+  "p": {
+    "name": "顾青崖",
+    "title": "断剑客",
+    "age": 27,
+    "sect": "无门无派",
+    "realm": "后天·三重",
+    "realmLevel": 4,
+    "hp": 76,
+    "hpMax": 100,
+    "inner": 48,
+    "innerMax": 100,
+    "attrs": {
+      "根骨": 72,
+      "悟性": 81,
+      "身法": 66,
+      "力量": 58,
+      "心性": 74
+    },
+    "rep": 36,
+    "notoriety": 12,
+    "wounds": "轻伤",
+    "silver": 42,
+    "titles": ["断剑客", "青城恩人"],
+    "equip": {
+      "weapon": "断剑·残",
+      "armor": "旧皮甲",
+      "accessory": "青城腰牌"
+    }
+  },
+  "world": {
+    "date": "景和三年·春",
+    "place": "洛阳",
+    "weather": "雨",
+    "time": "夜",
+    "sceneTitle": "破庙夜雨",
+    "choices": [
+      { "text": "亮出断剑", "hint": "信任 +，行踪暴露" },
+      { "text": "先治伤", "hint": "时间 +，追兵先到" },
+      { "text": "伏击追兵", "hint": "进入战斗" }
+    ],
+    "now": {
+      "date": "景和三年·春",
+      "place": "洛阳·破庙",
+      "factions": [
+        {
+          "id": "qingcheng",
+          "name": "青城派",
+          "action": "封锁山门",
+          "direction": "up",
+          "note": "因你救下掌门"
+        },
+        {
+          "id": "luoshui",
+          "name": "洛水盟",
+          "action": "接管码头",
+          "direction": "still",
+          "note": "盘查过往船只"
+        },
+        {
+          "id": "wumian",
+          "name": "无面",
+          "action": "现身城西",
+          "direction": "clash",
+          "note": "一夜杀七人"
+        }
+      ],
+      "quests": [
+        {
+          "id": "q_tongqian",
+          "name": "追查铜钱",
+          "action": "夜探青城",
+          "step": "后山·旧丹房",
+          "countdown": 3
+        },
+        {
+          "id": "q_shenyan",
+          "name": "沈砚的仇",
+          "action": "等一个名字",
+          "step": "他还欠你一句实话"
+        }
+      ],
+      "rumors": [
+        {
+          "text": "城西当铺收了一枚带血的铜钱。",
+          "credibility": "rumor"
+        },
+        {
+          "text": "洛水盟的人在找一个独臂刀客。",
+          "credibility": "confirmed"
+        }
+      ],
+      "last": "你在城西渡口救下青城掌门，青城派欠你一个人情。"
+    }
+  },
+  "relations": {
+    "shenyan": {
+      "name": "沈砚",
+      "role": "青城弃徒",
+      "stage": "知交",
+      "attitude": 62,
+      "trust": 41,
+      "debt": 18,
+      "stance": "青城旧堂",
+      "location": "洛阳·城西",
+      "agenda": "追查灭门真凶",
+      "met": 4,
+      "lastSeen": "昨夜·破庙",
+      "line": "你欠我的，不是一句谢。",
+      "faction": "qingcheng",
+      "importance": 3
+    },
+    "suwan": {
+      "name": "苏晚",
+      "role": "洛水盟舵主",
+      "stage": "相识",
+      "attitude": 48,
+      "trust": 30,
+      "debt": -6,
+      "stance": "洛水盟",
+      "location": "洛阳·码头",
+      "agenda": "查独臂刀客",
+      "met": 2,
+      "lastSeen": "三日前·渡口",
+      "line": "洛阳的雨，洗不干净码头。",
+      "faction": "luoshui",
+      "importance": 3
+    },
+    "laozhou": {
+      "name": "老周",
+      "role": "城门老卒",
+      "stage": "相识",
+      "attitude": 71,
+      "trust": 55,
+      "debt": 22,
+      "stance": "官府",
+      "location": "洛阳·南门",
+      "agenda": "替孙女攒嫁妆",
+      "met": 3,
+      "lastSeen": "今晨·南门",
+      "line": "夜里出城，多带一盏灯。",
+      "faction": "guanfu",
+      "importance": 2
+    },
+    "ajiu": {
+      "name": "阿九",
+      "role": "街头扒手",
+      "stage": "相识",
+      "attitude": 35,
+      "trust": 12,
+      "debt": -14,
+      "stance": "无",
+      "location": "洛阳·西市",
+      "agenda": "躲债",
+      "met": 2,
+      "lastSeen": "昨日·西市",
+      "line": "大爷，行行好，我上有老下有小。",
+      "faction": "none",
+      "importance": 1
+    },
+    "wumian": {
+      "name": "无面",
+      "role": "血榜第二",
+      "stage": "仇隙",
+      "attitude": -60,
+      "trust": 0,
+      "debt": -40,
+      "stance": "血榜",
+      "location": "洛阳·城西",
+      "agenda": "杀够七个人",
+      "met": 0,
+      "lastSeen": "未曾谋面",
+      "line": "……",
+      "faction": "xuebang",
+      "importance": 3
+    },
+    "xuanzang": {
+      "name": "玄尘",
+      "role": "青城掌门",
+      "stage": "知交",
+      "attitude": 66,
+      "trust": 50,
+      "debt": 30,
+      "stance": "青城旧堂",
+      "location": "青城山·丹房",
+      "agenda": "清理门户",
+      "met": 2,
+      "lastSeen": "五日前·青城",
+      "line": "剑断了，人不能断。",
+      "faction": "qingcheng",
+      "importance": 3
+    },
+    "guchangfeng": {
+      "name": "顾长风",
+      "role": "洛水盟主",
+      "stage": "未识",
+      "attitude": 0,
+      "trust": 0,
+      "debt": 0,
+      "stance": "洛水盟",
+      "location": "洛阳·总舵",
+      "agenda": "吞并青城",
+      "met": 0,
+      "lastSeen": "未曾谋面",
+      "line": "……",
+      "faction": "luoshui",
+      "importance": 3
+    },
+    "xiewujiu": {
+      "name": "谢无咎",
+      "role": "血榜第一",
+      "stage": "未识",
+      "attitude": 0,
+      "trust": 0,
+      "debt": 0,
+      "stance": "无",
+      "location": "未知",
+      "agenda": "找一个人",
+      "met": 0,
+      "lastSeen": "十年前·传说",
+      "line": "……",
+      "faction": "xuebang",
+      "importance": 2
+    }
+  },
+  "edges": [
+    { "from": "player", "to": "shenyan", "type": "义" },
+    { "from": "player", "to": "suwan", "type": "情" },
+    { "from": "player", "to": "laozhou", "type": "恩" },
+    { "from": "player", "to": "ajiu", "type": "怨" },
+    { "from": "player", "to": "wumian", "type": "怨" },
+    { "from": "player", "to": "xuanzang", "type": "恩" },
+    { "from": "player", "to": "guchangfeng", "type": "仇" },
+    { "from": "player", "to": "xiewujiu", "type": "?" },
+    { "from": "shenyan", "to": "xuanzang", "type": "义" },
+    { "from": "suwan", "to": "guchangfeng", "type": "义" },
+    { "from": "laozhou", "to": "ajiu", "type": "情" },
+    { "from": "wumian", "to": "xiewujiu", "type": "仇" }
+  ],
+  "companions": [
+    {
+      "id": "shenyan",
+      "name": "沈砚",
+      "reason": "顺路",
+      "until": "到青城山"
+    }
+  ],
+  "recent": ["suwan", "laozhou", "ajiu"],
+  "arts": [
+    {
+      "name": "断水剑法",
+      "tier": "玄",
+      "type": "兵刃",
+      "mastery": 4,
+      "max": 6,
+      "equipped": true,
+      "desc": "一剑断水，势尽则回。连击第三式有破甲。"
+    },
+    {
+      "name": "听雨诀",
+      "tier": "黄",
+      "type": "内功",
+      "mastery": 3,
+      "max": 6,
+      "equipped": true,
+      "desc": "听雨入息，每回合回复少量内力；雨中效果翻倍。"
+    },
+    {
+      "name": "踏雪无痕",
+      "tier": "玄",
+      "type": "轻功",
+      "mastery": 2,
+      "max": 6,
+      "equipped": true,
+      "desc": "短距腾挪，可越过一处障碍；雪地不留痕。"
+    },
+    {
+      "name": "袖里青蛇",
+      "tier": "地",
+      "type": "暗器",
+      "mastery": 1,
+      "max": 6,
+      "equipped": false,
+      "desc": "袖中三枚青蛇钉，命中后附加麻痹。"
+    },
+    {
+      "name": "岐黄手",
+      "tier": "黄",
+      "type": "医",
+      "mastery": 3,
+      "max": 6,
+      "equipped": false,
+      "desc": "辨药、止血、解常见毒；对走火入魔无效。"
+    },
+    {
+      "name": "醉里挑灯",
+      "tier": "地",
+      "type": "刀法",
+      "mastery": 0,
+      "max": 6,
+      "equipped": false,
+      "desc": "未入门。酒后出刀，第一刀必中，之后自伤。"
+    }
+  ],
+  "bag": [
+    {
+      "name": "半枚铜钱",
+      "type": "线索",
+      "qty": 1,
+      "quality": "旧",
+      "desc": "断口很新，边缘刻着一个极小的“青”字。"
+    },
+    {
+      "name": "断剑·残",
+      "type": "兵器",
+      "qty": 1,
+      "quality": "玄",
+      "desc": "剑身只剩两尺，剑脊有七道缺口。"
+    },
+    {
+      "name": "金疮药",
+      "type": "丹药",
+      "qty": 3,
+      "quality": "常",
+      "desc": "止血生肌，重伤时只能稳住半刻。"
+    },
+    {
+      "name": "假路引",
+      "type": "杂物",
+      "qty": 1,
+      "quality": "常",
+      "desc": "洛阳城门能用，出了河南就不一定。"
+    },
+    {
+      "name": "青城腰牌",
+      "type": "信物",
+      "qty": 1,
+      "quality": "旧",
+      "desc": "旧堂弟子的腰牌，背面刻着“玄尘”二字。"
+    },
+    {
+      "name": "雨前茶",
+      "type": "礼品",
+      "qty": 1,
+      "quality": "佳",
+      "desc": "苏晚喜欢的茶。送对了，话就好说。"
+    },
+    {
+      "name": "飞蝗石",
+      "type": "暗器",
+      "qty": 12,
+      "quality": "常",
+      "desc": "打穴、扰敌、惊马，都够用。"
+    },
+    {
+      "name": "五十两银票",
+      "type": "财货",
+      "qty": 1,
+      "quality": "常",
+      "desc": "洛水盟的票号能兑；青城山不认。"
+    }
+  ],
+  "map": {
+    "current": "luoyang",
+    "regions": [
+      {
+        "id": "luoyang",
+        "name": "洛阳",
+        "sub": "中原·洛水",
+        "control": "洛水盟",
+        "danger": 2,
+        "note": "码头与官道都在洛水盟手里。夜里出城，要过三道卡。"
+      },
+      {
+        "id": "qingcheng",
+        "name": "青城山",
+        "sub": "蜀中·青城",
+        "control": "青城派（分裂）",
+        "danger": 3,
+        "note": "山门封锁，旧堂与新堂隔着一道石阶。后山丹房没人守。"
+      },
+      {
+        "id": "jiangnan",
+        "name": "江南",
+        "sub": "苏杭·官绸",
+        "control": "商会",
+        "danger": 1,
+        "note": "官绸复市，魔教的船停在城外。商会的请柬比刀快。"
+      }
+    ],
+    "routes": [
+      ["luoyang", "qingcheng"],
+      ["luoyang", "jiangnan"],
+      ["qingcheng", "jiangnan"]
+    ]
+  }
+}

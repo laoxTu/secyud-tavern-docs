@@ -1,0 +1,12 @@
+{
+  "cover": null,
+  "description": "以关系与江湖动向为核心的武侠界面。依赖「默认UI界面」提供 Preact 与组件；页面先用静态演示数据撑起来，世界书后续再填。",
+  "id": "jianghu",
+  "name": "江湖",
+  "opening": "$file$opening.txt",
+  "properties": {},
+  "requires": [{ "name": "默认UI界面", "value": "ui_default" }],
+  "tags": ["ui", "wuxia"],
+  "variables": "$file$variables.json",
+  "version": "0.1.0"
+}
