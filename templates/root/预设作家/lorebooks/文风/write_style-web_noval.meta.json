@@ -3,9 +3,9 @@
   "content": "$file$write_style-web_noval.md",
   "disabled": false,
   "expression": {
-    "fitCount": 1,
+    "fitCount": 2,
     "keywords": [["网文"], ["文风"]],
-    "keywordsLength": 1
+    "keywordsLength": 2
   },
   "layer": 100,
   "match": "normal",
