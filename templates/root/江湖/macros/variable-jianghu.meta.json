@@ -1,0 +1,10 @@
+{
+  "code": "variable_jianghu",
+  "disabled": false,
+  "hidden": false,
+  "json": false,
+  "key": "variable",
+  "multiple": true,
+  "name": "变量-江湖",
+  "value": "$file$variable-jianghu.value.md"
+}

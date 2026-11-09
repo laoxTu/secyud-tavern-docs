@@ -1,0 +1,9 @@
+{
+  "code": "panel",
+  "content": "$file$panel.style-min.css",
+  "disabled": false,
+  "entryId": 1,
+  "name": "panel",
+  "priority": 100,
+  "type": "text/css"
+}

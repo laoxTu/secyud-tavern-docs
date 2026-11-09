@@ -1,8 +1,0 @@
-{
-  "code": "ui",
-  "content": "$file$ui.style.css",
-  "disabled": false,
-  "name": "样式",
-  "priority": 200,
-  "type": ""
-}

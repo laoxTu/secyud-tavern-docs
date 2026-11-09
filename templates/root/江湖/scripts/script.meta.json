@@ -1,8 +1,0 @@
-{
-  "code": "script",
-  "content": "$file$script.script.js",
-  "disabled": false,
-  "name": "script",
-  "priority": 200,
-  "type": "module"
-}

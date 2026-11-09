@@ -1,12 +1,11 @@
 {
   "cover": null,
-  "description": "以关系与江湖动向为核心的武侠界面。依赖「默认UI界面」提供 Preact 与组件；页面先用静态演示数据撑起来，世界书后续再填。",
+  "description": "以关系与江湖动向为核心的武侠界面，分为自身、武学、人物、势力、江湖、行囊六页。依赖作家预设链（含默认交互）提供 Preact 与组件。",
   "id": "jianghu",
   "name": "江湖",
   "opening": "$file$opening.txt",
   "properties": {},
-  "requires": [{ "name": "默认UI界面", "value": "ui_default" }],
+  "requires": [{ "name": "作家预设-1.2.1", "value": "preset_writer" }],
   "tags": ["ui", "wuxia"],
-  "variables": "$file$variables.json",
   "version": "0.1.0"
 }

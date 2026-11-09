@@ -2,16 +2,13 @@
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
-    <title>江湖 · 静态预览</title>
+    <title>江湖测试</title>
 
-    <!-- 需要 http 打开（module 脚本与 fetch 在 file:// 下会被浏览器拦掉），并且能访问 esm.sh。
-         在仓库根目录执行：python -m http.server 8080
-         然后打开 http://localhost:8080/docs/templates/workspace/江湖.html -->
+    <!-- 需要 http 打开（module 脚本在 file:// 下会被浏览器拦掉），并且能访问 esm.sh。
+         在 docs/templates 目录执行：python -m http.server 8080
+         然后打开 http://localhost:8080/workspace/江湖.html -->
 
-    <link rel="stylesheet" href="../root/默认交互/styles/components.style.css" />
-    <link rel="stylesheet" href="../root/江湖/styles/ui.style.css" />
-
-    <!-- 与 root/默认交互/scripts/preact.script.json 一致，importmap 只能写在文档里 -->
+    <!-- 与 root/默认交互/scripts/preact-0.script.json 一致，importmap 只能写在文档里 -->
     <script type="importmap">
       {
         "imports": {
@@ -21,30 +18,277 @@
         }
       }
     </script>
+
+    <!-- 默认组件的底样式；面板样式在江湖/styles/ 下 -->
+    <link rel="stylesheet" href="../root/默认交互/styles/components.style.css" />
+    <link
+      rel="stylesheet"
+      href="../root/江湖/styles/panel.style.css?v=20261109h"
+    />
   </head>
   <body>
-    <script type="module">
-      // 直接读预设里的静态数据，改 variables.json 后刷新即可。
-      const variables = await fetch('../root/江湖/variables.json').then((r) => r.json());
-
+    <!-- 模拟主应用推给界面的数据，脚本第一次渲染就读它 -->
+    <script>
       window.__messageData = {
-        variables,
-        content: {
-          prompt: '',
-          spaces: [
+        variables: {
+          scene: '景和三年·春 · 洛阳 · 雨',
+          user: {
+            name: '沈砚',
+            title: '断剑客',
+            desc: '青衫落拓，腰间一柄断剑。三年前从青城山下来，再没回去过。',
+            status: '无恙',
+            statusDesc: '左肩旧伤已收口，只是阴雨天还会发酸。',
+            property: {
+              str: 72,
+              dex: 84,
+              con: 63,
+              int: 55,
+              wis: 68,
+              cha: 47,
+            },
+            realms: {
+              wudao: '先天',
+              xiuxian: '练气',
+            },
+            skills: [
+              {
+                name: '青城剑法',
+                type: '招式',
+                path: '武道',
+                mastery: '大成',
+                desc: '剑走轻灵，后发先至；守中带攻，最合青城心法。',
+              },
+              {
+                name: '金钟罩',
+                type: '心法',
+                path: '武道',
+                mastery: '圆满',
+                desc: '外功横练，气沉丹田；刀枪难入，水火不侵。',
+              },
+              {
+                name: '青城心法',
+                type: '心法',
+                path: '武道',
+                mastery: '大成',
+                desc: '以意驭气，气走周天；青城弟子入门先练的底子。',
+              },
+              {
+                name: '踏雪无痕',
+                type: '轻功',
+                path: '武道',
+                mastery: '小成',
+                desc: '提气纵跃，雪上只留浅浅一线，追兵难辨。',
+              },
+              {
+                name: '一剑西来',
+                type: '绝技',
+                path: '武道',
+                mastery: '出神入化',
+                desc: '青城剑法最后一式，出手只有一道白线，收剑时人已过身。',
+              },
+              {
+                name: '引气诀',
+                type: '心法',
+                path: '修仙',
+                mastery: '初窥',
+                desc: '引天地清气入体，初成时只觉掌心微凉，尚不能御物。',
+              },
+              {
+                name: '御剑术',
+                type: '绝技',
+                path: '修仙',
+                mastery: '小成',
+                desc: '以气御剑，三丈内剑随念转；离得远了，剑便坠地。',
+              },
+            ],
+          },
+          charas: {
+            苏晚照: {
+              name: '苏晚照',
+              title: '金针娘子',
+              desc: '城南药庐的主人，一手金针能吊住将死之人的半口气。',
+              status: '无恙',
+              relation: '知己',
+              statusDesc:
+                '她把温着的药推过来，指尖还沾着药渣，眼下却有淡淡的青。',
+              property: {
+                str: 32,
+                dex: 58,
+                con: 46,
+                int: 79,
+                wis: 88,
+                cha: 71,
+              },
+              realms: { wudao: '后天' },
+              martial:
+                '一手金针使得出神入化，认穴不必看，三丈内能封人经脉。',
+            },
+            裴无咎: {
+              name: '裴无咎',
+              title: '青锋疤客',
+              desc: '青城弃徒，左脸一道旧疤。听说他也在找那半枚铜钱。',
+              status: '负伤',
+              relation: '仇敌',
+              statusDesc:
+                '左肩新伤未愈，握剑的手却很稳，看你的眼神比剑还冷。',
+              property: {
+                str: 81,
+                dex: 77,
+                con: 69,
+                int: 52,
+                wis: 44,
+                cha: 36,
+              },
+              realms: { wudao: '先天' },
+              martial:
+                '一手青城剑法已至大成，出剑快而阴，左肩旧伤却拖了后劲。',
+            },
+            阿箬: {
+              name: '阿箬',
+              title: '听江哑女',
+              desc: '渡口撑船的哑女，耳朵极灵，江上谁家船过都瞒不过她。',
+              status: '无恙',
+              relation: '相识',
+              statusDesc: '她在你掌心写了一个「等」字，又指了指北边的水道。',
+              property: {
+                str: 41,
+                dex: 66,
+                con: 55,
+                int: 61,
+                wis: 83,
+                cha: 64,
+              },
+              realms: { wudao: '后天' },
+              martial:
+                '轻功极好，撑船时能在桅杆上换气，只是不擅与人动手。',
+            },
+          },
+          factions: {
+            青城派: {
+              name: '青城派',
+              type: '门派',
+              relation: '敌对',
+              power: '一流',
+              desc: '山门在青城后山，掌门闭关多年，门下弟子仍在追那半枚铜钱。',
+            },
+            丐帮洛阳分舵: {
+              name: '丐帮洛阳分舵',
+              type: '帮派',
+              relation: '亲善',
+              power: '二流',
+              desc: '分舵设在城南破庙，舵主是个断了两指的老叫花，消息却最灵。',
+            },
+            洛阳府衙: {
+              name: '洛阳府衙',
+              type: '官府',
+              relation: '中立',
+              power: '一流',
+              desc: '明面上不问江湖事，暗地里每道城门都有人盯着来往的剑客。',
+            },
+            金玉堂: {
+              name: '金玉堂',
+              type: '商会',
+              relation: '中立',
+              power: '二流',
+              desc: '洛阳最大的珠宝行，掌柜的笑面迎人，后堂却养着几个刀客。',
+            },
+            苏家: {
+              name: '苏家',
+              type: '世家',
+              relation: '亲善',
+              power: '三流',
+              desc: '三代行医的本地世家，苏晚照离家后，只剩老父守着药庐。',
+            },
+            血刀门: {
+              name: '血刀门',
+              type: '门派',
+              relation: '敌对',
+              power: '顶尖',
+              desc: '漠北来的刀客，行事只认刀不认理，最近在洛阳城外劫了一趟镖。',
+            },
+          },
+          jianghu: [
             {
-              output: `<p>雨点砸在破庙的瓦上，一声紧过一声。</p>
-<p>沈砚靠在供桌边，左肩的血把半边衣襟染透了。他把半枚铜钱推到你面前，指节发白。</p>
-<p>“青城的事，不是内斗。”他说，“你要查，就从这枚铜钱查起。”</p>
-<p>庙外传来脚步声。不是一个人。</p>`,
+              kind: '传闻',
+              title: '听雨楼夜剑',
+              desc: '昨夜有人在听雨楼拔剑，天亮后只留下一截断穗。',
+            },
+            {
+              kind: '委托',
+              title: '护送药车',
+              desc: '苏晚照托你把一车药材送出城，走北门，别走官道。',
+            },
+            {
+              kind: '悬赏',
+              title: '青城叛徒',
+              desc: '青城派在洛阳各处贴了海捕文书，赏银三百两，要活的。',
+            },
+            {
+              kind: '恩怨',
+              title: '断剑之仇',
+              desc: '裴无咎左肩那道伤，是你三年前留下的；他一直记得。',
             },
           ],
+          items: {
+            断水: {
+              name: '断水',
+              type: '兵刃',
+              status: '残破',
+              desc: '剑身裂开一道细纹，出鞘时仍有清响。师父说，剑断之前，先断的是执剑人的心。',
+            },
+            软甲: {
+              name: '软甲',
+              type: '护具',
+              status: '尚可',
+              desc: '贴身的一层旧甲，胸口补过三回，针脚细得几乎看不出来。',
+            },
+            金疮药: {
+              name: '金疮药',
+              type: '丹药',
+              status: '尚可',
+              desc: '苏晚照亲手配的，白瓷瓶底压着一小片当归，还剩三帖。',
+            },
+            干粮: {
+              name: '干粮',
+              type: '干粮',
+              status: '将尽',
+              desc: '硬得能砸核桃的麦饼，用油纸包着，只够吃两日。',
+            },
+            旧剑谱: {
+              name: '旧剑谱',
+              type: '典籍',
+              status: '完好',
+              desc: '封皮已经磨白，最后一页被人撕去，断口很新。',
+            },
+            火折子: {
+              name: '火折子',
+              type: '杂物',
+              status: '尚可',
+              desc: '竹管口被磨得发亮，吹一口还能见着火星。',
+            },
+            半枚铜钱: {
+              name: '半枚铜钱',
+              type: '杂物',
+              status: '完好',
+              desc: '断口很新。另一枚在谁手里，青城那桩事就有了一半答案。',
+            },
+          },
         },
       };
-
-      // 运行时由预设的 meta.requires(ui_default) 提供组件，这里手动加载同一份组件。
-      await import('../root/默认交互/scripts/components.script.js');
-      await import('../root/江湖/scripts/script.script.js');
     </script>
+
+    <!-- 默认交互提供 Preact 组件库；tooltip 是江湖本地的公共组件 -->
+    <script
+      type="module"
+      src="../root/默认交互/scripts/components.script.js"
+    ></script>
+    <script
+      type="module"
+      src="../root/江湖/scripts/tooltip.script.js?v=20261109h"
+    ></script>
+    <script
+      type="module"
+      src="../root/江湖/scripts/panel.script.js?v=20261109h"
+    ></script>
   </body>
 </html>

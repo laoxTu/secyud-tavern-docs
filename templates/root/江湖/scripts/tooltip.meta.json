@@ -1,0 +1,8 @@
+{
+  "code": "tooltip",
+  "content": "$file$tooltip.script.js",
+  "disabled": false,
+  "name": "tooltip",
+  "priority": 90,
+  "type": "module"
+}
